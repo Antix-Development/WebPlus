@@ -1,0 +1,82 @@
+﻿<html>
+<head>
+    <title>WinForm WebView</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <style>
+    </style>
+    <script type="text/javascript" src="webplus.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="footer"></div>
+        <div class="content"></div>
+
+        <div class="left">
+            <textarea id="debug_output" rows="15" spellcheck="false" style="width: 100%; resize: none"></textarea><br>
+            <button onclick="document.getElementById('debug_output').value = '';" style="width: 100%">Clear output</button><br>
+        </div>
+
+        <div class="resize"></div>
+
+        <div class="right">
+
+            <div>
+                <label>WP_PATH</label>
+                <input type="text" id="wp_path_label" readonly style="min-width: 80%" />
+            </div>
+
+            <div>
+                <button onclick="testSetWindowTitle();">Set Window Title</button>
+                <input type="text" id="window_name" placeholder="Type a new title here" style="min-width: 40%" />
+            </div>
+
+            <div>
+                <button onclick="toggleFullScreen();">Toggle FullScreen</button>
+                <input type="text" id="wp_fullscreen_label" readonly style="min-width: 5rem" />
+            </div>
+
+            <div>
+                <button onclick="toggleHotReload();">Toggle Hot Reload</button>
+                <input type="text" id="wp_hotreload_enabled_label" readonly style="min-width: 5rem" />
+            </div>
+
+            <div>
+                <button onclick="testOpenFileDialog();">Select Single File</button>
+                <button onclick="testOpenFileDialogMultiple();">Select Multiple Files</button>
+                <button onclick="testOpenFolderDialog();">Select A Folder</button>
+            </div>
+
+            <div>
+                <button onclick="testBrowseForAndLoadTextFile();">Browse For And Load Text File()</button>
+                <button onclick="testBrowseForAndSaveTextFile();">Browse For And Save Text File()</button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+
+    <div style="display: inline-block; width: 15rem; border: 1px solid #ccc; border-radius: 4px; padding: .5rem;">
+    </div>
+
+
+
+
+
+
+
+    <button onclick="testHostedObject();" style="padding: .25rem 0; margin-top: .5rem">Test Hosted Object</button><br>
+    <button onclick="testFileInfo();" style="padding: .25rem 0; margin-top: .5rem">Test fileInfo()</button><br>
+    <button onclick="testDirInfo();" style="padding: .25rem 0; margin-top: .5rem">Test dirInfo()</button><br>
+
+
+</body>
+</html>
