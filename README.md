@@ -1,10 +1,6 @@
 ﻿
 ![alt text](images/logo.svg)
 
-WebPlus lets you transform your boring old web applications into exciting Windows desktop applications.
-
-
-
 # Introduction
 
 ## Why WebPlus?
@@ -19,28 +15,11 @@ If I had not already made good progress with my own framework when I tried Neutr
 
 ## What is WebPlus?
 
-WebPlus is yet another framework for transforming web applications into desktop applications.
+WebPlus is yet another framework for transforming web applications into desktop applications. It was made to enable local file access for web apps, have a small distribution size, be easy to setup and use, and have no requirement for compilation.
 
 WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality. If you really want serious grown-up stuff, then I recommend trying one of the frameworks I previously mentioned, they are all more mature and secure than WebPlus.
 
 I also don't own any Apple or Linux stuff so WebPlus only works on Windows.
-
-So I created WebPlus with the following requirements:
-
-- Local file access.
-
-- Small distribution size.
-
-- Easy to setup.
-
-- Easy to use.
-
-- No real requirement to compile anything.
-
-Currently WebPlus meets all of my requirements and I'm very pleased with the final distribution size (minus user generated HTML, CSS, and JavaScript) of just under 800Kb.
-
-<br>
-
 
 
 # Getting Started
@@ -66,6 +45,8 @@ Lets make an app called *MyCoolApp*.
 Once you are happy with your app, remove the line in app.js that reads `wp.enableHotReload(true);` to disable hot reloading.
 
 Replace the "icon.ico" with your own icon, and then you're ready to commence distribution.
+
+*NOTE:* the "webplus.js" file in the app folder contains the WebPlus engine code and you don;to need to modify it.
 
 <br>
 
