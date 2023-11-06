@@ -280,7 +280,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-`loadTextFile(path)`
+#### `loadTextFile(path)`
 
 &emsp; Load the text file with the given path.
 
@@ -300,7 +300,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-`saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),`
+## `saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),`
 
 &emsp; Save the given text to the file at the given path.
 
@@ -310,7 +310,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-`browseForAndSaveTextFile(text, options = ())```
+### `browseForAndSaveTextFile(text, options = ())`
 
 &emsp; Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
 
