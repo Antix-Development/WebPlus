@@ -9,13 +9,21 @@ namespace WebPlus
 {
     public partial class Form1 : Form
     {
-        public JsonSerializerOptions JsonOptions = new JsonSerializerOptions { IncludeFields = true };
+        public JsonSerializerOptions JsonOptions = new JsonSerializerOptions { IncludeFields = true }; // Options for when using objects with properties. By default properties are not serlialized.
 
         private HostedObject hostedObject; // The object containing the methods that are directly callable from JavaScript.
 
         public Form1()
         {
             InitializeComponent();
+
+            try
+            {
+                this.Icon = new Icon("app\\icon.ico");
+            }
+            catch (Exception)
+            {
+            }
 
             InitializeAsync();
             WebView.Source = new Uri($"file:///{Directory.GetCurrentDirectory()}/app/app.html");
@@ -56,7 +64,7 @@ namespace WebPlus
 
         public void ReplyToWebView(string reply)
         {
-            WebView.CoreWebView2.PostWebMessageAsString(JsonSerializer.Serialize(reply));
+            WebView.CoreWebView2.PostWebMessageAsString(JsonSerializer.Serialize(reply, JsonOptions));
         }
 
         public void DispatchWindowResizeEvent(string type)
@@ -126,7 +134,6 @@ namespace WebPlus
                 WebView.CoreWebView2.Reload();
             }));
         }
-
 
         private void webView_KeyUp(object sender, KeyEventArgs e)
         {

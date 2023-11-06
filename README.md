@@ -1,19 +1,125 @@
 ﻿
-# WebPlus
+![alt text](images/logo.svg)
 
-### Web Apps go Native
+WebPlus is a lightweight portable desktop application development framework that lets you turn your web applications into native desktop applications for the Microsoft Windows Operating System.
+
+<div style="text-align: center">
+
+# [xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx](#xxxxxxxxxxxxxxxxxxxxxx)
+
+# [Getting Started](#getting-stared)
+
+# [API Reference](#api-reference)
+
+
+[dfghdfghf](# introduction)
+
+
+</div>
+
+# Introduction
+
+## What is WebPlus
+
+Transform web applications into Windows native desktop applications.
+
+
+**^^wordy or not wordy??**
+
+## Why WebPlus?
+
+Well why not.
+
+
+
+
+# Getting Started
+
+## Requirements
+
+All you really need is a text editor but if you want to build your own binary you will need [Visual Studio](https://visualstudio.microsoft.com/vs/).
 
 
 
 
 
-## heading
+
+<hr>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+# API Reference
 
 
+## Variables
 
-## methods
+WebPlus contains a number of global variables that you can access:
 
-intro to methods goes here
+### wp
+
+The WebPlus object that encapsulates all methods that can be called on the host.
+
+### WP_HOST
+
+The cached host which ???
+
+### WP_PATH
+
+The applications home directory.
+
+### WP_MESSAGE_HANDLER
+
+A callback function that will be called when messages arrive from the host.
+
+### WP_FULLSCREEN
+
+True if the application window is currently in full-screen mode.
+
+### WP_FRAMELESS
+
+True if the application window has no frame.
+
+### WP_HOTRELOAD_ENABLED
+
+True if the application is currently in hot-reload mode.
+
+### WP_TEXTFILE_FILTER
+
+A pregenerated filter for TEXT files.
+
+### WP_JSONFILE_FILTER
+
+A pregenerated filter for JSON files.
+
+### WP_PNGFILE_FILTER
+
+A pregenerated filter for PNG files.
+
+## Structures
+
+Some WebPlus methods return custom structures:
+
+### FileDetails
+
+## Methods
+
+To call a WebPlus method use ```wp.``` + `methodname`. For example if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
+
+```
+wp.setWindowTitle("WebPlus Rocks");
+```
+
+WebPlus encapsulates the following methods:
 
 ### exit()
 

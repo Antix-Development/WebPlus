@@ -53,7 +53,6 @@
             this.ClientSize = new System.Drawing.Size(985, 373);
             this.Controls.Add(this.WebView);
             this.Name = "Form1";
-            this.ShowIcon = false;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).EndInit();
             this.ResumeLayout(false);

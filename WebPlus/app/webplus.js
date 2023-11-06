@@ -63,7 +63,10 @@ const wp = {
      * @returns {String}
      * @memberof WebPlus
      */
-    getPath: () => WP_HOST.getPath(),
+    getPath: () => {
+        WP_PATH = WP_HOST.getPath();
+        return WP_PATH;
+    },
 
     /**
      * Get the last error.
@@ -112,18 +115,14 @@ const wp = {
      * @param {String} path
      * @memberof WebPlus
      */
-    deleteFile: (path) => {
-        WP_HOST.deleteFile(path);
-    },
+    deleteFile: (path) => WP_HOST.deleteFile(path),
         
     /**
      * Rename the file with the given path to the given name.
      * @param {String} path
      * @memberof WebPlus
      */
-    renameFile: (path, name) => {
-        WP_HOST.renameFile(path, name);
-    },
+    renameFile: (path, name) => WP_HOST.renameFile(path, name),
 
     /**
      * Get an array of 'FileDetails' for all files and directories in the given path.
@@ -136,21 +135,19 @@ const wp = {
         return (di) ? JSON.parse(di) : null;
     },
 
-    /** Create a directory with the given path.
+    /** 
+     * Create a directory with the given path.
      * @param { String } path
      * @memberof WebPlus
     */
-    createDirectory: (path) => {
-        WP_HOST.createDirectory(path);
-    },
+    createDirectory: (path) => WP_HOST.createDirectory(path),
         
-    /** Recursively delete the directory with the given path.
+    /** 
+     * Recursively delete the directory with the given path.
      * @param { String } path
      * @memberof WebPlus
     */
-    deleteDirectory: (path) => {
-        WP_HOST.deleteDirectory(path);
-    },
+    deleteDirectory: (path) => WP_HOST.deleteDirectory(path),
 
     /**
      * Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
@@ -178,7 +175,6 @@ const wp = {
      */
     openFolderDialog: () => {
         const fd = WP_HOST.openFolderDialog();
-
         return (fd) ? JSON.parse(fd) : null;
     },
 
@@ -249,4 +245,3 @@ window.chrome.webview.addEventListener('message', (e) => {
         console.warn(`invalid message received: ${e.data}`);
     }
 });
-

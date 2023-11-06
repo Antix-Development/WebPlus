@@ -34,7 +34,7 @@ window.onload = () => {
     console.log(wp.fileInfo("d:\\fucktard.txt"));
     console.log(wp.getLastError());
 
-    wp.setWindowIcon("d:\\icon.png")
+    //wp.setWindowIcon("d:\\icon.png")
 
 }
 
@@ -88,4 +88,21 @@ function testDirInfo() {
 function testHostedObject() {
     const txt = wp.loadTextFile('pooh');
     console.log(txt);
+}
+
+
+const options = {
+    location: {
+        x: 0,
+        y: 0
+    },
+    size: {
+        width: 800,
+        height: 600
+    },
+
+    fullScreen: false,
+    frameless: false,
+    hotReload: true,
+
 }

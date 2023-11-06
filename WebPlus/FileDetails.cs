@@ -34,7 +34,7 @@ namespace WebPlus
 
         public override string ToString()
         {
-            return $"name:{name}, extension:{extension}, type:{type}, path:{path}, fullPath:{fullPath}, size:{size:N0}";
+            return $"name:{name}, extension:{extension.ToLower()}, type:{type}, path:{path}, fullPath:{fullPath}, size:{size:N0}";
         }
     }
 }

@@ -24,6 +24,8 @@ namespace WebPlus
     {
         private Form1 HostForm;
 
+        public bool Frameless = false;
+
         public bool InFullScreen = false;
         public bool EnteringOrExitingFullScreen;
 
@@ -50,7 +52,9 @@ namespace WebPlus
 
         public string getLastError()
         {
-            return LastError;
+            var lastError = LastError;
+            LastError = "";
+            return lastError;
         }
 
         public void setWindowTitle(string title)
