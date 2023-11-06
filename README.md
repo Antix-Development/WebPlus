@@ -1,13 +1,7 @@
 ﻿
 ![alt text](images/logo.svg)
 
-WebPlus lets you transform your web applications into Windows desktop applications.
-
-# [Introduction](#introduction)
-
-# [Getting Started](#getting-stared)
-
-# [API Reference](#api-reference)
+WebPlus lets you transform your boring old web applications into exciting Windows desktop applications.
 
 
 
@@ -15,7 +9,7 @@ WebPlus lets you transform your web applications into Windows desktop applicatio
 
 ## Why WebPlus?
 
-Web Apps are fantastic but they have no access to the local file system, an issue that can be overcome by using one of many available frameworks that transform web applications into desktop applications.
+Web Apps are fantastic but they have no access to the local file system. This issue can be overcome by using one of many available frameworks that transform web applications into desktop applications.
 
 I have used one such framework (Electron) before but it includes an entire browser with your distribution, making every application you create with it at least 90Mb or larger. NWJS and CefSharp are some other notable *monolithic* frameworks.
 
@@ -27,7 +21,7 @@ If I had not already made good progress with my own framework when I tried Neutr
 
 WebPlus is yet another framework for transforming web applications into desktop applications.
 
-WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that exist and provide similar functionality. If you really want serious grown-up stuff, then I recommend trying one of the frameworks I previously mentioned, they are all more mature and secure than WebPlus.
+WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality. If you really want serious grown-up stuff, then I recommend trying one of the frameworks I previously mentioned, they are all more mature and secure than WebPlus.
 
 I also don't own any Apple or Linux stuff so WebPlus only works on Windows.
 
@@ -43,11 +37,11 @@ So I created WebPlus with the following requirements:
 
 - No real requirement to compile anything.
 
-- User Interface manipulation.
-
-- Performant.
-
 Currently WebPlus meets all of my requirements and I'm very pleased with the final distribution size (minus user generated HTML, CSS, and JavaScript) of just under 800Kb.
+
+<br>
+
+
 
 # Getting Started
 
@@ -55,36 +49,36 @@ Currently WebPlus meets all of my requirements and I'm very pleased with the fin
 
 All you really need is a text editor but if you want to build your own binary you will need [Visual Studio](https://visualstudio.microsoft.com/vs/).
 
+## Your first WebPlus app
+
+Lets make an app called *MyCoolApp*.
+
+1. Copy the "dist" folder somewhere handy and rename it as "MyCoolApp".
+
+2. Rename the WebPlus.exe file to "MyCoolApp.exe".
+
+3. Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
+
+4. Edit app.html, style.css, and app.js inside the app folder using your chosen text editor, and when you save them the changes will be visible in the app window.
+
+5. Rinse and repeat step 4 until your app is done.
+
+Once you are happy with your app, remove the line in app.js that reads `wp.enableHotReload(true);` to disable hot reloading.
+
+Replace the "icon.ico" with your own icon, and then you're ready to commence distribution.
+
+<br>
 
 
-It provides it's functionality in a sort of different way than other frameworks. You just run the executable and then start editing the HTML, CSS, and JavaScript. Whenever an HTML or JavaScript file is saved, WebPlus performs a hot reload for instant coding gratification (or woe when you make a syntax boo boo).
+
+# Under the Hood
+
+
+
 
 
 
 <br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-***need more text here***
-
-describe how to use it.
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
-<br>
-
 
 
 
@@ -320,7 +314,7 @@ Rename the directory with the given path to the given name.
 
 Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-&emsp; @param (Object) [`options`](#dialogoptions)
+&emsp; @param (DialogOptions) [`options`](#dialogoptions)
 
 &emsp; @returns (FileDetails)
 
@@ -348,7 +342,7 @@ Load the text file with the given path.
 
 Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
-&emsp; @param (Object) [`options`](#dialogoptions)
+&emsp; @param (DialogOptions) [`options`](#dialogoptions)
 
 &emsp; @returns (String)
 
@@ -370,4 +364,4 @@ Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the 
 
 &emsp; @param (String) text
 
-&emsp; @param (Object) [`options`](#dialogoptions)
+&emsp; @param (DialogOptions) [`options`](#dialogoptions)

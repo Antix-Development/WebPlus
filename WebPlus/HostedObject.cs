@@ -131,11 +131,11 @@ namespace WebPlus
         {
             string strFileExt = Path.GetExtension(e.FullPath);
 
-            if (Regex.IsMatch(strFileExt, @"\.(html|js)$", RegexOptions.IgnoreCase))
+            if (Regex.IsMatch(strFileExt, @"\.(html|js|css)$", RegexOptions.IgnoreCase))
             {
-                HostForm.HotReload();
+                HostForm.HotReload(); // Restart the web app.
 
-                watcher.EnableRaisingEvents = false; // Stop this event handler being fired for .5 seconds.
+                watcher.EnableRaisingEvents = false; // Stop this event handler being fired for half a second to stop multiple events being raised in quick succession.
                 timer.Start();
             }
         }

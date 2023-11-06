@@ -15,6 +15,8 @@ let framelessLabel;
 
 window.onload = () => {
 
+    wp.enableHotReload(true);
+
     debugOutput = document.getElementById('debug_output');
     hotReloadLabel = document.getElementById('wp_hotreload_enabled_label');
     fullScreenLabel = document.getElementById('wp_fullscreen_label');
