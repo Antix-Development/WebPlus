@@ -11,18 +11,22 @@
 let debugOutput;
 let hotReloadLabel;
 let fullScreenLabel;
+let framelessLabel;
 
 window.onload = () => {
 
     debugOutput = document.getElementById('debug_output');
     hotReloadLabel = document.getElementById('wp_hotreload_enabled_label');
     fullScreenLabel = document.getElementById('wp_fullscreen_label');
+    framelessLabel = document.getElementById('wp_frameless_label');
 
     document.getElementById('wp_path_label').value = WP_PATH;
 
     hotReloadLabel.value = (WP_HOTRELOAD_ENABLED) ? 'Enabled' : 'Disabled';
 
     fullScreenLabel.value = (WP_FULLSCREEN) ? 'full screen' : 'windowed';
+
+    framelessLabel.value = (WP_FRAMELESS) ? 'frameless' : 'framed';
 
     wp.setMessageHandler((response) => {
         console.log(response);
@@ -38,10 +42,6 @@ window.onload = () => {
 
 }
 
-window.addEventListener('windowresize', (e) => {
-    console.log(e.detail);
-});
-
 function toggleHotReload() {
     wp.enableHotReload(!WP_HOTRELOAD_ENABLED);
     hotReloadLabel.value = (WP_HOTRELOAD_ENABLED) ? 'Enabled' : 'Disabled';
@@ -50,6 +50,11 @@ function toggleHotReload() {
 function toggleFullScreen() {
     wp.setFullScreen(!WP_FULLSCREEN);
     fullScreenLabel.value = (WP_FULLSCREEN) ? 'full screen' : 'windowed';
+}
+
+function toggleFrameless() {
+    wp.setFrameless(!WP_FRAMELESS);
+    framelessLabel.value = (WP_FRAMELESS) ? 'frameless' : 'framed';
 }
 
 function testOpenFileDialog() {

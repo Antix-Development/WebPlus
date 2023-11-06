@@ -35,8 +35,6 @@ namespace WebPlus
             await WebView.EnsureCoreWebView2Async(null);
             WebView.CoreWebView2.WebMessageReceived += MessageReceived;
 
-            WebView.CoreWebView2.OpenDevToolsWindow();
-
             hostedObject = new HostedObject(this);
             WebView.CoreWebView2.AddHostObjectToScript("hostedObject", hostedObject);
         }
@@ -75,9 +73,7 @@ namespace WebPlus
 
         private void Form_Resize(object sender, EventArgs e)
         {
-            WebView.CoreWebView2.OpenDevToolsWindow();
-
-            if (hostedObject.EnteringOrExitingFullScreen) return;
+            if (hostedObject.IgnoreResizingEvents) return;
 
             switch (WindowState)
             {

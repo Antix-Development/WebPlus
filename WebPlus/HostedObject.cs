@@ -27,7 +27,7 @@ namespace WebPlus
         public bool Frameless = false;
 
         public bool InFullScreen = false;
-        public bool EnteringOrExitingFullScreen;
+        public bool IgnoreResizingEvents;
 
         private bool hotReloadEnabled = false;
         private FileSystemWatcher watcher;
@@ -146,25 +146,41 @@ namespace WebPlus
             {
                 if (!InFullScreen)
                 {
-                    EnteringOrExitingFullScreen = true; // Stop form resize events sending extraneous resize messages.
+                    IgnoreResizingEvents = true; // Stop form resize events sending extraneous resize messages.
                     HostForm.FormBorderStyle = FormBorderStyle.None;
                     HostForm.WindowState = FormWindowState.Maximized;
                     HostForm.ReplyToWebView("windowEnteredFullScreen");
-                    EnteringOrExitingFullScreen = false;
+                    IgnoreResizingEvents = false;
                 }
             }
             else
             {
                 if (InFullScreen)
                 {
-                    EnteringOrExitingFullScreen = true;
-                    HostForm.FormBorderStyle = FormBorderStyle.Sizable;
+                    IgnoreResizingEvents = true;
+                    if (!Frameless) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
                     HostForm.WindowState = FormWindowState.Normal;
                     HostForm.ReplyToWebView("windowLeftFullScreen");
-                    EnteringOrExitingFullScreen = false;
+                    IgnoreResizingEvents = false;
                 }
             }
             InFullScreen = state;
+        }
+        
+        public void setFrameless(bool state)
+        {
+            IgnoreResizingEvents = true;
+            if (state)
+            {
+                HostForm.FormBorderStyle = FormBorderStyle.None;
+            }
+            else
+            {
+                if (!InFullScreen) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
+            }
+            IgnoreResizingEvents = false;
+
+            Frameless = state;
         }
 
         public string fileInfo(string path)

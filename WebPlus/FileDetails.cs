@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace WebPlus
 {
-    //[ClassInterface(ClassInterfaceType.AutoDual)]
     [ComVisible(true)]
     public class FileDetails
     {

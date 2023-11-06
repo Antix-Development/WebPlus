@@ -19,7 +19,7 @@ let WP_HOTRELOAD_ENABLED = WP_HOST.restoreHotReloadState();
 let WP_MESSAGE_HANDLER; // Callback function that will receive messages sent from the host.
 
 let WP_FULLSCREEN = false;
-let WP_BORDERLESS = false;
+let WP_FRAMELESS = false;
 
 // Filetype filters.
 const WP_TEXTFILE_FILTER = 'Text files (*.txt)|*.txt|All files (*.*)|*.*';
@@ -69,7 +69,7 @@ const wp = {
     },
 
     /**
-     * Get the last error.
+     * Get the last error encountered by the host.
      * @returns {String}
      * @memberof WebPlus
      */
@@ -97,6 +97,16 @@ const wp = {
     setFullScreen: (state) => {
         WP_HOST.setFullScreen(state);
         WP_FULLSCREEN = state;
+    },
+    
+    /**
+     * Remove or add window frame according to the given state.
+     * @param {Boolean} state
+     * @memberof WebPlus
+     */
+    setFrameless: (state) => {
+        WP_HOST.setFrameless(state);
+        WP_FRAMELESS = state;
     },
 
     /**
@@ -148,6 +158,13 @@ const wp = {
      * @memberof WebPlus
     */
     deleteDirectory: (path) => WP_HOST.deleteDirectory(path),
+
+    /**
+     * Rename the directory with the given path to the given name.
+     * @param {String} path
+     * @memberof WebPlus
+     */
+    renameDirectory: (path, name) => WP_HOST.renameDirectory(path, name),
 
     /**
      * Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
@@ -214,7 +231,7 @@ const wp = {
     /**
      * Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
      * @param {String} text
-     * @param {String} filter
+     * @param {Object} options
      * @returns
      * @memberof WebPlus
      */

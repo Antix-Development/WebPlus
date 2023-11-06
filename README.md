@@ -1,37 +1,53 @@
 ﻿
 ![alt text](images/logo.svg)
 
-WebPlus is a lightweight portable desktop application development framework that lets you turn your web applications into native desktop applications for the Microsoft Windows Operating System.
+WebPlus lets you transform your web applications into Windows desktop applications.
 
-<div style="text-align: center">
-
-# [xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx](#xxxxxxxxxxxxxxxxxxxxxx)
+# [Introduction](#introduction)
 
 # [Getting Started](#getting-stared)
 
 # [API Reference](#api-reference)
 
 
-[dfghdfghf](# introduction)
-
-
-</div>
 
 # Introduction
 
-## What is WebPlus
-
-Transform web applications into Windows native desktop applications.
-
-
-**^^wordy or not wordy??**
-
 ## Why WebPlus?
 
-Well why not.
+Web Apps are fantastic but they have no access to the local file system, an issue that can be overcome by using one of many available frameworks that transform web applications into desktop applications.
 
+I have used one such framework (Electron) before but it includes an entire browser with your distribution, making every application you create with it at least 90Mb or larger. NWJS and CefSharp are some other notable *monolithic* frameworks.
 
+Other frameworks exist that don't create gigantic distributions but when I tried them I faced issues that I could not resolve. Tauri and Neutralino are some notable *lithe* frameworks.
 
+If I had not already made good progress with my own framework when I tried Neutralino I'd have used it because it was easy to get a working packaged app create in less than 10 minutes, without bizzarre issues.
+
+## What is WebPlus?
+
+WebPlus is yet another framework for transforming web applications into desktop applications.
+
+WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that exist and provide similar functionality. If you really want serious grown-up stuff, then I recommend trying one of the frameworks I previously mentioned, they are all more mature and secure than WebPlus.
+
+I also don't own any Apple or Linux stuff so WebPlus only works on Windows.
+
+So I created WebPlus with the following requirements:
+
+- Local file access.
+
+- Small distribution size.
+
+- Easy to setup.
+
+- Easy to use.
+
+- No real requirement to compile anything.
+
+- User Interface manipulation.
+
+- Performant.
+
+Currently WebPlus meets all of my requirements and I'm very pleased with the final distribution size (minus user generated HTML, CSS, and JavaScript) of just under 800Kb.
 
 # Getting Started
 
@@ -41,19 +57,33 @@ All you really need is a text editor but if you want to build your own binary yo
 
 
 
+It provides it's functionality in a sort of different way than other frameworks. You just run the executable and then start editing the HTML, CSS, and JavaScript. Whenever an HTML or JavaScript file is saved, WebPlus performs a hot reload for instant coding gratification (or woe when you make a syntax boo boo).
 
 
 
+<br>
 
+<br>
 
+<br>
 
+<br>
 
+<br>
 
+***need more text here***
 
+describe how to use it.
 
+<br>
 
+<br>
 
+<br>
 
+<br>
+
+<br>
 
 
 
@@ -62,54 +92,54 @@ All you really need is a text editor but if you want to build your own binary yo
 
 ## Variables
 
-WebPlus contains a number of global variables that you can access:
+WebPlus provides a number of global variables that you might find useful...
 
-### wp
+### `wp`
 
 The WebPlus object that encapsulates all methods that can be called on the host.
 
-### WP_HOST
+### `WP_HOST`
 
 The cached host (`window.chrome.webview.hostObjects.sync.hostedObject`).
 
-### WP_PATH
+### `WP_PATH`
 
 The applications home directory.
 
-### WP_MESSAGE_HANDLER
+### `WP_MESSAGE_HANDLER`
 
 A callback function that will be called when messages arrive from the host.
 
-### WP_FULLSCREEN
+### `WP_FULLSCREEN`
 
 True if the application window is currently in full-screen mode.
 
-### WP_FRAMELESS
+### `WP_FRAMELESS`
 
 True if the application window has no frame.
 
-### WP_HOTRELOAD_ENABLED
+### `WP_HOTRELOAD_ENABLED`
 
 True if the application is currently in hot-reload mode.
 
-### WP_TEXTFILE_FILTER
+### `WP_TEXTFILE_FILTER`
 
 A pre generated filetype filter for TEXT files.
 
-### WP_JSONFILE_FILTER
+### `WP_JSONFILE_FILTER`
 
 A pre generated filetype filter for JSON files.
 
-### WP_PNGFILE_FILTER
+### `WP_PNGFILE_FILTER`
 
 A pre generated filetype filter for PNG files.
 
 
 
 
-## Structures
+## Objects
 
-Some WebPlus methods return custom structures:
+Some WebPlus methods return objects, and others may require you to supply an object. These objects are...
 
 ### FileDetails
 
@@ -124,21 +154,28 @@ Some WebPlus methods return custom structures:
 }
 ```
 
+### DialogOptions
+
+```
+{
+  filter: {String},
+  multiSelect: {Boolean},
+  title: {String}
+}
+```
+
 
 
 
 ## Methods
 
-To call a WebPlus method use `wp.` followed by `methodname`.
+All callable host methods are encapsulated inside the wp object, which is a bit like a class, but without a constructor and all that *"this"* stuff.
 
-For example if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
+To call a method, just reference it as you would a class, so if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
 
 ```
 wp.setWindowTitle("WebPlus Rocks");
 ```
-
-If 
-WebPlus encapsulates the following methods:
 
 ## `exit()`
 
@@ -180,7 +217,7 @@ Get the applications folder.
 
 ## `getLastError()`
 
-Get the last error. Useful for determining why some method or another failed.
+Get the last error encountered by the host. Useful for determining why some method or another failed.
 
 &emsp; @returns (String)
 
@@ -210,9 +247,17 @@ Enter or leave fullscreen mode according to the given state.
 
 
 
+## `setFrameless(state)`
+
+Remove or add window frame according to the given state.
+
+&emsp; @param (Boolean) state
+
+
+
 ## `fileInfo(path)`
 
-Get the `FileDetails` for the file or directory at the given path.
+Get the [`FileDetails`](#filedetails) for the file or directory at the given path.
 
 &emsp; @param (String) path
 
@@ -238,7 +283,7 @@ Rename the file with the given path to the given name.
 
 ## `dirInfo(path)`
 
-Get an array of 'FileDetails' for all files and directories in the given path.
+Get an array of [`FileDetails`](#filedetails) for all files and directories in the given path.
 
 &emsp; @param (String) path
 
@@ -262,11 +307,20 @@ Recursively delete the directory with the given path.
 
 
 
-## `openFileDialog(options = ())d) ? JSON.parse(fd) : null;`
+
+## `renameDirectory(path, name)`
+
+Rename the directory with the given path to the given name.
+
+&emsp; @param (String) path
+
+
+
+## `openFileDialog(options = {})`
 
 Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-&emsp; @param (Object) options
+&emsp; @param (Object) [`options`](#dialogoptions)
 
 &emsp; @returns (FileDetails)
 
@@ -290,11 +344,11 @@ Load the text file with the given path.
 
 
 
-## `brosweForAndLoadTextFile(options = ())`
+## `brosweForAndLoadTextFile(options = {})`
 
 Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
-&emsp; @param (Object) options
+&emsp; @param (Object) [`options`](#dialogoptions)
 
 &emsp; @returns (String)
 
@@ -310,10 +364,10 @@ Save the given text to the file at the given path.
 
 
 
-## `browseForAndSaveTextFile(text, options = ())`
+## `browseForAndSaveTextFile(text, options = {})`
 
 Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
 
 &emsp; @param (String) text
 
-&emsp; @param (String) filter
+&emsp; @param (Object) [`options`](#dialogoptions)
