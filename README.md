@@ -58,9 +58,9 @@ Lets make an app called *MyCoolApp*.
 
 5. Rinse and repeat step 4 until your app is done.
 
-Once you are happy with your app, remove the line in app.js that reads `wp.enableHotReload(true);` to disable hot reloading.
+6. Once you are happy with your app, remove the line in app.js that reads `wp.enableHotReload(true);` to disable hot reloading.
 
-Replace the "icon.ico" with your own icon, and then you're ready to commence distribution.
+7. Replace the "icon.ico" with your own icon, and then you're ready to commence distribution.
 
 *NOTE:* the "webplus.js" file in the "app" folder contains the WebPlus engine code and you don't need to modify it.
 
