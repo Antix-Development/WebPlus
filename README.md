@@ -1,26 +1,42 @@
 ﻿
 ![alt text](images/logo.svg)
 
-# Introduction
+WebPlus adds native abilities to web applications. It strives to be easy to setup, easy to use, produce small distributions, and require no compilation.
+
+### Features
+
+- Hot reloading for instant visual feedback during development.
+- Setting window icon and title.
+- Window resizing and repositioning.
+- Window minification to system tray.
+- Fullscreen and frameless window toggling.
+- True window resize event pumping.
+- Dialogs to select files and folders.
+- Loading and saving text files.
+- Saving PNG images.
+- Renaming, moving, and deleting files.
+- Creating, renaming, moving, and deleting directories.
+- Sending and receiving messages from the host.
+
+## What's New?
+
+v1.0.0 (7 Nov 2023)
+
+- Initial release.
 
 ## Why WebPlus?
 
-Web Apps are fantastic but they have no access to the local file system. This issue can be overcome by using one of many available frameworks that transform web applications into desktop applications.
+I really enjoy creating applications using HTML, CSS, and JavaScript. These *"web apps"* are fantastic but they have no access to the local file system (because of security). This issue can be overcome by using one of many available frameworks that transform web applications into desktop applications.
 
 I have used one such framework (Electron) before but it includes an entire browser with your distribution, making every application you create with it at least 90Mb or larger. NWJS and CefSharp are some other notable *monolithic* frameworks.
 
 Other frameworks exist that don't create gigantic distributions but when I tried them I faced issues that I could not resolve. Tauri and Neutralino are some notable *lithe* frameworks.
 
-If I had not already made good progress with my own framework when I tried Neutralino I'd have used it because it was easy to get a working packaged app create in less than 10 minutes, without bizzarre issues.
+NOTE: If I had not already made good progress with my own framework when I tried Neutralino I'd have used it because it was easy to get a working packaged app create in less than 5 minutes, without bizarre issues.. brilliant!
 
-## What is WebPlus?
+WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality. In fact, comparing WebPlus to other mature frameworks is probably a bit like comparing an abacus with an electronic calculator.
 
-WebPlus is yet another framework for transforming web applications into desktop applications. It was made to enable local file access for web apps, have a small distribution size, be easy to setup and use, and have no requirement for compilation.
-
-WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality. If you really want serious grown-up stuff, then I recommend trying one of the frameworks I previously mentioned, they are all more mature and secure than WebPlus.
-
-I also don't own any Apple or Linux stuff so WebPlus only works on Windows.
-
+WebPlus is just for Windows because I don't have any Apple or Linux stuff, sorry.
 
 # Getting Started
 
@@ -38,7 +54,7 @@ Lets make an app called *MyCoolApp*.
 
 3. Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
 
-4. Edit app.html, style.css, and app.js inside the app folder using your chosen text editor, and when you save them the changes will be visible in the app window.
+4. Edit app.html, style.css, and app.js inside the "app" folder using your chosen text editor, and when you save them the changes will be visible in the app window.
 
 5. Rinse and repeat step 4 until your app is done.
 
@@ -46,17 +62,19 @@ Once you are happy with your app, remove the line in app.js that reads `wp.enabl
 
 Replace the "icon.ico" with your own icon, and then you're ready to commence distribution.
 
-*NOTE:* the "webplus.js" file in the app folder contains the WebPlus engine code and you don;to need to modify it.
-
-<br>
-
-
+*NOTE:* the "webplus.js" file in the "app" folder contains the WebPlus engine code and you don't need to modify it.
 
 # Under the Hood
 
+For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the entire client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality.
 
 
 
+*NOTE:* I was delighted at how easy it was to actually set it all up and get it going inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :)
+
+
+
+obfuscate
 
 
 <br>
@@ -109,9 +127,6 @@ A pre generated filetype filter for JSON files.
 
 A pre generated filetype filter for PNG files.
 
-
-
-
 ## Objects
 
 Some WebPlus methods return objects, and others may require you to supply an object. These objects are...
@@ -139,14 +154,27 @@ Some WebPlus methods return objects, and others may require you to supply an obj
 }
 ```
 
+## Events
 
+You can subscribe to the "windowresize" event in your app to receive notifications when your apps window resizes.
 
+```
+window.addEventListener('windowresize', (e) => {
+    console.log(`windowresize: ${e.detail}`);
+});
+```
+
+The events `detail`` property will contain a string describing what type of resize event just occurred, and it will be one of the following:
+
+- "windowEnteredFullScreen"
+- "windowLeftFullScreen"
+- "windowRestored"
+- "windowMinimized"
+- "windowMaximized"
 
 ## Methods
 
-All callable host methods are encapsulated inside the wp object, which is a bit like a class, but without a constructor and all that *"this"* stuff.
-
-To call a method, just reference it as you would a class, so if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
+All callable host methods are encapsulated inside the wp object and you call them the same way you would a class, so if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
 
 ```
 wp.setWindowTitle("WebPlus Rocks");
@@ -198,6 +226,26 @@ Get the last error encountered by the host. Useful for determining why some meth
 
 
 
+## `setWindowLocation(x, y)`
+
+Set the host window location to the given coordinates.
+
+&emsp; @param (Number) x
+
+&emsp; @param (Number) y
+
+
+
+## `setWindowSize(width, height)`
+
+Set the host window size to the given dimensions.
+
+&emsp; @param (Number) width
+
+&emsp; @param (Number) height
+
+
+
 ## `setWindowTitle(title)`
 
 Set the host window title to the given title.
@@ -211,6 +259,14 @@ Set the host window title to the given title.
 Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
 &emsp; @param (String) path
+
+
+
+## `minimizeToTray(state)`
+
+Set the host window to minify to the system tray instead of the task bar according to the given state.
+
+&emsp; @param (Boolean) state
 
 
 
@@ -346,3 +402,12 @@ Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the 
 &emsp; @param (String) text
 
 &emsp; @param (DialogOptions) [`options`](#dialogoptions)
+
+
+
+## `savePNG(canvas, path)`
+
+Save the given canvas as a PNG image at the given path.
+
+&emsp; @param (HTMLCanvasElement) canvas
+&emsp; @param (String) path

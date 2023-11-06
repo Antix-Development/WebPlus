@@ -40,8 +40,23 @@ window.onload = () => {
     console.log(wp.fileInfo("d:\\fucktard.txt"));
     console.log(wp.getLastError());
 
-    //wp.setWindowIcon("d:\\icon.png")
+    wp.setWindowIcon("d:\\icon.png")
 
+
+
+    window.addEventListener('windowresize', (e) => {
+        console.log(`windowresize: ${e.detail}`);
+    });
+
+    wp.minimizeToTray(true);
+    const canvas = document.createElement('canvas');
+    canvas.width = 512;
+    canvas.height = 256;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#f80';
+    ctx.fillRect(0, 0, 512, 256);
+
+    wp.savePNG(canvas, "d:\\fucktard.png");
 }
 
 function toggleHotReload() {

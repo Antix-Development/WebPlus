@@ -17,17 +17,36 @@ namespace WebPlus
         {
             InitializeComponent();
 
-            try
-            {
-                this.Icon = new Icon("app\\icon.ico");
-            }
-            catch (Exception)
-            {
-            }
+            setIcon("app\\icon.ico");
+
+            notifyIcon1.Text = this.Text;
 
             InitializeAsync();
             WebView.Source = new Uri($"file:///{Directory.GetCurrentDirectory()}/app/app.html");
             this.Resize += new EventHandler(this.Form_Resize);
+        }
+
+        public string setIcon(string path)
+        {
+            switch (Path.GetExtension(path).ToLower())
+            {
+                case ".ico":
+                    this.Icon = new Icon(path);
+                    notifyIcon1.Icon = new Icon(path);
+                    return null;
+
+                case ".png":
+                    Image image = Image.FromFile(path);
+                    Icon icon = Icon.FromHandle(new Bitmap(image).GetHicon());
+                    this.Icon = icon;
+                    notifyIcon1.Icon = icon;
+                    icon.Dispose();
+                    image.Dispose();
+                    return null;
+
+                default:
+                    return "Icon was not recognized.";
+            }
         }
 
         async void InitializeAsync()
@@ -67,7 +86,7 @@ namespace WebPlus
 
         public void DispatchWindowResizeEvent(string type)
         {
-            var script = $"window.dispatchEvent(new CustomEvent('windowresize', {{detail: {type} }}));";
+            var script = $"var event = new CustomEvent('windowresize', {{detail: '{type}' }}); window.dispatchEvent(event);";
             WebView.CoreWebView2.ExecuteScriptAsync(script);
         }
 
@@ -78,13 +97,23 @@ namespace WebPlus
             switch (WindowState)
             {
                 case FormWindowState.Normal:
-                    ReplyToWebView("windowRestored");
+                    //ReplyToWebView("windowRestored");
+                    //if (hostedObject.MinimizeToTray)
+                    //{
+                    //    Show();
+                    //    notifyIcon1.Visible = false;
+                    //}
                     DispatchWindowResizeEvent("windowRestored");
                     break;
 
                 case FormWindowState.Minimized:
+                    if (hostedObject.MinimizeToTray)
+                    {
+                        Hide();
+                        notifyIcon1.Visible = true;
+                    }
                     DispatchWindowResizeEvent("windowMinimized");
-                    ReplyToWebView("windowMinimized");
+                    //ReplyToWebView("windowMinimized");
                     //WasMinimized = true;
                     break;
 
@@ -92,7 +121,7 @@ namespace WebPlus
                     if (!hostedObject.InFullScreen)
                     {
                         DispatchWindowResizeEvent("windowMaximized");
-                        ReplyToWebView($"windowMaximized");
+                        //ReplyToWebView($"windowMaximized");
                     }
                     break;
 
@@ -101,9 +130,22 @@ namespace WebPlus
             }
         }
 
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+                Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             ClearBrowserCache();
+        }
+
+        public void SetWindowTitle(string title)
+        {
+            this.Text = title;
+            notifyIcon1.Text = title;
         }
 
         private async void ClearBrowserCache()

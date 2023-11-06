@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.WebView = new Microsoft.Web.WebView2.WinForms.WebView2();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +48,10 @@
             this.WebView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.webView_KeyDown);
             this.WebView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.webView_KeyUp);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -61,6 +67,7 @@
 
         #endregion
         private Microsoft.Web.WebView2.WinForms.WebView2 WebView;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

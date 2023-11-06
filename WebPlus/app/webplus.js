@@ -76,6 +76,22 @@ const wp = {
     getLastError: () => WP_HOST.getLastError(),
 
     /**
+     * Set the host window location to the given coordinates.
+     * @param {Number} x
+     * @param {Number} y
+     * @memberof WebPlus
+     */
+    setWindowLocation: (x, y) => WP_HOST.setWindowLocation(x, y),
+
+    /**
+     * Set the host window size to the given dimensions.
+     * @param {Number} w
+     * @param {Number} h
+     * @memberof WebPlus
+     */
+    setWindowSize: (w, h) => WP_HOST.setWindowSize(w, h),
+
+    /**
      * Set the host window title to the given title.
      * @param {String} title
      * @memberof WebPlus
@@ -88,6 +104,13 @@ const wp = {
      * @memberof WebPlus
      */
     setWindowIcon: (path) => WP_HOST.setWindowIcon(path),
+        
+    /**
+     * Set the host window to minify to the system tray instead of the task bar according to the given state.
+     * @param {Boolean} state
+     * @memberof WebPlus
+     */
+    minimizeToTray: (state) => WP_HOST.minimizeToTray(state),
 
     /**
      * Enter or leave fullscreen mode according to the given state.
@@ -244,6 +267,17 @@ const wp = {
 
         WP_HOST.browseForAndSaveTextFile(text, JSON.stringify(o));
     },
+
+    /**
+     * Save the given canvas as a PNG image at the given path.
+     * @param {HTMLCanvasElement} canvas
+     * @param {String} path
+     * @memberof WebPlus
+     */
+    savePNG: (canvas, path) => {
+        WP_HOST.savePNG(canvas.toDataURL(), path);
+    },
+
 };
 
 // Install listener to handle incomming messages from the host. Theese messages will be handed off to a user specified callback which can be set by calling `wp.setMessageHandler`.

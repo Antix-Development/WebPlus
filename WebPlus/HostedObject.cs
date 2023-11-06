@@ -24,6 +24,8 @@ namespace WebPlus
     {
         private Form1 HostForm;
 
+        public bool MinimizeToTray = false;
+
         public bool Frameless = false;
 
         public bool InFullScreen = false;
@@ -59,31 +61,27 @@ namespace WebPlus
 
         public void setWindowTitle(string title)
         {
-            HostForm.Text = title;
+            HostForm.SetWindowTitle(title);
         }
 
         public void setWindowIcon(string path)
         {
-            switch (Path.GetExtension(path).ToLower())
-            {
-                case ".ico":
-                    HostForm.Icon = new Icon(path);
-                    break;
+            LastError = HostForm.setIcon(path);
+        }
 
-                case ".png":
-                    Image image = Image.FromFile(path);
-                    Icon icon = Icon.FromHandle(new Bitmap(image).GetHicon());
-                    HostForm.Icon = icon;
-                    icon.Dispose();
-                    image.Dispose();
-                    break;
+        public void setWindowLocation(int x, int y)
+        {
+            HostForm.Location = new Point(x, y);
+        }
 
-                default:
-                    LastError = "Icon was not recognized.";
-                    break;
-            }
-            HostForm.Icon = null;
-            HostForm.ShowIcon = false;
+        public void setWindowSize(int width, int height)
+        {
+            HostForm.Size = new Size(width, height);
+        }
+
+        public void minimizeToTray(bool state)
+        {
+            MinimizeToTray = state;
         }
 
         public bool restoreHotReloadState()
@@ -149,7 +147,8 @@ namespace WebPlus
                     IgnoreResizingEvents = true; // Stop form resize events sending extraneous resize messages.
                     HostForm.FormBorderStyle = FormBorderStyle.None;
                     HostForm.WindowState = FormWindowState.Maximized;
-                    HostForm.ReplyToWebView("windowEnteredFullScreen");
+                    HostForm.DispatchWindowResizeEvent("windowEnteredFullScreen");
+                    //HostForm.ReplyToWebView("windowEnteredFullScreen");
                     IgnoreResizingEvents = false;
                 }
             }
@@ -160,7 +159,8 @@ namespace WebPlus
                     IgnoreResizingEvents = true;
                     if (!Frameless) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
                     HostForm.WindowState = FormWindowState.Normal;
-                    HostForm.ReplyToWebView("windowLeftFullScreen");
+                    HostForm.DispatchWindowResizeEvent("windowLeftFullScreen");
+                    //HostForm.ReplyToWebView("windowLeftFullScreen");
                     IgnoreResizingEvents = false;
                 }
             }
@@ -444,5 +444,21 @@ namespace WebPlus
             baseDir.Delete();
         }
 
+        public bool savePNG(string dataURL, string path)
+        {
+            string base64String = dataURL.Replace("data:image/png;base64,", "");
+
+            try
+            {
+                byte[] imageBytes = Convert.FromBase64String(base64String);
+                File.WriteAllBytes(path, imageBytes);
+                return true;
+            }
+            catch (Exception e)
+            {
+                LastError = e.Message;
+                return false;
+            }
+        }
     }
 }
