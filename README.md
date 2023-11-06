@@ -44,7 +44,7 @@ All you really need is a text editor but if you want to build your own binary yo
 
 
 
-<hr>
+<br>
 
 <br>
 
@@ -140,103 +140,103 @@ wp.setWindowTitle("WebPlus Rocks");
 If 
 WebPlus encapsulates the following methods:
 
-`exit()`
+## `exit()`
 
 &emsp; Exit the application.
 
-<hr>
+<br>
 
-`messageHost(message)`
+## `messageHost(message)`
 
 &emsp; Send the given message to the host. The message will be sent as a JSON string.
 
 &emsp; @param (String) message
 
-<hr>
+<br>
 
-`setMessageHandler(handler)`
+## `setMessageHandler(handler)`
 
 &emsp; Set the callback that will receive responses from the host to the given callback function.
 
 &emsp; @param (Function) handler
 
-<hr>
+<br>
 
-`enableHotReload(state)`
+## `enableHotReload(state)`
 
 &emsp; Enable or disable hot reloading according to the given state.
 
 &emsp; @param (Boolean) state
 
-<hr>
+<br>
 
-`getPath()`
+## `getPath()`
 
 &emsp; Get the applications folder.
 
 &emsp; @returns (String)
 
-<hr>
+<br>
 
-`getLastError()`
+## `getLastError()`
 
 &emsp; Get the last error. Useful for determining why some method or another failed.
 
 &emsp; @returns (String)
 
-<hr>
+<br>
 
-`setWindowTitle(title)`
+## `setWindowTitle(title)`
 
 &emsp; Set the host window title to the given title.
 
 &emsp; @param (String) title
 
-<hr>
+<br>
 
-`setWindowIcon(path)`
+## `setWindowIcon(path)`
 
 &emsp; Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
 &emsp; @param (String) path
 
-<hr>
+<br>
 
-`setFullScreen(state)`
+## `setFullScreen(state)`
 
 &emsp; Enter or leave fullscreen mode according to the given state.
 
 &emsp; @param (Boolean) state
 
-<hr>
+<br>
 
-`fileInfo(path)`
+## `fileInfo(path)`
 
-&emsp; Get the `FileDetails` for the file or directory at the given path.
+## &emsp; Get the `FileDetails` for the file or directory at the given path.
 
 &emsp; @param (String) path
 
 &emsp; @returns (FileDetails)
 
-<hr>
+<br>
 
-`deleteFile(path)`
+## `deleteFile(path)`
 
 &emsp; Delete the file with the given path.
 
 &emsp; @param (String) path
 
-<hr>
+<br>
 
-`renameFile(path, name)`
+## `renameFile(path, name)`
 
 &emsp; Rename the file with the given path to the given name.
 
 &emsp; @param (String) path
 
-<hr>
+<br>
 
-`dirInfo(path)`
+## `dirInfo(path)`
 
 &emsp; Get an array of 'FileDetails' for all files and directories in the given path.
 
@@ -244,43 +244,43 @@ WebPlus encapsulates the following methods:
 
 &emsp; @returns ([FileDetails])
 
-<hr>
+<br>
 
-`createDirectory(path)`
+## `createDirectory(path)`
 
 &emsp; Create a directory with the given path.
 
 &emsp; @param ( String ) path
 
-<hr>
+<br>
 
-`deleteDirectory(path)`
+## `deleteDirectory(path)`
 
 &emsp; Recursively delete the directory with the given path.
 
 &emsp; @param ( String ) path
 
-<hr>
+<br>
 
-`openFileDialog(options = ())d) ? JSON.parse(fd) : null;`
+## `openFileDialog(options = ())d) ? JSON.parse(fd) : null;`
 
-&emsp; Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+## &emsp; Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
 &emsp; @param (Object) options
 
 &emsp; @returns (FileDetails)
 
-<hr>
+<br>
 
-`openFolderDialog()`
+## `openFolderDialog()`
 
 &emsp; Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
 
 &emsp; @returns (FileDetails)
 
-<hr>
+<br>
 
-#### `loadTextFile(path)`
+## `loadTextFile(path)`
 
 &emsp; Load the text file with the given path.
 
@@ -288,9 +288,9 @@ WebPlus encapsulates the following methods:
 
 &emsp; @returns (String)
 
-<hr>
+<br>
 
-`brosweForAndLoadTextFile(options = ())`
+## `brosweForAndLoadTextFile(options = ())`
 
 &emsp; Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
@@ -298,7 +298,7 @@ WebPlus encapsulates the following methods:
 
 &emsp; @returns (String)
 
-<hr>
+<br>
 
 ## `saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),`
 
@@ -308,9 +308,9 @@ WebPlus encapsulates the following methods:
 
 &emsp; @param (String) path
 
-<hr>
+<br>
 
-### `browseForAndSaveTextFile(text, options = ())`
+## `browseForAndSaveTextFile(text, options = ())`
 
 &emsp; Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
 
