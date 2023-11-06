@@ -60,7 +60,6 @@ All you really need is a text editor but if you want to build your own binary yo
 
 # API Reference
 
-
 ## Variables
 
 WebPlus contains a number of global variables that you can access:
@@ -71,7 +70,7 @@ The WebPlus object that encapsulates all methods that can be called on the host.
 
 ### WP_HOST
 
-The cached host which ???
+The cached host (`window.chrome.webview.hostObjects.sync.hostedObject`).
 
 ### WP_PATH
 
@@ -95,15 +94,18 @@ True if the application is currently in hot-reload mode.
 
 ### WP_TEXTFILE_FILTER
 
-A pregenerated filter for TEXT files.
+A pre generated filetype filter for TEXT files.
 
 ### WP_JSONFILE_FILTER
 
-A pregenerated filter for JSON files.
+A pre generated filetype filter for JSON files.
 
 ### WP_PNGFILE_FILTER
 
-A pregenerated filter for PNG files.
+A pre generated filetype filter for PNG files.
+
+
+
 
 ## Structures
 
@@ -111,190 +113,207 @@ Some WebPlus methods return custom structures:
 
 ### FileDetails
 
+```
+{
+  name: {String},       // Name of file, including extension.
+  extension: {String},  // Forced to lowercase.
+  type: {String},       // "FILE" or "DIRECTORY".
+  size: {Number},       // Size in bytes.
+  path: {String},       // Directory where file is stored.
+  fullPath: {String},   // Fully qualified file path.
+}
+```
+
+
+
+
 ## Methods
 
-To call a WebPlus method use ```wp.``` + `methodname`. For example if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
+To call a WebPlus method use `wp.` followed by `methodname`.
+
+For example if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
 
 ```
 wp.setWindowTitle("WebPlus Rocks");
 ```
 
+If 
 WebPlus encapsulates the following methods:
 
-### exit()
+#### exit()
 
-Exit the application.
-
-<hr>
-
-### messageHost(message)
-
-Send the given message to the host.
-
-@param (String) message
+&emsp; Exit the application.
 
 <hr>
 
-### setMessageHandler(handler)
+#### messageHost(message)
 
-Set the callback that will receive responses from the host to the given callback function.
+&emsp; Send the given message to the host. The message will be sent as a JSON string.
 
-@param (Function) handler
-
-<hr>
-
-### enableHotReload(state)
-
-Enable or disable hot reloading according to the given state.
-
-@param (Boolean) state
+&emsp; @param (String) message
 
 <hr>
 
-### getPath()
+#### setMessageHandler(handler)
 
-Get the applications folder.
+&emsp; Set the callback that will receive responses from the host to the given callback function.
 
-@returns (String)
-
-<hr>
-
-### getLastError()
-
-Get the last error.
-
-@returns (String)
+&emsp; @param (Function) handler
 
 <hr>
 
-### setWindowTitle(title)
+#### enableHotReload(state)
 
-Set the host window title to the given title.
+&emsp; Enable or disable hot reloading according to the given state.
 
-@param (String) title
-
-<hr>
-
-### setWindowIcon(path)
-
-Set the host window icon to the given path pointing to a .PNG or .ICO file.
-
-@param (String) path
+&emsp; @param (Boolean) state
 
 <hr>
 
-### setFullScreen(state)
+#### getPath()
 
-Enter or leave fullscreen mode according to the given state.
+&emsp; Get the applications folder.
 
-@param (Boolean) state
-
-<hr>
-
-### fileInfo(path)
-
-Get the `FileDetails` for the file or directory at the given path.
-
-@param (String) path
-
-@returns (FileDetails)
+&emsp; @returns (String)
 
 <hr>
 
-### deleteFile(path)
+#### getLastError()
 
-Delete the file with the given path.
+&emsp; Get the last error. Useful for determining why some method or another failed.
 
-@param (String) path
-
-<hr>
-
-### renameFile(path, name)
-
-Rename the file with the given path to the given name.
-
-@param (String) path
+&emsp; @returns (String)
 
 <hr>
 
-### dirInfo(path)
+#### setWindowTitle(title)
 
-Get an array of 'FileDetails' for all files and directories in the given path.
+&emsp; Set the host window title to the given title.
 
-@param (String) path
-
-@returns ([FileDetails])
+&emsp; @param (String) title
 
 <hr>
 
-### createDirectory(path)
+#### setWindowIcon(path)
 
-Create a directory with the given path.
+&emsp; Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
-@param ( String ) path
-
-<hr>
-
-### deleteDirectory(path)
-
-Recursively delete the directory with the given path.
-
-@param ( String ) path
+&emsp; @param (String) path
 
 <hr>
 
-### openFileDialog(options = ())d) ? JSON.parse(fd) : null;
+#### setFullScreen(state)
 
-Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+&emsp; Enter or leave fullscreen mode according to the given state.
 
-@param (Object) options
-
-@returns (FileDetails)
+&emsp; @param (Boolean) state
 
 <hr>
 
-### openFolderDialog()
+#### fileInfo(path)
 
-Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
+&emsp; Get the `FileDetails` for the file or directory at the given path.
 
-@returns (FileDetails)
+&emsp; @param (String) path
 
-<hr>
-
-### loadTextFile(path)
-
-Load the text file with the given path.
-
-@param (String) path
-
-@returns (String)
+&emsp; @returns (FileDetails)
 
 <hr>
 
-### brosweForAndLoadTextFile(options = ())
+#### deleteFile(path)
 
-Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
+&emsp; Delete the file with the given path.
 
-@param (Object) options
-
-@returns (String)
+&emsp; @param (String) path
 
 <hr>
 
-### saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),
+#### renameFile(path, name)
 
-Save the given text to the file at the given path.
+&emsp; Rename the file with the given path to the given name.
 
-@param (String) text
-
-@param (String) path
+&emsp; @param (String) path
 
 <hr>
 
-### browseForAndSaveTextFile(text, options = ())
+#### dirInfo(path)
 
-Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
+&emsp; Get an array of 'FileDetails' for all files and directories in the given path.
 
-@param (String) text
+&emsp; @param (String) path
 
-@param (String) filter
+&emsp; @returns ([FileDetails])
+
+<hr>
+
+#### createDirectory(path)
+
+&emsp; Create a directory with the given path.
+
+&emsp; @param ( String ) path
+
+<hr>
+
+#### deleteDirectory(path)
+
+&emsp; Recursively delete the directory with the given path.
+
+&emsp; @param ( String ) path
+
+<hr>
+
+#### openFileDialog(options = ())d) ? JSON.parse(fd) : null;
+
+&emsp; Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+
+&emsp; @param (Object) options
+
+&emsp; @returns (FileDetails)
+
+<hr>
+
+#### openFolderDialog()
+
+&emsp; Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
+
+&emsp; @returns (FileDetails)
+
+<hr>
+
+#### loadTextFile(path)
+
+&emsp; Load the text file with the given path.
+
+&emsp; @param (String) path
+
+&emsp; @returns (String)
+
+<hr>
+
+#### brosweForAndLoadTextFile(options = ())
+
+&emsp; Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
+
+&emsp; @param (Object) options
+
+&emsp; @returns (String)
+
+<hr>
+
+#### saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),
+
+&emsp; Save the given text to the file at the given path.
+
+&emsp; @param (String) text
+
+&emsp; @param (String) path
+
+<hr>
+
+#### browseForAndSaveTextFile(text, options = ())
+
+&emsp; Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
+
+&emsp; @param (String) text
+
+&emsp; @param (String) filter
