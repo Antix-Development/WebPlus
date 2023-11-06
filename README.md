@@ -140,13 +140,13 @@ wp.setWindowTitle("WebPlus Rocks");
 If 
 WebPlus encapsulates the following methods:
 
-#### exit()
+`exit()`
 
 &emsp; Exit the application.
 
 <hr>
 
-#### messageHost(message)
+`messageHost(message)`
 
 &emsp; Send the given message to the host. The message will be sent as a JSON string.
 
@@ -154,7 +154,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### setMessageHandler(handler)
+`setMessageHandler(handler)`
 
 &emsp; Set the callback that will receive responses from the host to the given callback function.
 
@@ -162,7 +162,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### enableHotReload(state)
+`enableHotReload(state)`
 
 &emsp; Enable or disable hot reloading according to the given state.
 
@@ -170,7 +170,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### getPath()
+`getPath()`
 
 &emsp; Get the applications folder.
 
@@ -178,7 +178,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### getLastError()
+`getLastError()`
 
 &emsp; Get the last error. Useful for determining why some method or another failed.
 
@@ -186,7 +186,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### setWindowTitle(title)
+`setWindowTitle(title)`
 
 &emsp; Set the host window title to the given title.
 
@@ -194,7 +194,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### setWindowIcon(path)
+`setWindowIcon(path)`
 
 &emsp; Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
@@ -202,7 +202,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### setFullScreen(state)
+`setFullScreen(state)`
 
 &emsp; Enter or leave fullscreen mode according to the given state.
 
@@ -210,7 +210,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### fileInfo(path)
+`fileInfo(path)`
 
 &emsp; Get the `FileDetails` for the file or directory at the given path.
 
@@ -220,7 +220,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### deleteFile(path)
+`deleteFile(path)`
 
 &emsp; Delete the file with the given path.
 
@@ -228,7 +228,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### renameFile(path, name)
+`renameFile(path, name)`
 
 &emsp; Rename the file with the given path to the given name.
 
@@ -236,7 +236,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### dirInfo(path)
+`dirInfo(path)`
 
 &emsp; Get an array of 'FileDetails' for all files and directories in the given path.
 
@@ -246,7 +246,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### createDirectory(path)
+`createDirectory(path)`
 
 &emsp; Create a directory with the given path.
 
@@ -254,7 +254,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### deleteDirectory(path)
+`deleteDirectory(path)`
 
 &emsp; Recursively delete the directory with the given path.
 
@@ -262,7 +262,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### openFileDialog(options = ())d) ? JSON.parse(fd) : null;
+`openFileDialog(options = ())d) ? JSON.parse(fd) : null;`
 
 &emsp; Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
@@ -272,7 +272,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### openFolderDialog()
+`openFolderDialog()`
 
 &emsp; Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
 
@@ -280,7 +280,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### loadTextFile(path)
+`loadTextFile(path)`
 
 &emsp; Load the text file with the given path.
 
@@ -290,7 +290,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### brosweForAndLoadTextFile(options = ())
+`brosweForAndLoadTextFile(options = ())`
 
 &emsp; Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
@@ -300,7 +300,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),
+`saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),`
 
 &emsp; Save the given text to the file at the given path.
 
@@ -310,7 +310,7 @@ WebPlus encapsulates the following methods:
 
 <hr>
 
-#### browseForAndSaveTextFile(text, options = ())
+`browseForAndSaveTextFile(text, options = ())```
 
 &emsp; Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
 
