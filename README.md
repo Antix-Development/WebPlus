@@ -1,7 +1,7 @@
 ﻿
 ![alt text](images/logo.svg)
 
-WebPlus adds native abilities to web applications. It strives to be easy to setup, easy to use, produce small distributions, and require no compilation.
+WebPlus adds super powers to web applications and strives to be easy to setup, easy to use, produce small distributions, and require no compilation.
 
 ### Features
 
