@@ -44,19 +44,19 @@ All you really need is a text editor but if you want to build your own binary yo
 
 
 
-<br>
 
-<br>
 
-<br>
 
-<br>
 
-<br>
 
-<br>
 
-<br>
+
+
+
+
+
+
+
 
 # API Reference
 
@@ -142,177 +142,177 @@ WebPlus encapsulates the following methods:
 
 ## `exit()`
 
-&emsp; Exit the application.
+Exit the application.
 
-<br>
+
 
 ## `messageHost(message)`
 
-&emsp; Send the given message to the host. The message will be sent as a JSON string.
+Send the given message to the host. The message will be sent as a JSON string.
 
 &emsp; @param (String) message
 
-<br>
+
 
 ## `setMessageHandler(handler)`
 
-&emsp; Set the callback that will receive responses from the host to the given callback function.
+Set the callback that will receive responses from the host to the given callback function.
 
 &emsp; @param (Function) handler
 
-<br>
+
 
 ## `enableHotReload(state)`
 
-&emsp; Enable or disable hot reloading according to the given state.
+Enable or disable hot reloading according to the given state.
 
 &emsp; @param (Boolean) state
 
-<br>
+
 
 ## `getPath()`
 
-&emsp; Get the applications folder.
+Get the applications folder.
 
 &emsp; @returns (String)
 
-<br>
+
 
 ## `getLastError()`
 
-&emsp; Get the last error. Useful for determining why some method or another failed.
+Get the last error. Useful for determining why some method or another failed.
 
 &emsp; @returns (String)
 
-<br>
+
 
 ## `setWindowTitle(title)`
 
-&emsp; Set the host window title to the given title.
+Set the host window title to the given title.
 
 &emsp; @param (String) title
 
-<br>
+
 
 ## `setWindowIcon(path)`
 
-&emsp; Set the host window icon to the given path pointing to a .PNG or .ICO file.
+Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
 &emsp; @param (String) path
 
-<br>
+
 
 ## `setFullScreen(state)`
 
-&emsp; Enter or leave fullscreen mode according to the given state.
+Enter or leave fullscreen mode according to the given state.
 
 &emsp; @param (Boolean) state
 
-<br>
+
 
 ## `fileInfo(path)`
 
-## &emsp; Get the `FileDetails` for the file or directory at the given path.
+Get the `FileDetails` for the file or directory at the given path.
 
 &emsp; @param (String) path
 
 &emsp; @returns (FileDetails)
 
-<br>
+
 
 ## `deleteFile(path)`
 
-&emsp; Delete the file with the given path.
+Delete the file with the given path.
 
 &emsp; @param (String) path
 
-<br>
+
 
 ## `renameFile(path, name)`
 
-&emsp; Rename the file with the given path to the given name.
+Rename the file with the given path to the given name.
 
 &emsp; @param (String) path
 
-<br>
+
 
 ## `dirInfo(path)`
 
-&emsp; Get an array of 'FileDetails' for all files and directories in the given path.
+Get an array of 'FileDetails' for all files and directories in the given path.
 
 &emsp; @param (String) path
 
 &emsp; @returns ([FileDetails])
 
-<br>
+
 
 ## `createDirectory(path)`
 
-&emsp; Create a directory with the given path.
+Create a directory with the given path.
 
 &emsp; @param ( String ) path
 
-<br>
+
 
 ## `deleteDirectory(path)`
 
-&emsp; Recursively delete the directory with the given path.
+Recursively delete the directory with the given path.
 
 &emsp; @param ( String ) path
 
-<br>
+
 
 ## `openFileDialog(options = ())d) ? JSON.parse(fd) : null;`
 
-## &emsp; Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
 &emsp; @param (Object) options
 
 &emsp; @returns (FileDetails)
 
-<br>
+
 
 ## `openFolderDialog()`
 
-&emsp; Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
+Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
 
 &emsp; @returns (FileDetails)
 
-<br>
+
 
 ## `loadTextFile(path)`
 
-&emsp; Load the text file with the given path.
+Load the text file with the given path.
 
 &emsp; @param (String) path
 
 &emsp; @returns (String)
 
-<br>
+
 
 ## `brosweForAndLoadTextFile(options = ())`
 
-&emsp; Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
+Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
 &emsp; @param (Object) options
 
 &emsp; @returns (String)
 
-<br>
+
 
 ## `saveTextFile(text, path) => WP_HOST.saveTextFile(text, path),`
 
-&emsp; Save the given text to the file at the given path.
+Save the given text to the file at the given path.
 
 &emsp; @param (String) text
 
 &emsp; @param (String) path
 
-<br>
+
 
 ## `browseForAndSaveTextFile(text, options = ())`
 
-&emsp; Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
+Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
 
 &emsp; @param (String) text
 
