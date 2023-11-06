@@ -3,18 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Policy;
-using System.Text;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace WebPlus
 {
@@ -148,7 +140,6 @@ namespace WebPlus
                     HostForm.FormBorderStyle = FormBorderStyle.None;
                     HostForm.WindowState = FormWindowState.Maximized;
                     HostForm.DispatchWindowResizeEvent("windowEnteredFullScreen");
-                    //HostForm.ReplyToWebView("windowEnteredFullScreen");
                     IgnoreResizingEvents = false;
                 }
             }
@@ -160,7 +151,6 @@ namespace WebPlus
                     if (!Frameless) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
                     HostForm.WindowState = FormWindowState.Normal;
                     HostForm.DispatchWindowResizeEvent("windowLeftFullScreen");
-                    //HostForm.ReplyToWebView("windowLeftFullScreen");
                     IgnoreResizingEvents = false;
                 }
             }

@@ -1,6 +1,6 @@
 ﻿/**
  * WebPlus.js
- * Yet another web to native framework.
+ * Augnments web apps with super powers.
  * @copyright 2023 Cliff Earl, Antix Development.
  * @license MIT
  * @namespace WebPlus
@@ -12,14 +12,14 @@
 
 const WP_HOST = window.chrome.webview.hostObjects.sync.hostedObject; // Hosted object allowing access to native-code methods and properties.
 
-let WP_PATH = WP_HOST.getPath();
+let WP_PATH = WP_HOST.getPath(); // App home folder.
 
-let WP_HOTRELOAD_ENABLED = WP_HOST.restoreHotReloadState();
+let WP_HOTRELOAD_ENABLED = WP_HOST.restoreHotReloadState(); // True when hot reloading is enabled.
 
-let WP_MESSAGE_HANDLER; // Callback function that will receive messages sent from the host.
+let WP_FULLSCREEN = false; // True when app is in full-screen mode.
+let WP_FRAMELESS = false; // True when the app window has no frame.
 
-let WP_FULLSCREEN = false;
-let WP_FRAMELESS = false;
+//let WP_MESSAGE_HANDLER; // Callback function that will receive messages sent from the host.
 
 // Filetype filters.
 const WP_TEXTFILE_FILTER = 'Text files (*.txt)|*.txt|All files (*.*)|*.*';
@@ -33,20 +33,6 @@ const wp = {
      * @memberof WebPlus
      */
     exit: () => WP_HOST.exit(),
-
-    /**
-     * Send the given message to the host.
-     * @param {String} message
-     * @memberof WebPlus
-     */
-    messageHost: (message) => window.chrome.webview.postMessage(JSON.stringify(message)),
-
-    /**
-     * Set the callback that will receive responses from the host to the given callback function.
-     * @param {Function} handler
-     * @memberof WebPlus
-     */
-    setMessageHandler: (handler) => WP_MESSAGE_HANDLER = handler,
 
     /**
      * Enable or disable hot reloading according to the given state.
@@ -74,6 +60,20 @@ const wp = {
      * @memberof WebPlus
      */
     getLastError: () => WP_HOST.getLastError(),
+
+    ///**
+    // * Send the given message to the host.
+    // * @param {String} message
+    // * @memberof WebPlus
+    // */
+    //messageHost: (message) => window.chrome.webview.postMessage(JSON.stringify(message)),
+
+    ///**
+    // * Set the callback that will receive responses from the host to the given callback function.
+    // * @param {Function} handler
+    // * @memberof WebPlus
+    // */
+    //setMessageHandler: (handler) => WP_MESSAGE_HANDLER = handler,
 
     /**
      * Set the host window location to the given coordinates.
@@ -280,19 +280,19 @@ const wp = {
 
 };
 
-// Install listener to handle incomming messages from the host. Theese messages will be handed off to a user specified callback which can be set by calling `wp.setMessageHandler`.
-window.chrome.webview.addEventListener('message', (e) => {
-    try {
+//// Install listener to handle incomming messages from the host. Theese messages will be handed off to a user specified callback which can be set by calling `wp.setMessageHandler`.
+//window.chrome.webview.addEventListener('message', (e) => {
+//    try {
 
-        if (WP_MESSAGE_HANDLER) {
-            WP_MESSAGE_HANDLER(JSON.parse(e.data));
+//        if (WP_MESSAGE_HANDLER) {
+//            WP_MESSAGE_HANDLER(JSON.parse(e.data));
 
-        } else {
-            console.warn(`unhandled message: ${response}`);
+//        } else {
+//            console.warn(`unhandled message: ${response}`);
 
-        }
+//        }
 
-    } catch (e) {
-        console.warn(`invalid message received: ${e.data}`);
-    }
-});
+//    } catch (e) {
+//        console.warn(`invalid message received: ${e.data}`);
+//    }
+//});

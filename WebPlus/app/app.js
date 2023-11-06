@@ -30,10 +30,6 @@ window.onload = () => {
 
     framelessLabel.value = (WP_FRAMELESS) ? 'frameless' : 'framed';
 
-    wp.setMessageHandler((response) => {
-        console.log(response);
-    });
-
 //    wp.renameFile("d:\\haha.txt", "poopoo.txt");
 //    wp.deleteDirectory("d:\\deleteme");
 

@@ -52,37 +52,38 @@ namespace WebPlus
         async void InitializeAsync()
         {
             await WebView.EnsureCoreWebView2Async(null);
-            WebView.CoreWebView2.WebMessageReceived += MessageReceived;
 
             hostedObject = new HostedObject(this);
             WebView.CoreWebView2.AddHostObjectToScript("hostedObject", hostedObject);
+
+            //WebView.CoreWebView2.WebMessageReceived += MessageReceived;
         }
 
-        void MessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs args)
-        {
-            String jsonString = args.TryGetWebMessageAsString();
+        //void MessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs args)
+        //{
+        //    String jsonString = args.TryGetWebMessageAsString();
 
-            try
-            {
-                string[] request = JsonSerializer.Deserialize<string[]>(jsonString, JsonOptions);
+        //    try
+        //    {
+        //        string[] request = JsonSerializer.Deserialize<string[]>(jsonString, JsonOptions);
 
-                switch (request)
-                {
-                    default:
-                        Console.WriteLine($"unmanaged message received: {request}");
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                Console.WriteLine($"invalid message received: {jsonString}");
-            }
-        }
+        //        switch (request)
+        //        {
+        //            default:
+        //                Console.WriteLine($"unmanaged message received: {request}");
+        //                break;
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        Console.WriteLine($"invalid message received: {jsonString}");
+        //    }
+        //}
 
-        public void ReplyToWebView(string reply)
-        {
-            WebView.CoreWebView2.PostWebMessageAsString(JsonSerializer.Serialize(reply, JsonOptions));
-        }
+        //public void ReplyToWebView(string reply)
+        //{
+        //    WebView.CoreWebView2.PostWebMessageAsString(JsonSerializer.Serialize(reply, JsonOptions));
+        //}
 
         public void DispatchWindowResizeEvent(string type)
         {
@@ -97,12 +98,6 @@ namespace WebPlus
             switch (WindowState)
             {
                 case FormWindowState.Normal:
-                    //ReplyToWebView("windowRestored");
-                    //if (hostedObject.MinimizeToTray)
-                    //{
-                    //    Show();
-                    //    notifyIcon1.Visible = false;
-                    //}
                     DispatchWindowResizeEvent("windowRestored");
                     break;
 
@@ -113,15 +108,12 @@ namespace WebPlus
                         notifyIcon1.Visible = true;
                     }
                     DispatchWindowResizeEvent("windowMinimized");
-                    //ReplyToWebView("windowMinimized");
-                    //WasMinimized = true;
                     break;
 
                 case FormWindowState.Maximized:
                     if (!hostedObject.InFullScreen)
                     {
                         DispatchWindowResizeEvent("windowMaximized");
-                        //ReplyToWebView($"windowMaximized");
                     }
                     break;
 
@@ -132,7 +124,7 @@ namespace WebPlus
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-                Show();
+            Show();
             this.WindowState = FormWindowState.Normal;
             notifyIcon1.Visible = false;
         }
