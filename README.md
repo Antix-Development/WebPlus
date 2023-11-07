@@ -1,7 +1,7 @@
 ﻿
 ![alt text](images/logo.svg)
 
-WebPlus adds super powers to web applications and strives to be easy to setup, easy to use, produce small distributions, and require no compilation.
+An easy to use framework that adds super powers to your web apps, transforming them into lithe desktop applications, with no compilation required.
 
 ### Features
 
@@ -55,7 +55,7 @@ If you create something using WebPlus, please let me know, I'd love to see what 
 
 ## Requirements
 
-All you really need is a text editor but if you want to build your own binary you will need [Visual Studio](https://visualstudio.microsoft.com/vs/).
+All you really need is a text/code editor such as Notepad, [Visual Studio Code](https://code.visualstudio.com/), [NotePad++](https://notepad-plus-plus.org/), or [Sublime Text](https://www.sublimetext.com/). If you want to build your own binary though, you will need [Visual Studio](https://visualstudio.microsoft.com/vs/).
 
 ## Your first WebPlus app
 
