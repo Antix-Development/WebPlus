@@ -45,7 +45,9 @@ Because some of them created gigantic distributions (90Mb+) and others had unres
 
 WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality, and comparing WebPlus to other mature frameworks is like comparing an abacus with an electronic calculator.
 
-WebPlus is just for Windows because I don't have any Apple or Linux stuff, sorry.
+WebPlus is also just for Windows because I don't have any Apple or Linux stuff, sorry.
+
+If you create something using WebPlus, please let me know, I'd love to see what you do with it. Maybe you would also consider [buying me a coffee](https://www.buymeacoffee.com/antixdevelu) :coffee:
 
 # Getting Started
 
@@ -89,13 +91,6 @@ The default icon provided inside the *"app"* folder contains with sizes of 16x16
 
 
 :love_letter: I was delighted at how easy it was to actually set it all up and get it going inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :)
-
-
-
-
-<br>
-
-
 
 # API Reference
 
