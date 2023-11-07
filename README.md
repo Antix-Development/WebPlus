@@ -63,7 +63,7 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:three: Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
 
-&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder. Saving them will show the changes the app window.
+&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder. Saving them will update the app view.
 
 &emsp;:five: Rinse and repeat :four: until your app is done.
 
