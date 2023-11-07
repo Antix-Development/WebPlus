@@ -57,21 +57,21 @@ All you really need is a text editor but if you want to build your own binary yo
 
 Lets make an app called *MyCoolApp*.
 
-1. Copy the *"dist"* folder somewhere handy and rename it as *"MyCoolApp"*.
+&emsp;:one: Copy the *"dist"* folder somewhere handy and rename it as *"MyCoolApp"*.
 
-2. Rename the WebPlus.exe file to *"MyCoolApp.exe"*.
+&emsp;:two: Rename the WebPlus.exe file to *"MyCoolApp.exe"*.
 
-3. Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
+&emsp;:three: Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
 
-4. Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder using your chosen text editor, and when you save them the changes will be visible in the app window.
+&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder using your chosen text editor, and when you save them the changes will be visible in the app window.
 
-5. Rinse and repeat step 4 until your app is done.
+&emsp;:five: Rinse and repeat :four: until your app is done.
 
-6. Once you are happy with your app, remove the line in *"app.js"* that reads `wp.enableHotReload(true);` to disable hot reloading.
+&emsp;:six: Once you are happy with your app, remove the line in *"app.js"* that reads `wp.enableHotReload(true);` to disable hot reloading.
 
-7. Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
+&emsp;:seven: Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
 
-8. Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution, unless you want to take further steps such as minifying or obfuscating your code.
+&emsp;:eight: Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution, unless you want to take further steps such as minifying or obfuscating your code.
 
 *NOTE:* the *"webplus.js"* file in the *"app"* folder contains the WebPlus engine code and you don't need to modify it.
 
