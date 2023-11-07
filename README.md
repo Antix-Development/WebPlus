@@ -179,7 +179,7 @@ Some WebPlus methods return objects, and others may require you to supply an obj
 }
 ```
 
-:warning: A `type` of "UNKNOWN" will be present **ONLY** when calling `saveFileDialog` and the user entered the name of a file that doesn't exist *"yet"*.
+:warning: A `type` of `"UNKNOWN"` will be present when `saveFileDialog` was called and the user entered the name of a file that doesn't exist *"yet"*.
 
 ### DialogOptions
 
@@ -187,13 +187,11 @@ Some WebPlus methods return objects, and others may require you to supply an obj
 {
   filter: {String},       // A File Dialog Filter.
   multiSelect: {Boolean}, // Set to true to enable multiple file selection.
-  title: {String}        //
+  title: {String}         // Dialog title.
 }
 ```
 
-:point_right: [File Dialog Filter](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.filedialog.filter?view=windowsdesktop-7.0), because links can;t be embedded in code blocks :disappointed:
-
-:point_right: WebPlus includes some handy filters for common filetypes.. `WP_TEXTFILE_FILTER` for for TEXT files, `WP_JSONFILE_FILTER` for JSON files, and `WP_PNGFILE_FILTER` for PNG files.
+:point_right: WebPlus includes some handy [file dialog filters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.filedialog.filter?view=windowsdesktop-7.0) for common filetypes.. `WP_TEXTFILE_FILTER` for for TEXT files, `WP_JSONFILE_FILTER` for JSON files, and `WP_PNGFILE_FILTER` for PNG files.
 
 ## Events
 
