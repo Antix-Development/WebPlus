@@ -1,6 +1,6 @@
 ﻿/**
  * WebPlus.js
- * Yet another web to native framework.
+ * Augnments web apps with super powers.
  * @copyright 2023 Cliff Earl, Antix Development.
  * @license MIT
  * @namespace WebPlus
@@ -12,14 +12,14 @@
 
 const WP_HOST = window.chrome.webview.hostObjects.sync.hostedObject; // Hosted object allowing access to native-code methods and properties.
 
-let WP_PATH = WP_HOST.getPath();
+let WP_PATH = WP_HOST.getPath(); // App home folder.
 
-let WP_HOTRELOAD_ENABLED = WP_HOST.restoreHotReloadState();
+let WP_HOTRELOAD_ENABLED = WP_HOST.restoreHotReloadState(); // True when hot reloading is enabled.
 
-let WP_MESSAGE_HANDLER; // Callback function that will receive messages sent from the host.
+let WP_FULLSCREEN = false; // True when app is in full-screen mode.
+let WP_FRAMELESS = false; // True when the app window has no frame.
 
-let WP_FULLSCREEN = false;
-let WP_BORDERLESS = false;
+//let WP_MESSAGE_HANDLER; // Callback function that will receive messages sent from the host.
 
 // Filetype filters.
 const WP_TEXTFILE_FILTER = 'Text files (*.txt)|*.txt|All files (*.*)|*.*';
@@ -33,20 +33,6 @@ const wp = {
      * @memberof WebPlus
      */
     exit: () => WP_HOST.exit(),
-
-    /**
-     * Send the given message to the host.
-     * @param {String} message
-     * @memberof WebPlus
-     */
-    messageHost: (message) => window.chrome.webview.postMessage(JSON.stringify(message)),
-
-    /**
-     * Set the callback that will receive responses from the host to the given callback function.
-     * @param {Function} handler
-     * @memberof WebPlus
-     */
-    setMessageHandler: (handler) => WP_MESSAGE_HANDLER = handler,
 
     /**
      * Enable or disable hot reloading according to the given state.
@@ -75,6 +61,36 @@ const wp = {
      */
     getLastError: () => WP_HOST.getLastError(),
 
+    ///**
+    // * Send the given message to the host.
+    // * @param {String} message
+    // * @memberof WebPlus
+    // */
+    //messageHost: (message) => window.chrome.webview.postMessage(JSON.stringify(message)),
+
+    ///**
+    // * Set the callback that will receive responses from the host to the given callback function.
+    // * @param {Function} handler
+    // * @memberof WebPlus
+    // */
+    //setMessageHandler: (handler) => WP_MESSAGE_HANDLER = handler,
+
+    /**
+     * Set the host window location to the given coordinates.
+     * @param {Number} x
+     * @param {Number} y
+     * @memberof WebPlus
+     */
+    setWindowLocation: (x, y) => WP_HOST.setWindowLocation(x, y),
+
+    /**
+     * Set the host window size to the given dimensions.
+     * @param {Number} w
+     * @param {Number} h
+     * @memberof WebPlus
+     */
+    setWindowSize: (w, h) => WP_HOST.setWindowSize(w, h),
+
     /**
      * Set the host window title to the given title.
      * @param {String} title
@@ -88,6 +104,13 @@ const wp = {
      * @memberof WebPlus
      */
     setWindowIcon: (path) => WP_HOST.setWindowIcon(path),
+        
+    /**
+     * Set the host window to minify to the system tray instead of the task bar according to the given state.
+     * @param {Boolean} state
+     * @memberof WebPlus
+     */
+    minimizeToTray: (state) => WP_HOST.minimizeToTray(state),
 
     /**
      * Enter or leave fullscreen mode according to the given state.
@@ -97,6 +120,16 @@ const wp = {
     setFullScreen: (state) => {
         WP_HOST.setFullScreen(state);
         WP_FULLSCREEN = state;
+    },
+    
+    /**
+     * Remove or add window frame according to the given state.
+     * @param {Boolean} state
+     * @memberof WebPlus
+     */
+    setFrameless: (state) => {
+        WP_HOST.setFrameless(state);
+        WP_FRAMELESS = state;
     },
 
     /**
@@ -148,6 +181,13 @@ const wp = {
      * @memberof WebPlus
     */
     deleteDirectory: (path) => WP_HOST.deleteDirectory(path),
+
+    /**
+     * Rename the directory with the given path to the given name.
+     * @param {String} path
+     * @memberof WebPlus
+     */
+    renameDirectory: (path, name) => WP_HOST.renameDirectory(path, name),
 
     /**
      * Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
@@ -227,21 +267,32 @@ const wp = {
 
         WP_HOST.browseForAndSaveTextFile(text, JSON.stringify(o));
     },
+
+    /**
+     * Save the given canvas as a PNG image at the given path.
+     * @param {HTMLCanvasElement} canvas
+     * @param {String} path
+     * @memberof WebPlus
+     */
+    savePNG: (canvas, path) => {
+        WP_HOST.savePNG(canvas.toDataURL(), path);
+    },
+
 };
 
-// Install listener to handle incomming messages from the host. Theese messages will be handed off to a user specified callback which can be set by calling `wp.setMessageHandler`.
-window.chrome.webview.addEventListener('message', (e) => {
-    try {
+//// Install listener to handle incomming messages from the host. Theese messages will be handed off to a user specified callback which can be set by calling `wp.setMessageHandler`.
+//window.chrome.webview.addEventListener('message', (e) => {
+//    try {
 
-        if (WP_MESSAGE_HANDLER) {
-            WP_MESSAGE_HANDLER(JSON.parse(e.data));
+//        if (WP_MESSAGE_HANDLER) {
+//            WP_MESSAGE_HANDLER(JSON.parse(e.data));
 
-        } else {
-            console.warn(`unhandled message: ${response}`);
+//        } else {
+//            console.warn(`unhandled message: ${response}`);
 
-        }
+//        }
 
-    } catch (e) {
-        console.warn(`invalid message received: ${e.data}`);
-    }
-});
+//    } catch (e) {
+//        console.warn(`invalid message received: ${e.data}`);
+//    }
+//});

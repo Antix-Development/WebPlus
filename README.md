@@ -17,6 +17,7 @@ WebPlus adds super powers to web applications and strives to be easy to setup, e
 - Renaming, moving, and deleting files.
 - Creating, renaming, moving, and deleting directories.
 - Sending and receiving messages from the host.
+- Base distribution size of 794KB.
 
 ## What's New?
 
@@ -26,9 +27,11 @@ v1.0.0 (7 Nov 2023)
 
 ## Why WebPlus?
 
-I really enjoy creating applications using HTML, CSS, and JavaScript. These *"web apps"* are fantastic but they have no access to the local file system, because of security. This issue can be solved by using currently available frameworks, so I tried a bunch of them, [ElectronJS](https://www.electronjs.org/), [NWjs](https://nwjs.io/), [CEFSharp](https://cefsharp.github.io/), [Tauri](https://tauri.app/), and [Neutralino](https://neutralino.js.org/).
+I really enjoy creating applications using HTML, CSS, and JavaScript.
 
-Because some of them created gigantic distributions (90Mb+) and others had unresolvable issues, I decided to just write my own.
+These *"web apps"* are fantastic but they have no access to the local file system, because of security. This issue can be solved by using currently available frameworks, so I tried a bunch of them, [ElectronJS](https://www.electronjs.org/), [NWjs](https://nwjs.io/), [CEFSharp](https://cefsharp.github.io/), [Tauri](https://tauri.app/), and [Neutralino](https://neutralino.js.org/).
+
+Because some of them created gigantic distributions (90Mb+) and others had unresolvable issues, I just decided to write my own.. WebPlus.
 
 WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality. In fact, comparing WebPlus to other mature frameworks is probably a bit like comparing an abacus with an electronic calculator.
 
@@ -44,31 +47,31 @@ All you really need is a text editor but if you want to build your own binary yo
 
 Lets make an app called *MyCoolApp*.
 
-1. Copy the "dist" folder somewhere handy and rename it as "MyCoolApp".
+1. Copy the *"dist"* folder somewhere handy and rename it as *"MyCoolApp"*.
 
-2. Rename the WebPlus.exe file to "MyCoolApp.exe".
+2. Rename the WebPlus.exe file to *"MyCoolApp.exe"*.
 
 3. Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
 
-4. Edit "app.html", "style.css", and "app.js" inside the "app" folder using your chosen text editor, and when you save them the changes will be visible in the app window.
+4. Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder using your chosen text editor, and when you save them the changes will be visible in the app window.
 
 5. Rinse and repeat step 4 until your app is done.
 
-6. Once you are happy with your app, remove the line in app.js that reads `wp.enableHotReload(true);` to disable hot reloading.
+6. Once you are happy with your app, remove the line in *"app.js"* that reads `wp.enableHotReload(true);` to disable hot reloading.
 
-7. Delete the ".WebView" folder. This is a temprorary cache folder that isn;t required for distribution.
+7. Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
 
-8. Replace the "icon.ico" with your own icon, and then you're ready to commence distribution, unless you want to take further steps such as minifying or obfuscating your code.
+8. Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution, unless you want to take further steps such as minifying or obfuscating your code.
 
-*NOTE:* the "webplus.js" file in the "app" folder contains the WebPlus engine code and you don't need to modify it.
+*NOTE:* the *"webplus.js"* file in the *"app"* folder contains the WebPlus engine code and you don't need to modify it.
 
 # Under the Hood
 
 For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the entire client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality.
 
+Hot reloading uses a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?view=net-7.0)
 
-[FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?view=net-7.0)
-
+The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
 
 
 *NOTE:* I was delighted at how easy it was to actually set it all up and get it going inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :)
