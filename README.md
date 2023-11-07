@@ -61,25 +61,25 @@ All you really need is a text/code editor such as Notepad, [Visual Studio Code](
 
 Lets make an app called *MyCoolApp*.
 
-&emsp;:one: Copy the *"dist"* folder somewhere handy and rename it as *"MyCoolApp"*.
+&emsp;:one: Copy the ***"dist"*** folder somewhere handy and rename it as ***"MyCoolApp"***.
 
-&emsp;:two: Rename the WebPlus.exe file to *"MyCoolApp.exe"*.
+&emsp;:two: Rename the WebPlus.exe file to ***"MyCoolApp.exe"***.
 
-&emsp;:three: Run the *"MyCoolApp.exe"* file and an empty grey window will magically appear.
+&emsp;:three: Run the ***"MyCoolApp.exe"*** file and an empty grey window will magically appear.
 
-&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the *"app"* folder. Saving them will update the app view.
+&emsp;:four: Edit ***"app.html"***, ***"style.css"***, and ***"app.js"*** inside the ***"app"*** folder. Saving them will update the app view.
 
 &emsp;:five: Rinse and repeat :four: until your app is done.
 
-&emsp;:six: Set `HotReload` to `false` in the *"app\app.json"* file to disable hot reloading.
+&emsp;:six: Set `HotReload` to `false` in the ***"app\app.json"*** file to disable hot reloading.
 
-&emsp;:seven: Delete the *"MyCoolApp.WebView"* folder. This is a temprorary cache folder that isn't required for distribution.
+&emsp;:seven: Delete the ***"MyCoolApp.exe.WebView"*** folder. This is a temprorary cache folder that isn't required for distribution.
 
 &emsp;:eight: Perform extra tasks such as minifying or obfuscating your code, etc.
 
 &emsp;:nine: Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution.
 
-That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle: :beer: :beers: :cocktail: :tropical_drink: :wine_glass:
+That's it, you're done! Time for a beverage :coffee: :tea: :sake: :baby_bottle: :beer: :beers: :cocktail: :tropical_drink: :wine_glass:
 
 :warning: the *"webplus.js"* file in the *"app"* folder contains the WebPlus engine code and you don't need to modify it.
 
