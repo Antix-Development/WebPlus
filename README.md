@@ -219,7 +219,11 @@ The events `detail`` property will contain a string describing what type of resi
 
 :hammer: Code for asynchronous messaging between the app and host is included in the various source code files but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. Hoswever I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
 
+<div style="color: #ffffd0">
+
 ## Methods
+
+</div>
 
 All callable host methods are encapsulated inside the wp object and you call them the same way you would a class, so if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
 
