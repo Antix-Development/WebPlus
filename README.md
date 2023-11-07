@@ -73,7 +73,7 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:seven: Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
 
-&emsp;:eight: Perform extra tasks such as minifying or obfuscating your code.
+&emsp;:eight: Perform extra tasks such as minifying or obfuscating your code, etc.
 
 &emsp;:nine: Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution.
 
@@ -85,12 +85,12 @@ That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle:
 
 For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the entire client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality.
 
-Hot reloading uses a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?view=net-7.0)
+Hot reloading uses a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?view=net-7.0).
 
 The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
 
 
-:love_letter: I was delighted at how easy it was to actually set it all up and get it going inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :)
+:love_letter: I was delighted at how easy it was to actually get a WebView2 set up and working inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :thumbsup:
 
 # API Reference
 

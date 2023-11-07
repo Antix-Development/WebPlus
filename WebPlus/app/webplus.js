@@ -1,6 +1,6 @@
 ﻿/**
  * WebPlus.js
- * Augnments web apps with super powers.
+ * Augments web apps with super powers.
  * @copyright 2023 Cliff Earl, Antix Development.
  * @license MIT
  * @namespace WebPlus
@@ -219,7 +219,6 @@ const wp = {
      * @memberof WebPlus
      */
     saveFileDialog: (options = {}) => {
-
         const o = Object.assign({
             filter: WP_TEXTFILE_FILTER,
             multiSelect: false,
@@ -227,9 +226,6 @@ const wp = {
         }, options);
 
         const fd = WP_HOST.saveFileDialog(JSON.stringify(o));
-        console.log("whut the shit?");
-        console.log(fd);
-
         return (fd) ? JSON.parse(fd) : null;
     },
 

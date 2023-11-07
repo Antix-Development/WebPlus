@@ -1,6 +1,6 @@
 ﻿/**
  * WebPlus.js
- * Augnments web apps with super powers.
+ * Augments web apps with super powers.
  * @copyright 2023 Cliff Earl, Antix Development.
  * @license MIT
  * @namespace WebPlus
@@ -19,6 +19,11 @@ window.onload = () => {
     window.addEventListener('windowresize', (e) => {
         console.log(`windowresize: ${e.detail}`);
     });
+
+    wp.setWindowTitle("WebPlus Tests");
+
+    wp.setWindowLocation(0, 0);
+    wp.setWindowSize(1280, 600);
 
     generateImage();
 }
@@ -90,17 +95,17 @@ function testSavePNG() {
 }
 
 const options = {
-    location: {
-        x: 0,
-        y: 0
-    },
-    size: {
-        width: 800,
-        height: 600
-    },
+    hotReload: true,
+
+    saveOnExit: false,
+
+    x: 0,
+    y: 0,
+
+    width: 800,
+    height: 600,
 
     fullScreen: false,
     frameless: false,
-    hotReload: true,
 
 }

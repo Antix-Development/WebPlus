@@ -36,7 +36,7 @@ namespace WebPlus
             }
             catch (Exception)
             {
-                // Cover corner case where `saveFileDialog` has beel called and a non existant filename has been entered, 
+                // Cover corner case where `saveFileDialog` has been called and a non existant filename has been entered, 
                 // as is the case when the user enters a name for a new file that they want to create.
 
                 type = "UNKNOWN";
