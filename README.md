@@ -87,15 +87,12 @@ That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle:
 
 For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality. Hot reloading is provided using a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
 
-When a WebPlus application launches,
+When a WebPlus application launches, it..
 
-:one: Creates a windows containing a WebView2 control.
-
-:two: Loads persistent options from *"app/app.json"*.
-
-:three: Modifies the windows form according to the options.
-
-:four: Loads *"app/app.html"* into the WebView2 control.
+1. Creates a windows containing a WebView2 control.
+2. Loads persistent options from *"app/app.json"*.
+3. Modifies the windows form according to the options.
+4. Loads *"app/app.html"* into the WebView2 control.
 
 When *"app/app.html"* has fully loaded the `window.onload` event in *"app/app.js"* is fired, which starts the app running.
 
