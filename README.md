@@ -73,7 +73,7 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:six: Set `HotReload` to `false` in the *"app\app.json"* file to disable hot reloading.
 
-&emsp;:seven: Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
+&emsp;:seven: Delete the *"MyCoolApp.WebView"* folder. This is a temprorary cache folder that isn't required for distribution.
 
 &emsp;:eight: Perform extra tasks such as minifying or obfuscating your code, etc.
 
