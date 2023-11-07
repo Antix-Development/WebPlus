@@ -97,7 +97,7 @@ The default icon provided inside the *"app"* folder contains with sizes of 16x16
 
 ## Options
 
-WebPlus stores its persistent state in a the "app/app.json" file which has the following structure..
+WebPlus stores its persistent state in a the *"app/app.json"* file which has the following structure..
 
 ```
 {

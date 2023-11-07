@@ -10,6 +10,7 @@
 
 // Declare variables and functions here.
 
+// Fired when the whole page has loaded.
 window.onload = () => {
 
 	// Initialize your app here.

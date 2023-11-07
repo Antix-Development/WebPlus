@@ -23,7 +23,7 @@ namespace WebPlus
         public bool InFullScreen = false;
         public bool IgnoreResizingEvents;
 
-        private bool hotReloadEnabled = false;
+        private bool HotReloadEnabled = false;
         private FileSystemWatcher watcher;
         private System.Timers.Timer timer;
 
@@ -80,8 +80,8 @@ namespace WebPlus
 
         public bool restoreHotReloadState()
         {
-            enableHotReload(hotReloadEnabled);
-            return hotReloadEnabled;
+            enableHotReload(HotReloadEnabled);
+            return HotReloadEnabled;
         }
 
         public void enableHotReload(bool state)
@@ -111,7 +111,7 @@ namespace WebPlus
                     timer.Stop(); // Just in case it was already counting down.
                 }
             }
-            hotReloadEnabled = state;
+            HotReloadEnabled = state;
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

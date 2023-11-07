@@ -1,12 +1,1 @@
-{
-    "hotReload": true,
-    "saveOnExit": false,
-    "title": "",
-    "x": 100,
-    "y": 100,
-    "width": 960,
-    "height": 540,
-    "fullScreen": false,
-    "frameless": false,
-    "minimizetoTray": false
-}
+{"HotReload":true,"SaveOnExit":true,"Title":"WebPlus","X":158,"Y":107,"Width":825,"Height":454,"FullScreen":false,"Frameless":false,"Minimized":false,"MinimizeToTray":false}
