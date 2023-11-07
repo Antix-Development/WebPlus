@@ -205,15 +205,19 @@ window.addEventListener('windowresize', (e) => {
 
 The events `detail`` property will contain a string describing what type of resize event just occurred, and it will be one of the following:
 
-- "windowEnteredFullScreen"
-- "windowLeftFullScreen"
-- "windowRestored"
-- "windowMinimized"
-- "windowMaximized"
+&emsp;:small_orange_diamond: "windowEnteredFullScreen"
+
+&emsp;:small_orange_diamond: windowLeftFullScreen"
+
+&emsp;:small_orange_diamond: windowRestored"
+
+&emsp;:small_orange_diamond: windowMinimized"
+
+&emsp;:small_orange_diamond: windowMaximized"
 
 ## Messages
 
-Code for asynchronous messaging between the app and host is included in the various source code files but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. Hoswever I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
+:hammer: Code for asynchronous messaging between the app and host is included in the various source code files but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. Hoswever I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
 
 ## Methods
 
@@ -233,7 +237,7 @@ Exit the application.
 
 Send the given message to the host. The message will be sent as a JSON string.
 
-:small_blue_diamond: parameter (String) message
+:small_blue_diamond: parameter {String} message
 
 
 
@@ -249,7 +253,7 @@ Set the callback that will receive responses from the host to the given callback
 
 Enable or disable hot reloading according to the given state.
 
-:small_blue_diamond: parameter (Boolean) state
+:small_blue_diamond: parameter {Boolean} state
 
 
 
@@ -257,7 +261,7 @@ Enable or disable hot reloading according to the given state.
 
 Get the applications folder.
 
-:small_orange_diamond: returns (String)
+:small_orange_diamond: returns {String}
 
 
 
@@ -265,7 +269,7 @@ Get the applications folder.
 
 Get the last error encountered by the host. Useful for determining why some method or another failed.
 
-:small_orange_diamond: returns (String)
+:small_orange_diamond: returns {String}
 
 
 
@@ -273,9 +277,9 @@ Get the last error encountered by the host. Useful for determining why some meth
 
 Set the host window location to the given coordinates.
 
-:small_blue_diamond: parameter (Number) x
+:small_blue_diamond: parameter {Number} x
 
-:small_blue_diamond: parameter (Number) y
+:small_blue_diamond: parameter {Number} y
 
 
 
@@ -283,9 +287,9 @@ Set the host window location to the given coordinates.
 
 Set the host window size to the given dimensions.
 
-:small_blue_diamond: parameter (Number) width
+:small_blue_diamond: parameter {Number} width
 
-:small_blue_diamond: parameter (Number) height
+:small_blue_diamond: parameter {Number} height
 
 
 
@@ -293,7 +297,7 @@ Set the host window size to the given dimensions.
 
 Set the host window title to the given title.
 
-:small_blue_diamond: parameter (String) title
+:small_blue_diamond: parameter {String} title
 
 
 
@@ -301,7 +305,7 @@ Set the host window title to the given title.
 
 Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
 
 
@@ -309,7 +313,7 @@ Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
 Set the host window to minify to the system tray instead of the task bar according to the given state.
 
-:small_blue_diamond: parameter (Boolean) state
+:small_blue_diamond: parameter {Boolean} state
 
 
 
@@ -317,7 +321,7 @@ Set the host window to minify to the system tray instead of the task bar accordi
 
 Enter or leave fullscreen mode according to the given state.
 
-:small_blue_diamond: parameter (Boolean) state
+:small_blue_diamond: parameter {Boolean} state
 
 
 
@@ -325,7 +329,7 @@ Enter or leave fullscreen mode according to the given state.
 
 Remove or add window frame according to the given state.
 
-:small_blue_diamond: parameter (Boolean) state
+:small_blue_diamond: parameter {Boolean} state
 
 
 
@@ -333,9 +337,9 @@ Remove or add window frame according to the given state.
 
 Get the [`FileDetails`](#filedetails) for the file or directory at the given path.
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
-:small_orange_diamond: returns (FileDetails)
+:small_orange_diamond: returns {FileDetails}
 
 
 
@@ -343,7 +347,7 @@ Get the [`FileDetails`](#filedetails) for the file or directory at the given pat
 
 Delete the file with the given path.
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
 
 
@@ -351,7 +355,7 @@ Delete the file with the given path.
 
 Rename the file with the given path to the given name.
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
 
 
@@ -359,7 +363,7 @@ Rename the file with the given path to the given name.
 
 Get an array of [`FileDetails`](#filedetails) for all files and directories in the given path.
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
 :small_orange_diamond: returns ([FileDetails])
 
@@ -369,7 +373,7 @@ Get an array of [`FileDetails`](#filedetails) for all files and directories in t
 
 Create a directory with the given path.
 
-:small_blue_diamond: parameter ( String ) path
+:small_blue_diamond: parameter {String} path
 
 
 
@@ -377,7 +381,7 @@ Create a directory with the given path.
 
 Recursively delete the directory with the given path.
 
-:small_blue_diamond: parameter ( String ) path
+:small_blue_diamond: parameter {String} path
 
 
 
@@ -385,7 +389,7 @@ Recursively delete the directory with the given path.
 
 Rename the directory with the given path to the given name.
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
 
 
@@ -393,9 +397,9 @@ Rename the directory with the given path to the given name.
 
 Using the given options, display an open file dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-:small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
+:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
 
-:small_orange_diamond: returns (FileDetails)
+:small_orange_diamond: returns {FileDetails}
 
 
 
@@ -403,9 +407,9 @@ Using the given options, display an open file dialog where a file can be selecte
 
 Using the given options, display a save file dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-:small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
+:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
 
-:small_orange_diamond: returns (FileDetails)
+:small_orange_diamond: returns {FileDetails}
 
 
 
@@ -413,7 +417,7 @@ Using the given options, display a save file dialog where a file can be selected
 
 Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-:small_orange_diamond: returns (FileDetails)
+:small_orange_diamond: returns {FileDetails}
 
 
 
@@ -421,9 +425,9 @@ Display a dialog where a folder can be selected, and return its `FileDetails` if
 
 Load the text file with the given path.
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
-:small_orange_diamond: returns (String)
+:small_orange_diamond: returns {String}
 
 
 
@@ -431,9 +435,9 @@ Load the text file with the given path.
 
 Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
-:small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
+:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
 
-:small_orange_diamond: returns (String)
+:small_orange_diamond: returns {String}
 
 
 
@@ -441,9 +445,9 @@ Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the 
 
 Save the given text to the file at the given path.
 
-:small_blue_diamond: parameter (String) text
+:small_blue_diamond: parameter {String} text
 
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
 
 
 
@@ -451,9 +455,9 @@ Save the given text to the file at the given path.
 
 Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
 
-:small_blue_diamond: parameter (String) text
+:small_blue_diamond: parameter {String} text
 
-:small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
+:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
 
 
 
@@ -462,4 +466,4 @@ Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the 
 Save the given canvas as a PNG image at the given path.
 
 :small_blue_diamond: parameter (HTMLCanvasElement) canvas
-:small_blue_diamond: parameter (String) path
+:small_blue_diamond: parameter {String} path
