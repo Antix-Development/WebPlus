@@ -63,11 +63,11 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:three: Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
 
-&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder using your chosen text editor, and when you save them the changes will be visible in the app window.
+&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder. Saving them will show the changes the app window.
 
 &emsp;:five: Rinse and repeat :four: until your app is done.
 
-&emsp;:six: Once you are happy with your app, remove the line in *"app.js"* that reads `wp.enableHotReload(true);` to disable hot reloading.
+&emsp;:six: Remove the line in *"app.js"* that reads `wp.enableHotReload(true);` to disable hot reloading.
 
 &emsp;:seven: Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
 
