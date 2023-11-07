@@ -37,7 +37,7 @@ v1.0.0 (7 Nov 2023)
 
 ## Why WebPlus?
 
-I really enjoy creating applications using HTML, CSS, and JavaScript.
+I really enjoy creating web applications using HTML, CSS, and JavaScript.
 
 These *"web apps"* are fantastic but they have no access to the local file system, because of security. This issue can be solved by using currently available frameworks, so I tried a bunch of them, [ElectronJS](https://www.electronjs.org/), [NWjs](https://nwjs.io/), [CEFSharp](https://cefsharp.github.io/), [Tauri](https://tauri.app/), and [Neutralino](https://neutralino.js.org/).
 
