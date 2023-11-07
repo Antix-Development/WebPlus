@@ -65,9 +65,9 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:two: Rename the WebPlus.exe file to *"MyCoolApp.exe"*.
 
-&emsp;:three: Run the "MyCoolApp.exe" file and an empty grey window will magically appear.
+&emsp;:three: Run the *"MyCoolApp.exe"* file and an empty grey window will magically appear.
 
-&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the "app" folder. Saving them will update the app view.
+&emsp;:four: Edit *"app.html"*, *"style.css"*, and *"app.js"* inside the *"app"* folder. Saving them will update the app view.
 
 &emsp;:five: Rinse and repeat :four: until your app is done.
 
@@ -103,13 +103,13 @@ WebPlus stores its persistent state in a the "app/app.json" file which has the f
 ```
 {
   HotReload: {Boolean},
-  SaveOnExit {Boolean},           // Set to false to not save on exit.
-  Title: {String}		          // Window title.
-  X: {Number},			          // Window position
+  SaveOnExit {Boolean},       // Set to disable persistent state.
+  Title: {String}             // Window title.
+  X: {Number},                // Window position
   Y: {Number},
-  Width: {Number},			      // Window dimensions.
+  Width: {Number},            // Window dimensions.
   Height: {Number},
-  FullScreen: {Boolean},		  // The remaining properties are not yet implemented.
+  FullScreen: {Boolean},      // The remaining properties are not yet implemented.
   Frameless: {Boolean},
   Minimized: {Boolean},
   MinimizeToTray: {Boolean},
