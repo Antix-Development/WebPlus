@@ -213,13 +213,13 @@ The events `detail`` property will contain a string describing what type of resi
 
 &emsp;:small_orange_diamond: "windowEnteredFullScreen"
 
-&emsp;:small_orange_diamond: windowLeftFullScreen"
+&emsp;:small_orange_diamond: "windowLeftFullScreen"
 
-&emsp;:small_orange_diamond: windowRestored"
+&emsp;:small_orange_diamond: "windowRestored"
 
-&emsp;:small_orange_diamond: windowMinimized"
+&emsp;:small_orange_diamond: "windowMinimized"
 
-&emsp;:small_orange_diamond: windowMaximized"
+&emsp;:small_orange_diamond: "windowMaximized"
 
 ## Messages
 
