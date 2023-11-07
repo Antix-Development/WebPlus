@@ -75,6 +75,8 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:nine: Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution.
 
+That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle: :beer: :beers: :cocktail: :tropical_drink: :wine_glass:
+
 :warning: the *"webplus.js"* file in the *"app"* folder contains the WebPlus engine code and you don't need to modify it.
 
 # Under the Hood
