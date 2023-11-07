@@ -8,13 +8,14 @@
     </head>
     <body>
         <div class="container">
-            <div class="header"></div>
-            <div class="footer"></div>
             <div class="content"></div>
 
             <div class="left">
                 <textarea id="debug_output" rows="15" spellcheck="false" style="width: 100%; resize: none"></textarea><br>
                 <button onclick="document.getElementById('debug_output').value = '';" style="width: 100%">Clear output</button><br>
+                <button onclick="testBrowseForAndLoadTextFile();">load from text file</button>
+                <button onclick="testBrowseForAndSaveTextFile();">save to text file</button>
+
             </div>
 
             <div class="resize"></div>
@@ -27,23 +28,17 @@
                 </div>
 
                 <div>
-                    <button onclick="testSetWindowTitle();">Set Window Title</button>
-                    <input type="text" id="window_name" placeholder="Type a new title here" style="min-width: 40%" />
+                    <button onclick="testSetWindowTitle();">set window title</button>
+                    <input type="text" id="window_name" placeholder="Type title here" spellcheck="false" style="min-width: 8rem" />
                 </div>
 
                 <div>
-                    <button onclick="toggleFrameless();">Toggle Frameless</button>
-                    <input type="text" id="wp_frameless_label" readonly style="min-width: 5rem" />
-                </div>
-                
-                <div>
-                    <button onclick="toggleFullScreen();">Toggle FullScreen</button>
-                    <input type="text" id="wp_fullscreen_label" readonly style="min-width: 5rem" />
-                </div>
+                    <button id="toggle_frameless_button" onclick="toggleFrameless();">go frameless</button>
+                    <button id="toggle_fullscreen_button" onclick="toggleFullScreen();">enter fullscreen</button>
+                    <button id="toggle_minimize_to_tray_button" onclick="toggleMinimizeToTray();">minify to tray</button>
+                    <button id="toggle_hot_reload_button" onclick="toggleHotReload();">enable hot reload</button>
 
-                <div>
-                    <button onclick="toggleHotReload();">Toggle Hot Reload</button>
-                    <input type="text" id="wp_hotreload_enabled_label" readonly style="min-width: 5rem" />
+
                 </div>
 
                 <div>
@@ -52,10 +47,7 @@
                     <button onclick="testOpenFolderDialog();">Select A Folder</button>
                 </div>
 
-                <div>
-                    <button onclick="testBrowseForAndLoadTextFile();">Browse For And Load Text File()</button>
-                    <button onclick="testBrowseForAndSaveTextFile();">Browse For And Save Text File()</button>
-                </div>
+
 
 
             </div>

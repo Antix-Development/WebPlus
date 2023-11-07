@@ -113,10 +113,6 @@ The cached host (`window.chrome.webview.hostObjects.sync.hostedObject`).
 
 The applications home directory.
 
-### `WP_MESSAGE_HANDLER`
-
-A callback function that will be called when messages arrive from the host.
-
 ### `WP_FULLSCREEN`
 
 True if the application window is currently in full-screen mode.
@@ -124,6 +120,10 @@ True if the application window is currently in full-screen mode.
 ### `WP_FRAMELESS`
 
 True if the application window has no frame.
+
+### `WP_MINIMIZE_TO_TRAY`
+
+True when app window will minimize to the system tray.
 
 ### `WP_HOTRELOAD_ENABLED`
 

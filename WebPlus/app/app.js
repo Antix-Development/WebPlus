@@ -9,26 +9,18 @@
 'use_strict';
 
 let debugOutput;
-let hotReloadLabel;
-let fullScreenLabel;
-let framelessLabel;
 
 window.onload = () => {
 
-    wp.enableHotReload(true);
+    //wp.enableHotReload(true);
 
     debugOutput = document.getElementById('debug_output');
-    hotReloadLabel = document.getElementById('wp_hotreload_enabled_label');
-    fullScreenLabel = document.getElementById('wp_fullscreen_label');
-    framelessLabel = document.getElementById('wp_frameless_label');
+
 
     document.getElementById('wp_path_label').value = WP_PATH;
 
-    hotReloadLabel.value = (WP_HOTRELOAD_ENABLED) ? 'Enabled' : 'Disabled';
 
-    fullScreenLabel.value = (WP_FULLSCREEN) ? 'full screen' : 'windowed';
 
-    framelessLabel.value = (WP_FRAMELESS) ? 'frameless' : 'framed';
 
 //    wp.renameFile("d:\\haha.txt", "poopoo.txt");
 //    wp.deleteDirectory("d:\\deleteme");
@@ -44,7 +36,6 @@ window.onload = () => {
         console.log(`windowresize: ${e.detail}`);
     });
 
-    wp.minimizeToTray(true);
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 256;
@@ -52,22 +43,28 @@ window.onload = () => {
     ctx.fillStyle = '#f80';
     ctx.fillRect(0, 0, 512, 256);
 
-    wp.savePNG(canvas, "d:\\fucktard.png");
+    //wp.savePNG(canvas, "d:\\fucktard.png");
 }
 
 function toggleHotReload() {
     wp.enableHotReload(!WP_HOTRELOAD_ENABLED);
-    hotReloadLabel.value = (WP_HOTRELOAD_ENABLED) ? 'Enabled' : 'Disabled';
+    document.getElementById('toggle_hot_reload_button').innerHTML = (WP_HOTRELOAD_ENABLED) ? 'disable hot reload' : 'enable hot reload';
+
 }
 
 function toggleFullScreen() {
     wp.setFullScreen(!WP_FULLSCREEN);
-    fullScreenLabel.value = (WP_FULLSCREEN) ? 'full screen' : 'windowed';
+    document.getElementById('toggle_fullscreen_button').innerHTML = (WP_FULLSCREEN) ? 'leave fullscreen' : 'enter fullscreen';
 }
 
 function toggleFrameless() {
     wp.setFrameless(!WP_FRAMELESS);
-    framelessLabel.value = (WP_FRAMELESS) ? 'frameless' : 'framed';
+    document.getElementById('toggle_frameless_button').innerHTML = (WP_FRAMELESS) ? 'Go framed' : 'go frameless';
+}
+
+function toggleMinimizeToTray() {
+    wp.minimizeToTray(!WP_MINIMIZE_TO_TRAY);
+    document.getElementById('toggle_minimize_to_tray_button').innerHTML = (WP_MINIMIZE_TO_TRAY) ? 'minimize to bar' : 'minimize to tray';
 }
 
 function testOpenFileDialog() {

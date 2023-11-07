@@ -18,6 +18,7 @@ let WP_HOTRELOAD_ENABLED = WP_HOST.restoreHotReloadState(); // True when hot rel
 
 let WP_FULLSCREEN = false; // True when app is in full-screen mode.
 let WP_FRAMELESS = false; // True when the app window has no frame.
+let WP_MINIMIZE_TO_TRAY = false; // True when app window will minimize to the system tray.
 
 //let WP_MESSAGE_HANDLER; // Callback function that will receive messages sent from the host.
 
