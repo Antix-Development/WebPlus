@@ -88,7 +88,7 @@ Hot reloading uses a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotne
 The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
 
 
-*NOTE:* I was delighted at how easy it was to actually set it all up and get it going inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :)
+:love_letter: I was delighted at how easy it was to actually set it all up and get it going inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :)
 
 
 
