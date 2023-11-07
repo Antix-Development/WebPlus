@@ -87,8 +87,6 @@ That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle:
 
 For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality.
 
-By using the common WebView2 component, distribution size is kept to a bare minimum. This means that users of WebPlus based apps will have to install the required common [.NET](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net481) and [WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section) runtimes, which isn't as bad as it might initially sound because many users will already have these *"common"* runtimes installed. Windows 11 also ships with WebView2 preinstalled! :heart:
-
 Hot reloading uses a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
 
 The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
