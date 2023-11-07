@@ -208,7 +208,7 @@ Exit the application.
 
 Send the given message to the host. The message will be sent as a JSON string.
 
-&emsp; :arrow_right: parameter (String) message
+&emsp; :small_blue_diamond: parameter (String) message
 
 
 
@@ -216,7 +216,7 @@ Send the given message to the host. The message will be sent as a JSON string.
 
 Set the callback that will receive responses from the host to the given callback function.
 
-&emsp; :arrow_right: parameter (Function) handler
+&emsp; :small_blue_diamond: parameter (Function) handler
 
 
 
@@ -224,7 +224,7 @@ Set the callback that will receive responses from the host to the given callback
 
 Enable or disable hot reloading according to the given state.
 
-&emsp; :arrow_right: parameter (Boolean) state
+&emsp; :small_blue_diamond: parameter (Boolean) state
 
 
 
@@ -232,7 +232,7 @@ Enable or disable hot reloading according to the given state.
 
 Get the applications folder.
 
-&emsp; :arrow_left: returns (String)
+&emsp; :small_orange_diamond: returns (String)
 
 
 
@@ -240,7 +240,7 @@ Get the applications folder.
 
 Get the last error encountered by the host. Useful for determining why some method or another failed.
 
-&emsp; :arrow_left: returns (String)
+&emsp; :small_orange_diamond: returns (String)
 
 
 
@@ -248,9 +248,9 @@ Get the last error encountered by the host. Useful for determining why some meth
 
 Set the host window location to the given coordinates.
 
-&emsp; :arrow_right: parameter (Number) x
+&emsp; :small_blue_diamond: parameter (Number) x
 
-&emsp; :arrow_right: parameter (Number) y
+&emsp; :small_blue_diamond: parameter (Number) y
 
 
 
@@ -258,9 +258,9 @@ Set the host window location to the given coordinates.
 
 Set the host window size to the given dimensions.
 
-&emsp; :arrow_right: parameter (Number) width
+&emsp; :small_blue_diamond: parameter (Number) width
 
-&emsp; :arrow_right: parameter (Number) height
+&emsp; :small_blue_diamond: parameter (Number) height
 
 
 
@@ -268,7 +268,7 @@ Set the host window size to the given dimensions.
 
 Set the host window title to the given title.
 
-&emsp; :arrow_right: parameter (String) title
+&emsp; :small_blue_diamond: parameter (String) title
 
 
 
@@ -276,7 +276,7 @@ Set the host window title to the given title.
 
 Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
 
 
@@ -284,7 +284,7 @@ Set the host window icon to the given path pointing to a .PNG or .ICO file.
 
 Set the host window to minify to the system tray instead of the task bar according to the given state.
 
-&emsp; :arrow_right: parameter (Boolean) state
+&emsp; :small_blue_diamond: parameter (Boolean) state
 
 
 
@@ -292,7 +292,7 @@ Set the host window to minify to the system tray instead of the task bar accordi
 
 Enter or leave fullscreen mode according to the given state.
 
-&emsp; :arrow_right: parameter (Boolean) state
+&emsp; :small_blue_diamond: parameter (Boolean) state
 
 
 
@@ -300,7 +300,7 @@ Enter or leave fullscreen mode according to the given state.
 
 Remove or add window frame according to the given state.
 
-&emsp; :arrow_right: parameter (Boolean) state
+&emsp; :small_blue_diamond: parameter (Boolean) state
 
 
 
@@ -308,9 +308,9 @@ Remove or add window frame according to the given state.
 
 Get the [`FileDetails`](#filedetails) for the file or directory at the given path.
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
-&emsp; :arrow_left: returns (FileDetails)
+&emsp; :small_orange_diamond: returns (FileDetails)
 
 
 
@@ -318,7 +318,7 @@ Get the [`FileDetails`](#filedetails) for the file or directory at the given pat
 
 Delete the file with the given path.
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
 
 
@@ -326,7 +326,7 @@ Delete the file with the given path.
 
 Rename the file with the given path to the given name.
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
 
 
@@ -334,9 +334,9 @@ Rename the file with the given path to the given name.
 
 Get an array of [`FileDetails`](#filedetails) for all files and directories in the given path.
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
-&emsp; :arrow_left: returns ([FileDetails])
+&emsp; :small_orange_diamond: returns ([FileDetails])
 
 
 
@@ -344,7 +344,7 @@ Get an array of [`FileDetails`](#filedetails) for all files and directories in t
 
 Create a directory with the given path.
 
-&emsp; :arrow_right: parameter ( String ) path
+&emsp; :small_blue_diamond: parameter ( String ) path
 
 
 
@@ -352,7 +352,7 @@ Create a directory with the given path.
 
 Recursively delete the directory with the given path.
 
-&emsp; :arrow_right: parameter ( String ) path
+&emsp; :small_blue_diamond: parameter ( String ) path
 
 
 
@@ -360,7 +360,7 @@ Recursively delete the directory with the given path.
 
 Rename the directory with the given path to the given name.
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
 
 
@@ -368,9 +368,9 @@ Rename the directory with the given path to the given name.
 
 Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-&emsp; :arrow_right: parameter (DialogOptions) [`options`](#dialogoptions)
+&emsp; :small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
 
-&emsp; :arrow_left: returns (FileDetails)
+&emsp; :small_orange_diamond: returns (FileDetails)
 
 
 
@@ -378,7 +378,7 @@ Using the given options, display a dialog where a file can be selected, and retu
 
 Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-&emsp; :arrow_left: returns (FileDetails)
+&emsp; :small_orange_diamond: returns (FileDetails)
 
 
 
@@ -386,9 +386,9 @@ Display a dialog where a folder can be selected, and return its `FileDetails` if
 
 Load the text file with the given path.
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
-&emsp; :arrow_left: returns (String)
+&emsp; :small_orange_diamond: returns (String)
 
 
 
@@ -396,9 +396,9 @@ Load the text file with the given path.
 
 Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
-&emsp; :arrow_right: parameter (DialogOptions) [`options`](#dialogoptions)
+&emsp; :small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
 
-&emsp; :arrow_left: returns (String)
+&emsp; :small_orange_diamond: returns (String)
 
 
 
@@ -406,9 +406,9 @@ Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the 
 
 Save the given text to the file at the given path.
 
-&emsp; :arrow_right: parameter (String) text
+&emsp; :small_blue_diamond: parameter (String) text
 
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (String) path
 
 
 
@@ -416,9 +416,9 @@ Save the given text to the file at the given path.
 
 Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the given text to the selected file.
 
-&emsp; :arrow_right: parameter (String) text
+&emsp; :small_blue_diamond: parameter (String) text
 
-&emsp; :arrow_right: parameter (DialogOptions) [`options`](#dialogoptions)
+&emsp; :small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
 
 
 
@@ -426,5 +426,5 @@ Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the 
 
 Save the given canvas as a PNG image at the given path.
 
-&emsp; :arrow_right: parameter (HTMLCanvasElement) canvas
-&emsp; :arrow_right: parameter (String) path
+&emsp; :small_blue_diamond: parameter (HTMLCanvasElement) canvas
+&emsp; :small_blue_diamond: parameter (String) path
