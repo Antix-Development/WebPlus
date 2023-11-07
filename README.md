@@ -27,7 +27,9 @@ WebPlus adds super powers to web applications and strives to be easy to setup, e
 
 &emsp;:zap: Creating, renaming, moving, and deleting directories.
 
-&emsp;:zap: Base distribution size of 794KB.
+&emsp;:zap: Persistent state.
+
+&emsp;:zap: Base distribution size of 790KB.
 
 ## What's New?
 
@@ -69,7 +71,7 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:five: Rinse and repeat :four: until your app is done.
 
-&emsp;:six: Remove the line in *"app.js"* that reads `wp.enableHotReload(true);` to disable hot reloading.
+&emsp;:six: Set `HotReload` to `false` in the *"app\app.json"* file to disable hot reloading.
 
 &emsp;:seven: Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
 
@@ -93,6 +95,28 @@ The default icon provided inside the *"app"* folder contains with sizes of 16x16
 :love_letter: I was delighted at how easy it was to actually get a WebView2 set up and working inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :thumbsup:
 
 # API Reference
+
+## Options
+
+WebPlus stores its persistent state in a the "app/app.json" file which has the following structure..
+
+```
+{
+  HotReload: {Boolean},
+  SaveOnExit {Boolean},           // Set to false to not save on exit.
+  Title: {String}		          // Window title.
+  X: {Number},			          // Window position
+  Y: {Number},
+  Width: {Number},			      // Window dimensions.
+  Height: {Number},
+  FullScreen: {Boolean},		  // The remaining properties are not yet implemented.
+  Frameless: {Boolean},
+  Minimized: {Boolean},
+  MinimizeToTray: {Boolean},
+}
+```
+
+:point_right: Remember to set `HotReload` to `false` before distributing your app.
 
 ## Variables
 

@@ -1,0 +1,12 @@
+{
+    "hotReload": true,
+    "saveOnExit": false,
+    "title": "",
+    "x": 100,
+    "y": 100,
+    "width": 960,
+    "height": 540,
+    "fullScreen": false,
+    "frameless": false,
+    "minimizetoTray": false
+}

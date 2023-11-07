@@ -20,10 +20,10 @@ window.onload = () => {
         console.log(`windowresize: ${e.detail}`);
     });
 
-    wp.setWindowTitle("WebPlus Tests");
+    //wp.setWindowTitle("WebPlus Tests");
 
-    wp.setWindowLocation(0, 0);
-    wp.setWindowSize(1280, 600);
+    //wp.setWindowLocation(0, 0);
+    //wp.setWindowSize(1280, 600);
 
     generateImage();
 }
@@ -79,33 +79,15 @@ function testBrowseForAndSaveTextFile() {
 function generateImage() {
     const canvas = document.getElementById('image');
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = `#${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0') }`;
+    ctx.fillStyle = `#${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0') }`; // Random color.
     ctx.fillRect(0, 0, 460, 200);
-    ctx.fillStyle = '#0004';
+    ctx.fillStyle = '#0004'; // Darken.
     for (var y = 0; y < 10; y++) {
-        for (var x = 0; x < 23; x++) {
-            if (Math.random() < .5) ctx.fillRect(x * 20, y * 20, 20, 20);
-        }
+        for (var x = 0; x < 23; x++) if (Math.random() < .5) ctx.fillRect(x * 20, y * 20, 20, 20);
     }
 }
 
 function testSavePNG() {
     const fd = wp.saveFileDialog({ filter: WP_PNGFILE_FILTER });
     if (fd) wp.savePNG(document.getElementById('image'), fd.fullPath);
-}
-
-const options = {
-    hotReload: true,
-
-    saveOnExit: false,
-
-    x: 0,
-    y: 0,
-
-    width: 800,
-    height: 600,
-
-    fullScreen: false,
-    frameless: false,
-
 }

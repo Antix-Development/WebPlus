@@ -258,6 +258,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppOptions.cs" />
     <Compile Include="FileDetails.cs" />
     <Compile Include="FileDialogOptions.cs" />
     <Compile Include="Form1.cs">
@@ -282,6 +283,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app\app.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -343,4 +345,9 @@ del $(TargetDir)*.xml
   <ItemGroup />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties app_4app_1json__JsonSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

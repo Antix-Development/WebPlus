@@ -13,16 +13,27 @@ namespace WebPlus
 
         private HostedObject hostedObject; // The object containing the methods that are directly callable from JavaScript.
 
+        private AppOptions appOptions;
+
         public Form1()
         {
             InitializeComponent();
 
-            setIcon("app\\icon.ico");
+            try
+            {
+                appOptions = JsonSerializer.Deserialize<AppOptions>(File.ReadAllText("app\\app.json"));
+            }
+            catch (Exception)
+            {
+                appOptions = new AppOptions();
+                saveOptions();
+            }
 
-            notifyIcon1.Text = this.Text;
+            setIcon("app\\icon.ico");
 
             InitializeAsync();
             WebView.Source = new Uri($"file:///{Directory.GetCurrentDirectory()}/app/app.html");
+
             this.Resize += new EventHandler(this.Form_Resize);
         }
 
@@ -32,14 +43,14 @@ namespace WebPlus
             {
                 case ".ico":
                     this.Icon = new Icon(path);
-                    notifyIcon1.Icon = new Icon(path);
+                    notifyIcon.Icon = new Icon(path);
                     return null;
 
                 case ".png":
                     Image image = Image.FromFile(path);
                     Icon icon = Icon.FromHandle(new Bitmap(image).GetHicon());
                     this.Icon = icon;
-                    notifyIcon1.Icon = icon;
+                    notifyIcon.Icon = icon;
                     icon.Dispose();
                     image.Dispose();
                     return null;
@@ -55,6 +66,17 @@ namespace WebPlus
 
             hostedObject = new HostedObject(this);
             WebView.CoreWebView2.AddHostObjectToScript("hostedObject", hostedObject);
+
+            // 
+            // Restore options
+            // 
+
+            hostedObject.enableHotReload(appOptions.HotReload);
+
+            Location = new Point(appOptions.X, appOptions.Y);
+            Size = new Size(appOptions.Width, appOptions.Height);
+
+            SetWindowTitle(appOptions.Title);
 
             //WebView.CoreWebView2.WebMessageReceived += MessageReceived;
         }
@@ -105,7 +127,7 @@ namespace WebPlus
                     if (hostedObject.MinimizeToTray)
                     {
                         Hide();
-                        notifyIcon1.Visible = true;
+                        notifyIcon.Visible = true;
                     }
                     DispatchWindowResizeEvent("windowMinimized");
                     break;
@@ -126,7 +148,7 @@ namespace WebPlus
         {
             Show();
             this.WindowState = FormWindowState.Normal;
-            notifyIcon1.Visible = false;
+            notifyIcon.Visible = false;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -137,12 +159,19 @@ namespace WebPlus
         public void SetWindowTitle(string title)
         {
             this.Text = title;
-            notifyIcon1.Text = title;
+            notifyIcon.Text = title;
         }
 
         private async void ClearBrowserCache()
         {
             await WebView.CoreWebView2.Profile.ClearBrowsingDataAsync();
+        }
+
+        public void HotReload()
+        {
+            this.Invoke(new Action(() => {
+                WebView.CoreWebView2.Reload();
+            }));
         }
 
         private void webView_KeyDown(object sender, KeyEventArgs e)
@@ -156,13 +185,6 @@ namespace WebPlus
                 default:
                     break;
             }
-        }
-
-        public void HotReload()
-        {
-            this.Invoke(new Action(() => {
-                WebView.CoreWebView2.Reload();
-            }));
         }
 
         private void webView_KeyUp(object sender, KeyEventArgs e)
@@ -191,9 +213,27 @@ namespace WebPlus
             }
         }
 
-        private void WebView_Click(object sender, EventArgs e)
+        private void saveOptions()
         {
-
+            File.WriteAllText("app\\app.json", JsonSerializer.Serialize(appOptions, JsonOptions));
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (appOptions.SaveOnExit)
+            {
+                appOptions.X = Location.X;
+                appOptions.Y = Location.Y;
+                appOptions.Width = Size.Width;
+                appOptions.Height = Size.Height;
+                appOptions.FullScreen = hostedObject.InFullScreen;
+                appOptions.MinimizeToTray = hostedObject.MinimizeToTray;
+                appOptions.Frameless = hostedObject.Frameless;
+                appOptions.Title = Text;
+
+                saveOptions();
+            }
+        }
+
     }
 }

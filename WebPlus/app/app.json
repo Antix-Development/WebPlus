@@ -1,0 +1,12 @@
+{
+    "HotReload": true,
+    "SaveOnExit": true,
+    "Title": "poo",
+    "X": 200,
+    "Y": 100,
+    "Width": 960,
+    "Height": 540,
+    "FullScreen": false,
+    "Frameless": false,
+    "MinimizetoTray": false
+}

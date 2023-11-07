@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.WebView = new Microsoft.Web.WebView2.WinForms.WebView2();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,13 +45,12 @@
             this.WebView.Size = new System.Drawing.Size(824, 391);
             this.WebView.TabIndex = 2;
             this.WebView.ZoomFactor = 1D;
-            this.WebView.Click += new System.EventHandler(this.WebView_Click);
             this.WebView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.webView_KeyDown);
             this.WebView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.webView_KeyUp);
             // 
-            // notifyIcon1
+            // notifyIcon
             // 
-            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // Form1
             // 
@@ -60,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(824, 391);
             this.Controls.Add(this.WebView);
             this.Name = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).EndInit();
             this.ResumeLayout(false);
@@ -68,7 +68,7 @@
 
         #endregion
         private Microsoft.Web.WebView2.WinForms.WebView2 WebView;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 
