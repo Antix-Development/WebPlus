@@ -33,7 +33,7 @@ WebPlus adds super powers to web applications and strives to be easy to setup, e
 
 v1.0.0 (7 Nov 2023)
 
-- Initial release.
+&emsp;:small_blue_diamond: Initial release.
 
 ## Why WebPlus?
 
