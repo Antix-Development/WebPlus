@@ -172,14 +172,14 @@ Some WebPlus methods return objects, and others may require you to supply an obj
 {
   name: {String},       // Name of file, including extension.
   extension: {String},  // Forced to lowercase.
-  type: {String},       // "FILE", "DIRECTORY", or "DIRECTORY".
+  type: {String},       // "FILE", "DIRECTORY", or "UNKNOWN".
   size: {Number},       // Size in bytes.
   path: {String},       // Directory where file is stored.
   fullPath: {String},   // Fully qualified file path.
 }
 ```
 
-:warning: A `type` of "UNKNOWN" can be present **ONLY** when calling `saveFileDialog`.
+:warning: A `type` of "UNKNOWN" will be present **ONLY** when calling `saveFileDialog` and the user entered the name of a file that doesn't exist *"yet"*.
 
 ### DialogOptions
 
