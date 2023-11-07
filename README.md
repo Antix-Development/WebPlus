@@ -85,9 +85,19 @@ That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle:
 
 # Under the Hood
 
-For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality.
+For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality. Hot reloading is provided using a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
 
-Hot reloading uses a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
+When a WebPlus application launches,
+
+:one: Creates a windows containing a WebView2 control.
+
+:two: Loads persistent options from *"app/app.json"*.
+
+:three: Modifies the windows form according to the options.
+
+:four: Loads *"app/app.html"* into the WebView2 control.
+
+When *"app/app.html"* has fully loaded the `window.onload` event in *"app/app.js"* is fired, which starts the app running.
 
 The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
 
@@ -216,7 +226,7 @@ The events `detail`` property will contain a string describing what type of resi
 
 ## Messages
 
-:hammer: Code for asynchronous messaging between the app and host is included in the various source code files but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. Hoswever I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
+:hammer: Code for asynchronous messaging between the app and host is included in the various source code files (and this readme) but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. Hoswever I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
 
 ## Methods
 
