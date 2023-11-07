@@ -5,19 +5,29 @@ WebPlus adds super powers to web applications and strives to be easy to setup, e
 
 ### Features
 
-- Hot reloading for instant visual feedback during development.
-- Setting window icon and title.
-- Window resizing and repositioning.
-- Window minification to system tray.
-- Fullscreen and frameless window toggling.
-- True window resize event pumping.
-- Dialogs to select files and folders.
-- Loading and saving text files.
-- Saving PNG images.
-- Renaming, moving, and deleting files.
-- Creating, renaming, moving, and deleting directories.
-- Sending and receiving messages from the host.
-- Base distribution size of 794KB.
+&emsp;:zap: Hot reloading for instant visual feedback during development.
+
+&emsp;:zap: Setting window icon and title.
+
+&emsp;:zap: Window resizing and repositioning.
+
+&emsp;:zap: Window minification to system tray.
+
+&emsp;:zap: Fullscreen and frameless window toggling.
+
+&emsp;:zap: True window resize event pumping.
+
+&emsp;:zap: Dialogs to select files and folders.
+
+&emsp;:zap: Loading and saving text files.
+
+&emsp;:zap: Saving PNG images.
+
+&emsp;:zap: Renaming, moving, and deleting files.
+
+&emsp;:zap: Creating, renaming, moving, and deleting directories.
+
+&emsp;:zap: Base distribution size of 794KB.
 
 ## What's New?
 
