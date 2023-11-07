@@ -71,9 +71,11 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:seven: Delete the ".WebView" folder. This is a temprorary cache folder that isn't required for distribution.
 
-&emsp;:eight: Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution, unless you want to take further steps such as minifying or obfuscating your code.
+&emsp;:eight: Perform extra tasks such as minifying or obfuscating your code.
 
-*NOTE:* the *"webplus.js"* file in the *"app"* folder contains the WebPlus engine code and you don't need to modify it.
+&emsp;:nine: Replace the *"icon.ico"* with your own icon, and then you're ready to commence distribution.
+
+:warning: the *"webplus.js"* file in the *"app"* folder contains the WebPlus engine code and you don't need to modify it.
 
 # Under the Hood
 
