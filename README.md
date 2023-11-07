@@ -185,11 +185,13 @@ Some WebPlus methods return objects, and others may require you to supply an obj
 
 ```
 {
-  filter: {String},
-  multiSelect: {Boolean},
-  title: {String}
+  filter: {String},       // A [File Dialog Filter](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.filedialog.filter?view=windowsdesktop-7.0).
+  multiSelect: {Boolean}, // Set to true to enable multiple file selection.
+  title: {String}        //
 }
 ```
+
+:point_right: WebPlus includes some handy filters for common filetypes.. `WP_TEXTFILE_FILTER` for for TEXT files, `WP_JSONFILE_FILTER` for JSON files, and `WP_PNGFILE_FILTER` for PNG files.
 
 ## Events
 
