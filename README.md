@@ -51,6 +51,8 @@ WebPlus is also only works with Windows because I don't have any Apple or Linux 
 
 If you create something using WebPlus, please let me know, I'd love to see what you do with it. Maybe you would also consider [buying me a coffee](https://www.buymeacoffee.com/antixdevelu) :coffee:
 
+Oh, and feel free to open an issue if you need any assistance or just have a question.
+
 # Getting Started
 
 ## Requirements
