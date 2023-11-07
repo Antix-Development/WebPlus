@@ -43,7 +43,7 @@ These *"web apps"* are fantastic but they have no access to the local file syste
 
 Because some of them created gigantic distributions (90Mb+) and others had unresolvable issues, I just decided to write my own.. WebPlus.
 
-WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality. In fact, comparing WebPlus to other mature frameworks is probably a bit like comparing an abacus with an electronic calculator.
+WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality, and comparing WebPlus to other mature frameworks is like comparing an abacus with an electronic calculator.
 
 WebPlus is just for Windows because I don't have any Apple or Linux stuff, sorry.
 
