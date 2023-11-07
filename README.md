@@ -27,7 +27,7 @@ WebPlus adds super powers to web applications and strives to be easy to setup, e
 
 &emsp;:zap: Creating, renaming, moving, and deleting directories.
 
-&emsp;:zap: Base distribution size of 794KB :exclamation:
+&emsp;:zap: Base distribution size of 794KB.
 
 ## What's New?
 
