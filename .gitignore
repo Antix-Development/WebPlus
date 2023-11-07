@@ -4,7 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # WebPlus
-WebPlus.exe.WebView2
+dist/WebPlus.exe.WebView2/
 
 # User-specific files
 *.rsuser
