@@ -41,13 +41,13 @@ v1.0.0 (7 Nov 2023)
 
 I really enjoy creating web applications using HTML, CSS, and JavaScript.
 
-These *"web apps"* are fantastic but they have no access to the local file system, because of security. This issue can be solved by using currently available frameworks, so I tried a bunch of them, [ElectronJS](https://www.electronjs.org/), [NWjs](https://nwjs.io/), [CEFSharp](https://cefsharp.github.io/), [Tauri](https://tauri.app/), and [Neutralino](https://neutralino.js.org/).
+Sadly *"web apps"* have no access to the local file system, because of security. This issue can be solved by using currently available frameworks, so I tried a bunch of them, [ElectronJS](https://www.electronjs.org/), [NWjs](https://nwjs.io/), [CEFSharp](https://cefsharp.github.io/), [Tauri](https://tauri.app/), and [Neutralino](https://neutralino.js.org/).
 
-Because some of them created gigantic distributions (90Mb+) and others had unresolvable issues, I just decided to write my own.. WebPlus.
+Some of them created gigantic distributions (90Mb+) and others had unresolvable issues, so I just decided to write my own.. WebPlus.
 
-WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with any established more advanced frameworks that provide similar functionality, and comparing WebPlus to other mature frameworks is like comparing an abacus with an electronic calculator.
+WebPlus was created for my own personal use and is publicly availabe in case anyone finds it interesting or of use. It does *not* strive to compete with other framework that provide similar functionality, and comparing WebPlus to other frameworks is like comparing an abacus with an electronic calculator.
 
-WebPlus is also just for Windows because I don't have any Apple or Linux stuff, sorry.
+WebPlus is also only works with Windows because I don't have any Apple or Linux stuff, sorry.
 
 If you create something using WebPlus, please let me know, I'd love to see what you do with it. Maybe you would also consider [buying me a coffee](https://www.buymeacoffee.com/antixdevelu) :coffee:
 
@@ -85,12 +85,13 @@ That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle:
 
 # Under the Hood
 
-For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the entire client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality.
+For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality.
+
+By using the common WebView2 component, distribution size is kept to a bare minimum. This means that users of WebPlus based apps will have to install the required common [.NET](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net481) and [WebView2](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section) runtimes, which isn't as bad as it might initially sound because many users will already have these *"common"* runtimes installed. Windows 11 also ships with WebView2 preinstalled! :heart:
 
 Hot reloading uses a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
 
 The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
-
 
 :love_letter: I was delighted at how easy it was to actually get a WebView2 set up and working inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :thumbsup:
 
@@ -219,13 +220,9 @@ The events `detail`` property will contain a string describing what type of resi
 
 :hammer: Code for asynchronous messaging between the app and host is included in the various source code files but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. Hoswever I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
 
-<div style="color: #ffffd0">
-
 ## Methods
 
-</div>
-
-All callable host methods are encapsulated inside the wp object and you call them the same way you would a class, so if you wanted to set the windows title to "WebPlus Rocks" you would use the following code:
+All callable host methods are encapsulated inside the wp object and you call them the same way you would a class, so if you wanted to set the windows title to *"WebPlus Rocks"* you would use the following code:
 
 ```
 wp.setWindowTitle("WebPlus Rocks");
@@ -470,4 +467,5 @@ Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the 
 Save the given canvas as a PNG image at the given path.
 
 :small_blue_diamond: parameter (HTMLCanvasElement) canvas
+
 :small_blue_diamond: parameter {String} path
