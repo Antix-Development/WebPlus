@@ -28,6 +28,7 @@ namespace WebPlus
             catch (Exception)
             {
                 appOptions = new AppOptions();
+                appOptions.Reset();
                 saveOptions();
             }
 
@@ -161,7 +162,7 @@ namespace WebPlus
 
         public void SetWindowTitle(string title)
         {
-            this.Text = title;
+            Text = title;
             notifyIcon.Text = title;
         }
 

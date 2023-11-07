@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace WebPlus
+﻿namespace WebPlus
 {
     public class AppOptions
     {
@@ -25,7 +16,7 @@ namespace WebPlus
 
         public void Reset()
         {
-            HotReload = false;
+            HotReload = true;
             SaveOnExit = false;
             Title = string.Empty;
             X = 100;
@@ -41,6 +32,5 @@ namespace WebPlus
             return $"HotReload:{HotReload}, SaveOnExit:{SaveOnExit}, Title:\"{Title}\", X:{X}, Y:{Y}, Width:{Width}, Height:{Height}, FullScreen:{FullScreen}, Frameless:{Frameless}, MinimizeToTray:{MinimizeToTray}";
         }
     }
-
 
 }

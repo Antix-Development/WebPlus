@@ -20,11 +20,6 @@ window.onload = () => {
         console.log(`windowresize: ${e.detail}`);
     });
 
-    //wp.setWindowTitle("WebPlus Tests");
-
-    //wp.setWindowLocation(0, 0);
-    //wp.setWindowSize(1280, 600);
-
     generateImage();
 }
 
