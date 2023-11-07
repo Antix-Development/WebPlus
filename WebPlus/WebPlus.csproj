@@ -336,7 +336,8 @@ del $(TargetDir)*.xml
 </PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app\style.css" />
+    <Content Include="app\app.css" />
+    <Content Include="app\app.ico" />
     <Content Include="app\webplus.js" />
     <Content Include="assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

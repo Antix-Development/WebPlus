@@ -15,13 +15,15 @@ namespace WebPlus
 
         private AppOptions appOptions;
 
+        private string BaseAppFile = "app\\app";
+
         public Form1()
         {
             InitializeComponent();
 
             try
             {
-                appOptions = JsonSerializer.Deserialize<AppOptions>(File.ReadAllText("app\\app.json"));
+                appOptions = JsonSerializer.Deserialize<AppOptions>(File.ReadAllText($"{BaseAppFile}.json"));
             }
             catch (Exception)
             {
@@ -29,9 +31,10 @@ namespace WebPlus
                 saveOptions();
             }
 
-            setIcon("app\\icon.ico");
+            setIcon($"{BaseAppFile}.ico");
 
             InitializeAsync();
+
             WebView.Source = new Uri($"file:///{Directory.GetCurrentDirectory()}/app/app.html");
 
             this.Resize += new EventHandler(this.Form_Resize);
@@ -215,7 +218,7 @@ namespace WebPlus
 
         private void saveOptions()
         {
-            File.WriteAllText("app\\app.json", JsonSerializer.Serialize(appOptions, JsonOptions));
+            File.WriteAllText($"{BaseAppFile}.json", JsonSerializer.Serialize(appOptions, JsonOptions));
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
