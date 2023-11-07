@@ -1,9 +1,9 @@
 ﻿/**
- * <ApplicationName>
- * <TagLine>
- * @copyright <Author>
- * @license <License>
- * @namespace <Namespace>
+ * WebPlus.js
+ * Augnments web apps with super powers.
+ * @copyright 2023 Cliff Earl, Antix Development.
+ * @license MIT
+ * @namespace WebPlus
 */
 
 'use_strict';
@@ -12,44 +12,20 @@ let debugOutput;
 
 window.onload = () => {
 
-    //wp.enableHotReload(true);
-
     debugOutput = document.getElementById('debug_output');
 
-
     document.getElementById('wp_path_label').value = WP_PATH;
-
-
-
-
-//    wp.renameFile("d:\\haha.txt", "poopoo.txt");
-//    wp.deleteDirectory("d:\\deleteme");
-
-    console.log(wp.fileInfo("d:\\fucktard.txt"));
-    console.log(wp.getLastError());
-
-    wp.setWindowIcon("d:\\icon.png")
-
-
 
     window.addEventListener('windowresize', (e) => {
         console.log(`windowresize: ${e.detail}`);
     });
 
-    const canvas = document.createElement('canvas');
-    canvas.width = 512;
-    canvas.height = 256;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#f80';
-    ctx.fillRect(0, 0, 512, 256);
-
-    //wp.savePNG(canvas, "d:\\fucktard.png");
+    generateImage();
 }
 
 function toggleHotReload() {
     wp.enableHotReload(!WP_HOTRELOAD_ENABLED);
     document.getElementById('toggle_hot_reload_button').innerHTML = (WP_HOTRELOAD_ENABLED) ? 'disable hot reload' : 'enable hot reload';
-
 }
 
 function toggleFullScreen() {
@@ -95,16 +71,23 @@ function testBrowseForAndSaveTextFile() {
     const text = wp.browseForAndSaveTextFile(debugOutput.value);
 }
 
-function testDirInfo() {
-    const di = wp.dirInfo("C:");
-    console.log(di);
+function generateImage() {
+    const canvas = document.getElementById('image');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = `#${Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0') }`;
+    ctx.fillRect(0, 0, 460, 200);
+    ctx.fillStyle = '#0004';
+    for (var y = 0; y < 10; y++) {
+        for (var x = 0; x < 23; x++) {
+            if (Math.random() < .5) ctx.fillRect(x * 20, y * 20, 20, 20);
+        }
+    }
 }
 
-function testHostedObject() {
-    const txt = wp.loadTextFile('pooh');
-    console.log(txt);
+function testSavePNG() {
+    const fd = wp.saveFileDialog({ filter: WP_PNGFILE_FILTER });
+    if (fd) wp.savePNG(document.getElementById('image'), fd.fullPath);
 }
-
 
 const options = {
     location: {

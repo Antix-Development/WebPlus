@@ -111,7 +111,10 @@ const wp = {
      * @param {Boolean} state
      * @memberof WebPlus
      */
-    minimizeToTray: (state) => WP_HOST.minimizeToTray(state),
+    minimizeToTray: (state) => {
+        WP_HOST.minimizeToTray(state);
+        WP_MINIMIZE_TO_TRAY = state;
+    },
 
     /**
      * Enter or leave fullscreen mode according to the given state.
@@ -191,7 +194,7 @@ const wp = {
     renameDirectory: (path, name) => WP_HOST.renameDirectory(path, name),
 
     /**
-     * Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+     * Using the given options, display an open dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
      * @param {Object} options
      * @returns {FileDetails}
      * @memberof WebPlus
@@ -205,6 +208,27 @@ const wp = {
         }, options);
 
         const fd = WP_HOST.openFileDialog(JSON.stringify(o));
+
+        return (fd) ? JSON.parse(fd) : null;
+    },
+    
+    /**
+     * Using the given options, display a save file dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+     * @param {Object} options
+     * @returns {FileDetails}
+     * @memberof WebPlus
+     */
+    saveFileDialog: (options = {}) => {
+
+        const o = Object.assign({
+            filter: WP_TEXTFILE_FILTER,
+            multiSelect: false,
+            title: "select file"
+        }, options);
+
+        const fd = WP_HOST.saveFileDialog(JSON.stringify(o));
+        console.log("whut the shit?");
+        console.log(fd);
 
         return (fd) ? JSON.parse(fd) : null;
     },

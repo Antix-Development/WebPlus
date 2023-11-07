@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>WebPlus</title>
+        <title>WebPlus Test</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script type="text/javascript" src="webplus.js"></script>
         <script type="text/javascript" src="app.js"></script>
@@ -11,68 +11,46 @@
             <div class="content"></div>
 
             <div class="left">
-                <textarea id="debug_output" rows="15" spellcheck="false" style="width: 100%; resize: none"></textarea><br>
-                <button onclick="document.getElementById('debug_output').value = '';" style="width: 100%">Clear output</button><br>
-                <button onclick="testBrowseForAndLoadTextFile();">load from text file</button>
-                <button onclick="testBrowseForAndSaveTextFile();">save to text file</button>
-
+                <div class="frame">
+                    <textarea id="debug_output" rows="17" spellcheck="false" style="width: 100%; resize: none"></textarea>
+                    <button onclick="document.getElementById('debug_output').value = '';" style="width: 100%">Clear output</button>
+                    <button onclick="testBrowseForAndLoadTextFile();" style="width: 100%">load from text file</button>
+                    <button onclick="testBrowseForAndSaveTextFile();" style="width: 100%">save to text file</button>
+                </div>
             </div>
 
-            <div class="resize"></div>
-
             <div class="right">
-
                 <div>
                     <label>WP_PATH</label>
-                    <input type="text" id="wp_path_label" readonly style="min-width: 80%" />
+                    <input type="text" id="wp_path_label" readonly style="min-width: 20rem" />
                 </div>
 
                 <div>
                     <button onclick="testSetWindowTitle();">set window title</button>
-                    <input type="text" id="window_name" placeholder="Type title here" spellcheck="false" style="min-width: 8rem" />
-                </div>
+                    <input type="text" id="window_name" placeholder="Type title here" spellcheck="false" style="max-width: 9rem" />
 
-                <div>
                     <button id="toggle_frameless_button" onclick="toggleFrameless();">go frameless</button>
+
                     <button id="toggle_fullscreen_button" onclick="toggleFullScreen();">enter fullscreen</button>
-                    <button id="toggle_minimize_to_tray_button" onclick="toggleMinimizeToTray();">minify to tray</button>
+
+                    <button id="toggle_minimize_to_tray_button" onclick="toggleMinimizeToTray();">minimize to tray</button>
+
                     <button id="toggle_hot_reload_button" onclick="toggleHotReload();">enable hot reload</button>
 
+                    <button onclick="testOpenFileDialog();">select file</button>
+                    <button onclick="testOpenFileDialogMultiple();">select files</button>
 
+                    <button onclick="testOpenFolderDialog();">select folder</button>
                 </div>
 
-                <div>
-                    <button onclick="testOpenFileDialog();">Select Single File</button>
-                    <button onclick="testOpenFileDialogMultiple();">Select Multiple Files</button>
-                    <button onclick="testOpenFolderDialog();">Select A Folder</button>
+                <div class="frame">
+                    <canvas id="image" width="460" height="200" style="border:1px solid #884400;"></canvas>
+                    <button onclick="generateImage();">generate image</button>
+                    <button onclick="testSavePNG();">save image</button>
                 </div>
-
-
-
 
             </div>
         </div>
-
-
-
-        <!--  -->
-        <!--  -->
-        <!--  -->
-        <!--  -->
-
-        <div style="display: inline-block; width: 15rem; border: 1px solid #ccc; border-radius: 4px; padding: .5rem;">
-        </div>
-
-
-
-
-
-
-
-        <button onclick="testHostedObject();" style="padding: .25rem 0; margin-top: .5rem">Test Hosted Object</button><br>
-        <button onclick="testFileInfo();" style="padding: .25rem 0; margin-top: .5rem">Test fileInfo()</button><br>
-        <button onclick="testDirInfo();" style="padding: .25rem 0; margin-top: .5rem">Test dirInfo()</button><br>
-
 
     </body>
 </html>

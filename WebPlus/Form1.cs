@@ -191,5 +191,9 @@ namespace WebPlus
             }
         }
 
+        private void WebView_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

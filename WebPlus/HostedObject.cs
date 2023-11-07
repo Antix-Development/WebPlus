@@ -29,6 +29,8 @@ namespace WebPlus
 
         private string LastError = "";
 
+        private JsonSerializerOptions JsonOptions = new JsonSerializerOptions { IncludeFields = true };
+
         public HostedObject(Form1 hostForm)
         {
             HostForm = hostForm;
@@ -177,7 +179,7 @@ namespace WebPlus
         {
             try
             {
-                return JsonSerializer.Serialize(new FileDetails(path));
+                return JsonSerializer.Serialize(new FileDetails(path), JsonOptions);
             }
             catch (Exception e)
             {
@@ -203,7 +205,7 @@ namespace WebPlus
                     DirDetails.Add(new FileDetails(Path.Combine(path, dir)));
                 }
 
-                return JsonSerializer.Serialize(DirDetails.ToArray());
+                return JsonSerializer.Serialize(DirDetails.ToArray(), JsonOptions);
             }
             catch (Exception e)
             {
@@ -244,7 +246,7 @@ namespace WebPlus
                 {
                     if (!dialogOptions.multiSelect)
                     {
-                        return JsonSerializer.Serialize(new FileDetails(openFileDialog.FileName));
+                        return JsonSerializer.Serialize(new FileDetails(openFileDialog.FileName), JsonOptions);
                     }
                     else
                     {
@@ -254,7 +256,7 @@ namespace WebPlus
                         {
                             fileList.Add(new FileDetails(file));
                         }
-                        return JsonSerializer.Serialize(fileList);
+                        return JsonSerializer.Serialize(fileList, JsonOptions);
                     }
                 }
             }
@@ -276,7 +278,7 @@ namespace WebPlus
 
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    return JsonSerializer.Serialize(new FileDetails(folderBrowserDialog.SelectedPath));
+                    return JsonSerializer.Serialize(new FileDetails(folderBrowserDialog.SelectedPath), JsonOptions);
                 }
             }
             catch (Exception e)
@@ -342,6 +344,36 @@ namespace WebPlus
             {
                 LastError = e.Message;
                 return false;
+            }
+        }
+
+        public string saveFileDialog(string options)
+        {
+            var dialogOptions = JsonSerializer.Deserialize<FileDialogOptions>(options);
+
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = dialogOptions.filter,
+                    Title = dialogOptions.title,
+                    FilterIndex = 0,
+                    RestoreDirectory = true
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    return JsonSerializer.Serialize(new FileDetails(saveFileDialog.FileName), JsonOptions);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                LastError = e.Message;
+                return null;
             }
         }
 
@@ -436,6 +468,9 @@ namespace WebPlus
 
         public bool savePNG(string dataURL, string path)
         {
+            Console.WriteLine(dataURL);
+            Console.WriteLine(path);
+
             string base64String = dataURL.Replace("data:image/png;base64,", "");
 
             try

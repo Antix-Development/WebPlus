@@ -42,9 +42,10 @@
             this.WebView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WebView.Location = new System.Drawing.Point(0, 0);
             this.WebView.Name = "WebView";
-            this.WebView.Size = new System.Drawing.Size(985, 373);
+            this.WebView.Size = new System.Drawing.Size(824, 391);
             this.WebView.TabIndex = 2;
             this.WebView.ZoomFactor = 1D;
+            this.WebView.Click += new System.EventHandler(this.WebView_Click);
             this.WebView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.webView_KeyDown);
             this.WebView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.webView_KeyUp);
             // 
@@ -56,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 373);
+            this.ClientSize = new System.Drawing.Size(824, 391);
             this.Controls.Add(this.WebView);
             this.Name = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);

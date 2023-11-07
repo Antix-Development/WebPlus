@@ -151,12 +151,14 @@ Some WebPlus methods return objects, and others may require you to supply an obj
 {
   name: {String},       // Name of file, including extension.
   extension: {String},  // Forced to lowercase.
-  type: {String},       // "FILE" or "DIRECTORY".
+  type: {String},       // "FILE", "DIRECTORY", or "DIRECTORY".
   size: {Number},       // Size in bytes.
   path: {String},       // Directory where file is stored.
   fullPath: {String},   // Fully qualified file path.
 }
 ```
+
+:warning: A `type` of "UNKNOWN" can be present **ONLY** when calling `saveFileDialog`.
 
 ### DialogOptions
 
@@ -203,7 +205,7 @@ wp.setWindowTitle("WebPlus Rocks");
 Exit the application.
 
 
-
+<!-- 
 ## `messageHost(message)`
 
 Send the given message to the host. The message will be sent as a JSON string.
@@ -216,7 +218,7 @@ Send the given message to the host. The message will be sent as a JSON string.
 
 Set the callback that will receive responses from the host to the given callback function.
 
-:small_blue_diamond: parameter (Function) handler
+:small_blue_diamond: parameter (Function) handler -->
 
 
 
@@ -366,7 +368,17 @@ Rename the directory with the given path to the given name.
 
 ## `openFileDialog(options = {})`
 
-Using the given options, display a dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+Using the given options, display an open file dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
+
+:small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
+
+:small_orange_diamond: returns (FileDetails)
+
+
+
+## `saveFileDialog(options = {})`
+
+Using the given options, display a save file dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
 :small_blue_diamond: parameter (DialogOptions) [`options`](#dialogoptions)
 

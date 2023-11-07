@@ -292,13 +292,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\css\style.css" />
     <Content Include="app\app.html" />
     <Content Include="app\app.js" />
   </ItemGroup>
@@ -336,14 +334,13 @@ del $(TargetDir)*.xml
 </PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="app\style.css" />
     <Content Include="app\webplus.js" />
     <Content Include="assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\assets\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
 </Project>

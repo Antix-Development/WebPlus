@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace WebPlus
@@ -20,14 +21,26 @@ namespace WebPlus
             extension = Path.GetExtension(_path);
             path = Path.GetDirectoryName(_path);
 
-            if (File.GetAttributes(_path).HasFlag(FileAttributes.Directory) )
+            try
             {
-                type = "DIRECTORY";
+                if (File.GetAttributes(_path).HasFlag(FileAttributes.Directory))
+                {
+                    type = "DIRECTORY";
+                }
+                else
+                {
+                    type = "FILE";
+                    size = new FileInfo(_path).Length;
+                }
+
             }
-            else
+            catch (Exception)
             {
-                type = "FILE";
-                size = new FileInfo(_path).Length;
+                // Cover corner case where `saveFileDialog` has beel called and a non existant filename has been entered, 
+                // as is the case when the user enters a name for a new file that they want to create.
+
+                type = "UNKNOWN";
+                size = 0;
             }
         }
 
