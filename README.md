@@ -33,7 +33,7 @@ WebPlus adds super powers to web applications and strives to be easy to setup, e
 
 ## What's New?
 
-v1.0.0 (7 Nov 2023)
+v1.0.0 (8 Nov 2023)
 
 &emsp;:bulb: Initial release.
 
@@ -85,8 +85,6 @@ That's it, you're done.. time for a beverage :coffee: :tea: :sake: :baby_bottle:
 
 # Under the Hood
 
-For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality. Hot reloading is provided using a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
-
 When a WebPlus application launches, it..
 
 1. Creates a windows containing a WebView2 control.
@@ -95,6 +93,8 @@ When a WebPlus application launches, it..
 4. Loads *"app/app.html"* into the WebView2 control.
 
 When *"app/app.html"* has fully loaded the `window.onload` event in *"app/app.js"* is fired, which starts the app running.
+
+For all intents and purposes WebPlus is a just a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control that fills the client area of a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8), with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality. Hot reloading is provided using a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
 
 The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
 
