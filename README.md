@@ -368,11 +368,11 @@ Remove or add window frame according to the given state.
 
 ## `fileInfo(path)`
 
-Get the [`FileDetails`](#filedetails) for the file or directory at the given path.
+Get the `FileDetails` for the file or directory at the given path.
 
 :small_blue_diamond: parameter {String} path
 
-:small_orange_diamond: returns {FileDetails}
+:small_orange_diamond: returns {[FileDetails](#filedetails)}
 
 
 
@@ -394,11 +394,11 @@ Rename the file with the given path to the given name.
 
 ## `dirInfo(path)`
 
-Get an array of [`FileDetails`](#filedetails) for all files and directories in the given path.
+Get an array of `FileDetails` for all files and directories in the given path.
 
 :small_blue_diamond: parameter {String} path
 
-:small_orange_diamond: returns ([FileDetails])
+:small_orange_diamond: returns ([[FileDetails](#filedetails)])
 
 
 
@@ -430,7 +430,7 @@ Rename the directory with the given path to the given name.
 
 Using the given options, display an open file dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
+:small_blue_diamond: parameter {[`DialogOptions`](#dialogoptions)} options
 
 :small_orange_diamond: returns {FileDetails}
 
@@ -440,9 +440,9 @@ Using the given options, display an open file dialog where a file can be selecte
 
 Using the given options, display a save file dialog where a file can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
+:small_blue_diamond: parameter {[`DialogOptions`](#dialogoptions)} options
 
-:small_orange_diamond: returns {FileDetails}
+:small_orange_diamond: returns {[FileDetails](#filedetails)}
 
 
 
@@ -450,7 +450,7 @@ Using the given options, display a save file dialog where a file can be selected
 
 Display a dialog where a folder can be selected, and return its `FileDetails` if it wasn't cancelled.
 
-:small_orange_diamond: returns {FileDetails}
+:small_orange_diamond: returns {{[FileDetails](#filedetails)}}
 
 
 
@@ -468,7 +468,7 @@ Load the text file with the given path.
 
 Browse for a text file using a `OpenFileDialog`, and if not cancelled, load the selected text file.
 
-:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
+:small_blue_diamond: parameter {[`DialogOptions`](#dialogoptions)} options
 
 :small_orange_diamond: returns {String}
 
@@ -490,7 +490,7 @@ Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the 
 
 :small_blue_diamond: parameter {String} text
 
-:small_blue_diamond: parameter {DialogOptions} [`options`](#dialogoptions)
+:small_blue_diamond: parameter {[`DialogOptions`](#dialogoptions)} options
 
 
 
@@ -498,6 +498,6 @@ Browse for a text file using a `SaveFileDialog`, and if not cancelled, save the 
 
 Save the given canvas as a PNG image at the given path.
 
-:small_blue_diamond: parameter (HTMLCanvasElement) canvas
+:small_blue_diamond: parameter {HTMLCanvasElement} canvas
 
 :small_blue_diamond: parameter {String} path
