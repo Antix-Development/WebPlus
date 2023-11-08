@@ -219,7 +219,7 @@ The host window bounds as returned by calling `getWindowBounds`.
 
 ## Events
 
-You can subscribe to the "windowresize" event in your app to receive notifications when your apps window resizes.
+You can subscribe to the ***"windowresize"*** event in your app to receive notifications when your apps window resizes.
 
 ```
 window.addEventListener('windowresize', (e) => {
@@ -227,7 +227,7 @@ window.addEventListener('windowresize', (e) => {
 });
 ```
 
-The events `detail`` property will contain a string describing what type of resize event just occurred, and it will be one of the following:
+The events `detail` property will contain a string describing what type of resize event just occurred, and it will be one of the following:
 
 &emsp;:small_orange_diamond: "windowEnteredFullScreen"
 
