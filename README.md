@@ -73,13 +73,13 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:five: Rinse and repeat :four: until your app is done.
 
-&emsp;:six: Set `HotReload` to `false` in the ***"app.json"*** file to disable hot reloading.
+&emsp;:six: Set `HotReload` to `false` in ***"app/app.json"*** to disable hot reloading.
 
-&emsp;:seven: Delete the ***"MyCoolApp.exe.WebView"*** folder. This is a temprorary cache folder that isn't required for distribution.
+&emsp;:seven: Delete the ***"app/MyCoolApp.exe.WebView"*** folder. This is a temprorary cache folder that isn't required for distribution.
 
 &emsp;:eight: Perform extra tasks such as minifying or obfuscating your code, etc.
 
-&emsp;:nine: Replace the *"app.ico"* with your own icon, and then you're ready to commence distribution.
+&emsp;:nine: Replace ***"app/app.ico"*** with your own icon, and then you're ready to commence distribution.
 
 That's it, you're done! Time for a beverage :coffee: :tea: :sake: :baby_bottle: :beer: :beers: :cocktail: :tropical_drink: :wine_glass:
 
