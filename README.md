@@ -75,7 +75,7 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:six: Set `HotReload` to `false` in ***"app/app.json"*** to disable hot reloading.
 
-&emsp;:seven: Delete the ***"app/MyCoolApp.exe.WebView"*** folder. This is a temprorary cache folder that isn't required for distribution.
+&emsp;:seven: Delete the ***"app/MyCoolApp.exe.WebView"*** folder (a temprorary folder not required for distribution).
 
 &emsp;:eight: Perform extra tasks such as minifying or obfuscating your code, etc.
 
@@ -90,15 +90,15 @@ That's it, you're done! Time for a beverage :coffee: :tea: :sake: :baby_bottle: 
 When a WebPlus application launches, it..
 
 1. Creates a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8) containing a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control.
-2. Loads persistent options from *"app/app.json"*.
+2. Loads persistent options from ***"app/app.json"***.
 3. Modifies the windows form according to the options.
-4. Loads *"app/app.html"* into the WebView2 control.
+4. Loads ***"app/app.html"*** into the WebView2 control.
 
-When *"app/app.html"* has fully loaded the `window.onload` event in *"app/app.js"* is fired, which starts the app running.
+When ***"app/app.html"*** has fully loaded the `window.onload` event in *"app/app.js"* is fired, which starts the app running.
 
 So, for all intents and purposes WebPlus is a just a Windows Form encapsulating a WebView2 control that fills its client area, with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality, and hot reloading powered by a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
 
-The default icon provided inside the *"app"* folder contains with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
+The default icon provided inside the ***"app"*** folder contains images with sizes of 16x16, 24x24, 32x32, 48x48, and 256x256, which are considered [the bare minimum any icon should contain](https://learn.microsoft.com/en-us/windows/apps/design/style/iconography/app-icon-construction).
 
 :love_letter: I was delighted at how easy it was to actually get a WebView2 set up and working inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :thumbsup:
 
