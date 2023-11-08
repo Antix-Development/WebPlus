@@ -241,7 +241,7 @@ The events `detail` property will contain a string describing what type of resiz
 
 ## Messages
 
-:hammer: Code for asynchronous messaging between the app and host is included in the various source code files (and this readme) but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. Hoswever I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
+:hammer: Code for asynchronous messaging between the app and host is included in the various source code files (and this readme) but has been commented out because making use of this code means editing the C# source and recompiling the binaries. This is not how I intend for WebPlus to work and not something I personally require. However, I have left the code in situ incase anyone else wants that functionality and can be bothered messing about with it.
 
 ## Methods
 
