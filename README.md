@@ -83,18 +83,18 @@ Lets make an app called *MyCoolApp*.
 
 That's it, you're done! Time for a beverage :coffee: :tea: :sake: :baby_bottle: :beer: :beers: :cocktail: :tropical_drink: :wine_glass:
 
-:warning: the *"webplus.js"* file in the *"app"* folder contains the WebPlus engine code and you don't need to modify it.
+:warning: ***"app/webplus.js"*** contains the WebPlus engine code and you don't need to modify it.
 
 # Under the Hood
 
 When a WebPlus application launches, it..
 
-1. Creates a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8) containing a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control.
-2. Loads persistent options from ***"app/app.json"***.
+1. Loads persistent options from ***"app/app.json"***.
+2. Creates a [Windows Form](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8) containing a [WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) control.
 3. Modifies the windows form according to the options.
 4. Loads ***"app/app.html"*** into the WebView2 control.
 
-When ***"app/app.html"*** has fully loaded the `window.onload` event in *"app/app.js"* is fired, which starts the app running.
+When ***"app/app.html"*** has fully loaded the `window.onload` event in ***"app/app.js"*** is fired, which starts the app running.
 
 So, for all intents and purposes WebPlus is a just a Windows Form encapsulating a WebView2 control that fills its client area, with a [host object coclass](https://learn.microsoft.com/en-us/microsoft-edge/webview2/how-to/hostobject?tabs=win32) glued on to provide some extra functionality, and hot reloading powered by a [FileSystemWatcher](https://learn.microsoft.com/en-us/dotnet/api/system.io.filesystemwatcher?vview=netframework-4.8.1).
 
@@ -106,12 +106,13 @@ The default icon provided inside the ***"app"*** folder contains images with siz
 
 ## Options
 
-WebPlus stores its persistent state in a the *"app/app.json"* file which has the following structure..
+WebPlus stores its persistent state in ***"app/app.json"*** which has the following structure..
 
 ```
 {
   HotReload: {Boolean},
-  SaveOnExit {Boolean},       // Set to disable persistent state.
+  SaveOnExit: {Boolean},      // Set to disable persistent state.
+  UseDevTools: {Boolean},     // Not yet implemented.
   Title: {String}             // Window title.
   X: {Number},                // Window position
   Y: {Number},
