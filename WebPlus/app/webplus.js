@@ -91,6 +91,13 @@ const wp = {
      * @memberof WebPlus
      */
     setWindowSize: (w, h) => WP_HOST.setWindowSize(w, h),
+    
+    /**
+     * Get the bounds of the host window.
+     * @returns {WindowBounds}
+     * @memberof WebPlus
+     */
+    getWindowBounds: () => JSON.parse(WP_HOST.getWindowBounds()),
 
     /**
      * Set the host window title to the given title.

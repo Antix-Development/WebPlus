@@ -21,6 +21,8 @@ window.onload = () => {
     });
 
     generateImage();
+
+    console.log(wp.getWindowBounds());
 }
 
 function toggleHotReload() {

@@ -27,7 +27,7 @@ namespace WebPlus
         private FileSystemWatcher watcher;
         private System.Timers.Timer timer;
 
-        private string LastError = "";
+        public string LastError = "";
 
         private JsonSerializerOptions JsonOptions = new JsonSerializerOptions { IncludeFields = true };
 
@@ -58,9 +58,9 @@ namespace WebPlus
             HostForm.SetWindowTitle(title);
         }
 
-        public void setWindowIcon(string path)
+        public bool setWindowIcon(string path)
         {
-            LastError = HostForm.setIcon(path);
+            return HostForm.setIcon(path);
         }
 
         public void setWindowLocation(int x, int y)
@@ -71,6 +71,11 @@ namespace WebPlus
         public void setWindowSize(int width, int height)
         {
             HostForm.Size = new Size(width, height);
+        }
+
+        public string getWindowBounds()
+        {
+            return $"{{\"x\":{HostForm.Location.X},\"y\":{HostForm.Location.Y},\"width\":{HostForm.Size.Width},\"height\":{HostForm.Size.Height},\"innerWidth\":{HostForm.ClientSize.Width},\"innerHeight\":{HostForm.ClientSize.Height}}}";
         }
 
         public void minimizeToTray(bool state)

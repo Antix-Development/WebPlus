@@ -1,6 +1,7 @@
 {
     "HotReload": true,
     "SaveOnExit": true,
+    "UseDevTools": false,
     "Title": "WebPlus Tests",
     "X": 100,
     "Y": 100,

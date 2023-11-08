@@ -4,6 +4,7 @@
     {
         public bool HotReload { get; set; }
         public bool SaveOnExit { get; set; }
+        public bool UseDevTools { get; set; }
         public string Title { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -18,6 +19,7 @@
         {
             HotReload = true;
             SaveOnExit = false;
+            UseDevTools = false;
             Title = string.Empty;
             X = 100;
             Y = 100;
@@ -29,7 +31,7 @@
         }
         public override string ToString()
         {
-            return $"HotReload:{HotReload}, SaveOnExit:{SaveOnExit}, Title:\"{Title}\", X:{X}, Y:{Y}, Width:{Width}, Height:{Height}, FullScreen:{FullScreen}, Frameless:{Frameless}, MinimizeToTray:{MinimizeToTray}";
+            return $"HotReload:{HotReload}, SaveOnExit:{SaveOnExit}, UseDevTools:{UseDevTools}, Title:\"{Title}\", X:{X}, Y:{Y}, Width:{Width}, Height:{Height}, FullScreen:{FullScreen}, Frameless:{Frameless}, MinimizeToTray:{MinimizeToTray}";
         }
     }
 

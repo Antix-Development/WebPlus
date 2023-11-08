@@ -32,35 +32,36 @@ namespace WebPlus
                 saveOptions();
             }
 
-            setIcon($"{BaseAppFile}.ico");
-
             InitializeAsync();
+
+            setIcon($"{BaseAppFile}.ico");
 
             WebView.Source = new Uri($"file:///{Directory.GetCurrentDirectory()}/app/app.html");
 
             this.Resize += new EventHandler(this.Form_Resize);
         }
 
-        public string setIcon(string path)
+        public bool setIcon(string path)
         {
             switch (Path.GetExtension(path).ToLower())
             {
                 case ".ico":
-                    this.Icon = new Icon(path);
+                    Icon = new Icon(path);
                     notifyIcon.Icon = new Icon(path);
-                    return null;
+                    return true;
 
                 case ".png":
                     Image image = Image.FromFile(path);
                     Icon icon = Icon.FromHandle(new Bitmap(image).GetHicon());
-                    this.Icon = icon;
+                    Icon = icon;
                     notifyIcon.Icon = icon;
                     icon.Dispose();
                     image.Dispose();
-                    return null;
+                    return true;
 
                 default:
-                    return "Icon was not recognized.";
+                    hostedObject.LastError = "Icon was not recognized.";
+                    return false;
             }
         }
 

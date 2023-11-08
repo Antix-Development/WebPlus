@@ -201,6 +201,21 @@ Some WebPlus methods return objects, and others may require you to supply an obj
 
 :point_right: WebPlus includes some handy [file dialog filters](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.filedialog.filter?view=netframework-4.8.1) for common filetypes.. `WP_TEXTFILE_FILTER` for for TEXT files, `WP_JSONFILE_FILTER` for JSON files, and `WP_PNGFILE_FILTER` for PNG files.
 
+### WindowBounds
+
+The host window bounds as returned by calling `getWindowBounds`.
+
+```
+{
+  x: {Number},           // Screen position.
+  y: {Number},
+  width: {Number},       // Dimensions including frame.
+  height: {Number},
+  innerWidth: {Number},  // Dimensions excluding frame.
+  innerHeight: {Number},
+}
+```
+
 ## Events
 
 You can subscribe to the "windowresize" event in your app to receive notifications when your apps window resizes.
@@ -280,7 +295,6 @@ Get the last error encountered by the host. Useful for determining why some meth
 :small_orange_diamond: returns {String}
 
 
-
 ## `setWindowLocation(x, y)`
 
 Set the host window location to the given coordinates.
@@ -298,6 +312,16 @@ Set the host window size to the given dimensions.
 :small_blue_diamond: parameter {Number} width
 
 :small_blue_diamond: parameter {Number} height
+
+
+
+
+## `getWindowBounds()`
+
+Get the bounds of the host window.
+
+:small_orange_diamond: returns {{[WindowBounds](#windowbounds)}}
+
 
 
 
