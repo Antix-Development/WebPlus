@@ -83,6 +83,8 @@ Lets make an app called *MyCoolApp*.
 
 That's it, you're done! Time for a beverage :coffee: :tea: :sake: :baby_bottle: :beer: :beers: :cocktail: :tropical_drink: :wine_glass:
 
+:bulb: If you get a Windows SmartScreen warning (false positive) at :three: cancel it, right click ***"MyCoolApp.exe"***, select *"Properties"*, tick *"Unblock"* in the *"General"* tab, click *"OK"*, then you should be able to resume from :three:
+
 :warning: ***"app/webplus.js"*** contains the WebPlus engine code and you don't need to modify it.
 
 # Under the Hood
