@@ -61,6 +61,8 @@ All you really need is a text/code editor such as Notepad, [Visual Studio Code](
 
 ## Your first WebPlus app
 
+:bulb: The best way to create WebPlus apps is to use the new [WebPlus-CLI](https://github.com/Antix-Development/webplus-cli) which makes creating and packing WebPlus apps super easy. If npm packages aren't your thing however, you can go old-school and do it all manually :neckbeard:
+
 Lets make an app called *MyCoolApp*.
 
 &emsp;:one: Copy the ***"dist"*** folder somewhere handy and rename it as ***"MyCoolApp"***.
