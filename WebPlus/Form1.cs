@@ -225,7 +225,7 @@ namespace WebPlus
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (appOptions.SaveOnExit)
+            if (appOptions.SaveOnExit & Location.X > 0)
             {
                 appOptions.X = Location.X;
                 appOptions.Y = Location.Y;
