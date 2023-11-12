@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Web.WebView2.Core;
 
@@ -13,7 +16,7 @@ namespace WebPlus
 
         private HostedObject hostedObject; // The object containing the methods that are directly callable from JavaScript.
 
-        private AppOptions appOptions;
+        public AppOptions appOptions;
 
         private string BaseAppFile = "app\\app";
 
@@ -36,6 +39,10 @@ namespace WebPlus
 
             setIcon($"{BaseAppFile}.ico");
 
+            // 
+            // Make sure options are all set before loading "app.html", otherwise the WebPlus engine won't have access to some required properties, leading to unexpected behavior.
+            // 
+
             WebView.Source = new Uri($"file:///{Directory.GetCurrentDirectory()}/app/app.html");
 
             this.Resize += new EventHandler(this.Form_Resize);
@@ -47,14 +54,14 @@ namespace WebPlus
             {
                 case ".ico":
                     Icon = new Icon(path);
-                    notifyIcon.Icon = new Icon(path);
+                    NotifyIcon1.Icon = new Icon(path);
                     return true;
 
                 case ".png":
                     Image image = Image.FromFile(path);
                     Icon icon = Icon.FromHandle(new Bitmap(image).GetHicon());
                     Icon = icon;
-                    notifyIcon.Icon = icon;
+                    NotifyIcon1.Icon = icon;
                     icon.Dispose();
                     image.Dispose();
                     return true;
@@ -83,7 +90,125 @@ namespace WebPlus
 
             SetWindowTitle(appOptions.Title);
 
+            hostedObject.minimizeToTray(appOptions.MinimizeToTray);
+
+            hostedObject.startInFullScreen(appOptions.StartInFullScreen);
+
+            if (appOptions.StartInFullScreen)
+            {
+                hostedObject.setFullScreen(true);
+            }
+
+            else if (appOptions.StartFrameless)
+            {
+                FormBorderStyle = FormBorderStyle.None;
+            }
+
+            if (appOptions.OpenDevTools)
+            {
+                WebView.CoreWebView2.OpenDevToolsWindow();
+                WantToOpenDevTools = true;
+            }
+
             //WebView.CoreWebView2.WebMessageReceived += MessageReceived;
+        }
+
+        private bool WantToOpenDevTools = false;
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+        [DllImport("user32.dll")]
+        static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
+        const int WM_CLOSE = 0x0010;
+
+        const uint SWP_NOMOVE = 0x0002;
+        const uint SWP_NOSIZE = 0x0001;
+        const uint SWP_NOACTIVATE = 0x0010;
+
+        private static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
+
+        private IntPtr DevToolsHandle = IntPtr.Zero;
+
+        /// <summary>
+        /// Get handle to dcevtools window if it is open.
+        /// </summary>
+        /// <returns></returns>
+        public bool GetDevToolsHandle()
+        {
+            if (DevToolsHandle != IntPtr.Zero) return true; // Return if it was previously found and not reset.
+
+            foreach (Process pList in Process.GetProcesses())
+            {
+                if (pList.ProcessName == "msedgewebview2" & pList.MainWindowTitle.IndexOf("DevTools") == 0)
+                {
+                    DevToolsHandle = pList.MainWindowHandle;
+                    return true;
+                }
+            }
+            DevToolsHandle = IntPtr.Zero;
+            return false;
+        }
+
+        /// <summary>
+        /// If the devtools window is open, bring it to the top.
+        /// </summary>
+        private void DevToolsToFront()
+        {
+            if (GetDevToolsHandle()) SetWindowPos(DevToolsHandle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+        }
+
+        /// <summary>
+        /// Bring the devtools window to the top when the form is activated.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            DevToolsToFront();
+        }
+
+        /// <summary>
+        /// Raise a new "windowresize" event on the JavaScript side.
+        /// </summary>
+        /// <param name="type"></param>
+        public void DispatchWindowResizeEvent(string type)
+        {
+            var script = $"var event = new CustomEvent('windowresize', {{detail: '{type}' }}); window.dispatchEvent(event);";
+            WebView.CoreWebView2.ExecuteScriptAsync(script);
+        }
+
+        private void Form_Resize(object sender, EventArgs e)
+        {
+            if (hostedObject.IgnoreResizingEvents) return;
+
+            switch (WindowState)
+            {
+                case FormWindowState.Normal:
+                    DispatchWindowResizeEvent("windowRestored");
+                    break;
+
+                case FormWindowState.Minimized:
+                    if (hostedObject.MinimizeToTray)
+                    {
+                        Hide();
+                        NotifyIcon1.Visible = true;
+                    }
+                    DispatchWindowResizeEvent("windowMinimized");
+                    break;
+
+                case FormWindowState.Maximized:
+                    if (!hostedObject.InFullScreen)
+                    {
+                        DispatchWindowResizeEvent("windowMaximized");
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         //void MessageReceived(object sender, CoreWebView2WebMessageReceivedEventArgs args)
@@ -112,48 +237,11 @@ namespace WebPlus
         //    WebView.CoreWebView2.PostWebMessageAsString(JsonSerializer.Serialize(reply, JsonOptions));
         //}
 
-        public void DispatchWindowResizeEvent(string type)
-        {
-            var script = $"var event = new CustomEvent('windowresize', {{detail: '{type}' }}); window.dispatchEvent(event);";
-            WebView.CoreWebView2.ExecuteScriptAsync(script);
-        }
-
-        private void Form_Resize(object sender, EventArgs e)
-        {
-            if (hostedObject.IgnoreResizingEvents) return;
-
-            switch (WindowState)
-            {
-                case FormWindowState.Normal:
-                    DispatchWindowResizeEvent("windowRestored");
-                    break;
-
-                case FormWindowState.Minimized:
-                    if (hostedObject.MinimizeToTray)
-                    {
-                        Hide();
-                        notifyIcon.Visible = true;
-                    }
-                    DispatchWindowResizeEvent("windowMinimized");
-                    break;
-
-                case FormWindowState.Maximized:
-                    if (!hostedObject.InFullScreen)
-                    {
-                        DispatchWindowResizeEvent("windowMaximized");
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Show();
             this.WindowState = FormWindowState.Normal;
-            notifyIcon.Visible = false;
+            NotifyIcon1.Visible = false;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -164,7 +252,7 @@ namespace WebPlus
         public void SetWindowTitle(string title)
         {
             Text = title;
-            notifyIcon.Text = title;
+            NotifyIcon1.Text = title;
         }
 
         private async void ClearBrowserCache()
@@ -187,12 +275,17 @@ namespace WebPlus
                 case Keys.F11:
                     e.Handled = true;
                     break;
+
+                case Keys.F12:
+                    if (appOptions.DevToolsOnTop) e.Handled = true;
+                    break;
+
                 default:
                     break;
             }
         }
 
-        private void webView_KeyUp(object sender, KeyEventArgs e)
+        private void WebView_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -213,9 +306,47 @@ namespace WebPlus
                     e.Handled = true;
                     break;
 
+                case Keys.F12:
+                    if (appOptions.DevToolsOnTop)
+                    {
+                        WantToOpenDevTools = !WantToOpenDevTools;
+                        //ShowDevTools(DevToolsOpen);
+
+                        if (WantToOpenDevTools)
+                        {
+                            // We want to open "DevTools".
+                            if (DevToolsHandle != IntPtr.Zero)
+                            {
+                                DevToolsToFront(); // "DevTools" is already open, raise it to the top.
+                            }
+                            else
+                            {
+                                WebView.CoreWebView2.OpenDevToolsWindow(); // Open "DevTools".
+                            }
+                        }
+                        else
+                        {
+                            // We want to close "DevTools".
+                            if (GetDevToolsHandle())
+                            {
+                                // If "DevTools" is open, ask it to close.
+                                SendMessage(DevToolsHandle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+                                DevToolsHandle = IntPtr.Zero;
+                                WantToOpenDevTools = false;
+                            }
+                        }
+                        e.Handled = true;
+                    }
+                    break;
+
                 default:
                     break;
             }
+        }
+        public async Task Execute(Action action, int timeoutInMilliseconds)
+        {
+            await Task.Delay(timeoutInMilliseconds);
+            action();
         }
 
         private void saveOptions()
@@ -223,22 +354,31 @@ namespace WebPlus
             File.WriteAllText($"{BaseAppFile}.json", JsonSerializer.Serialize(appOptions, JsonOptions));
         }
 
+        /// <summary>
+        /// Persist state before the form closes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (appOptions.SaveOnExit & Location.X > 0)
+            if (appOptions.SaveOnExit)
             {
-                appOptions.X = Location.X;
-                appOptions.Y = Location.Y;
-                appOptions.Width = Size.Width;
-                appOptions.Height = Size.Height;
-                appOptions.FullScreen = hostedObject.InFullScreen;
-                appOptions.MinimizeToTray = hostedObject.MinimizeToTray;
-                appOptions.Frameless = hostedObject.Frameless;
+                if (WindowState != FormWindowState.Minimized) // Only persist the forms `Location` and `Size` if the form is NOT mimimized.
+                {
+                    appOptions.X = Location.X;
+                    appOptions.Y = Location.Y;
+                    appOptions.Width = Size.Width;
+                    appOptions.Height = Size.Height;
+                }
+
                 appOptions.Title = Text;
+                appOptions.StartInFullScreen = hostedObject.StartInFullScreen;
+                appOptions.StartFrameless = hostedObject.StartFrameless;
+                appOptions.Minimized = hostedObject.Minimized;
+                appOptions.MinimizeToTray  = hostedObject.MinimizeToTray;
 
                 saveOptions();
             }
         }
-
     }
 }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.WebView = new Microsoft.Web.WebView2.WinForms.WebView2();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.NotifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,11 +46,11 @@
             this.WebView.TabIndex = 2;
             this.WebView.ZoomFactor = 1D;
             this.WebView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.webView_KeyDown);
-            this.WebView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.webView_KeyUp);
+            this.WebView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.WebView_KeyUp);
             // 
-            // notifyIcon
+            // NotifyIcon1
             // 
-            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            this.NotifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // Form1
             // 
@@ -59,6 +59,7 @@
             this.ClientSize = new System.Drawing.Size(824, 391);
             this.Controls.Add(this.WebView);
             this.Name = "Form1";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).EndInit();
@@ -68,7 +69,7 @@
 
         #endregion
         private Microsoft.Web.WebView2.WinForms.WebView2 WebView;
-        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.NotifyIcon NotifyIcon1;
     }
 }
 

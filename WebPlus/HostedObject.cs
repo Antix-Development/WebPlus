@@ -14,22 +14,26 @@ namespace WebPlus
     [ComVisible(true)]
     public class HostedObject
     {
-        private Form1 HostForm;
+        private bool HotReloadEnabled = false;
+
 
         public bool MinimizeToTray = false;
+        public bool Minimized = false;
+        public bool UseDevTools = false;
 
         public bool Frameless = false;
+        public bool StartFrameless = false;
 
         public bool InFullScreen = false;
-        public bool IgnoreResizingEvents;
+        public bool StartInFullScreen = false;
 
-        private bool HotReloadEnabled = false;
+        public bool IgnoreResizingEvents;
         private FileSystemWatcher watcher;
         private System.Timers.Timer timer;
-
         public string LastError = "";
 
         private JsonSerializerOptions JsonOptions = new JsonSerializerOptions { IncludeFields = true };
+        private readonly Form1 HostForm;
 
         public HostedObject(Form1 hostForm)
         {
@@ -53,6 +57,7 @@ namespace WebPlus
             return lastError;
         }
 
+
         public void setWindowTitle(string title)
         {
             HostForm.SetWindowTitle(title);
@@ -63,19 +68,10 @@ namespace WebPlus
             return HostForm.setIcon(path);
         }
 
-        public void setWindowLocation(int x, int y)
-        {
-            HostForm.Location = new Point(x, y);
-        }
 
-        public void setWindowSize(int width, int height)
+        public bool getMinimizeToTrayState()
         {
-            HostForm.Size = new Size(width, height);
-        }
-
-        public string getWindowBounds()
-        {
-            return $"{{\"x\":{HostForm.Location.X},\"y\":{HostForm.Location.Y},\"width\":{HostForm.Size.Width},\"height\":{HostForm.Size.Height},\"innerWidth\":{HostForm.ClientSize.Width},\"innerHeight\":{HostForm.ClientSize.Height}}}";
+            return MinimizeToTray;
         }
 
         public void minimizeToTray(bool state)
@@ -83,12 +79,150 @@ namespace WebPlus
             MinimizeToTray = state;
         }
 
+        #region WinForm Size and Location.
+
+        /// <summary>
+        /// Set the winforms location to the given screen coordinates.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        public void setWindowLocation(int x, int y)
+        {
+            HostForm.Location = new Point(x, y);
+        }
+
+        /// <summary>
+        /// Set the winforms size to the given dimensions.
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public void setWindowSize(int width, int height)
+        {
+            HostForm.Size = new Size(width, height);
+        }
+
+        /// <summary>
+        /// Get the bounds of the winform.
+        /// </summary>
+        /// <returns></returns>
+        public string getWindowBounds()
+        {
+            return $"{{\"x\":{HostForm.Location.X},\"y\":{HostForm.Location.Y},\"width\":{HostForm.Size.Width},\"height\":{HostForm.Size.Height},\"innerWidth\":{HostForm.ClientSize.Width},\"innerHeight\":{HostForm.ClientSize.Height}}}";
+        }
+
+        #endregion
+
+        #region Full-screen mode management.
+
+        /// <summary>
+        /// Set the app to launch in full-screen or windowed mode according to the given state.
+        /// </summary>
+        /// <param name="state"></param>
+        public void startInFullScreen(bool state)
+        {
+            StartInFullScreen = state;
+        }
+
+        /// <summary>
+        /// Get the current full-screen state.
+        /// </summary>
+        /// <returns></returns>
+        public bool getFullScreenState()
+        {
+            return InFullScreen;
+        }
+
+        /// <summary>
+        /// Enter or leave full-screen mode according to the given state.
+        /// </summary>
+        /// <param name="state"></param>
+        public void setFullScreen(bool state)
+        {
+            if (state)
+            {
+                if (!InFullScreen)
+                {
+                    IgnoreResizingEvents = true; // Stop form resize events sending extraneous resize messages.
+                    HostForm.FormBorderStyle = FormBorderStyle.None;
+                    HostForm.WindowState = FormWindowState.Maximized;
+                    HostForm.DispatchWindowResizeEvent("windowEnteredFullScreen");
+                    IgnoreResizingEvents = false;
+                }
+            }
+            else
+            {
+                if (InFullScreen)
+                {
+                    IgnoreResizingEvents = true;
+                    if (!Frameless) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
+                    HostForm.WindowState = FormWindowState.Normal;
+                    HostForm.DispatchWindowResizeEvent("windowLeftFullScreen");
+                    IgnoreResizingEvents = false;
+                }
+            }
+            InFullScreen = state;
+        }
+
+        #endregion
+
+        #region WinForm frameless mode management.
+
+        /// <summary>
+        /// Set the app to START in frameless or framed mode according to the given state.
+        /// </summary>
+        /// <param name="state"></param>
+        public void startFrameless(bool state)
+        {
+            StartFrameless = state;
+        }
+
+        /// <summary>
+        /// Set the app to BE frameless or framed mode according to the given state.
+        /// </summary>
+        /// <param name="state"></param>
+        public void setFrameless(bool state)
+        {
+            IgnoreResizingEvents = true;
+            if (state)
+            {
+                HostForm.FormBorderStyle = FormBorderStyle.None;
+            }
+            else
+            {
+                if (!InFullScreen) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
+            }
+            IgnoreResizingEvents = false;
+
+            Frameless = state;
+        }
+
+        /// <summary>
+        /// Get the current frameless state of the app.
+        /// </summary>
+        /// <returns></returns>
+        public bool getFrameLessState()
+        {
+            return Frameless;
+        }
+
+        #endregion
+
+        #region Hot Reloading
+
+        /// <summary>
+        /// Restore hot reload state on app reload.
+        /// </summary>
+        /// <returns></returns>
         public bool restoreHotReloadState()
         {
             enableHotReload(HotReloadEnabled);
             return HotReloadEnabled;
         }
 
+        /// <summary>
+        /// Enable or disable hot reloading according to the given state.
+        /// </summary>
+        /// <param name="state"></param>
         public void enableHotReload(bool state)
         {
             if (state)
@@ -119,11 +253,21 @@ namespace WebPlus
             HotReloadEnabled = state;
         }
 
+        /// <summary>
+        /// Re-enable filesystemwatcher events on timer expired.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             watcher.EnableRaisingEvents = true; // Re enable file system watch events after .5 seconds.
         }
 
+        /// <summary>
+        /// The file system watcher
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
             string strFileExt = Path.GetExtension(e.FullPath);
@@ -137,48 +281,8 @@ namespace WebPlus
             }
         }
 
-        public void setFullScreen(bool state)
-        {
-            if (state)
-            {
-                if (!InFullScreen)
-                {
-                    IgnoreResizingEvents = true; // Stop form resize events sending extraneous resize messages.
-                    HostForm.FormBorderStyle = FormBorderStyle.None;
-                    HostForm.WindowState = FormWindowState.Maximized;
-                    HostForm.DispatchWindowResizeEvent("windowEnteredFullScreen");
-                    IgnoreResizingEvents = false;
-                }
-            }
-            else
-            {
-                if (InFullScreen)
-                {
-                    IgnoreResizingEvents = true;
-                    if (!Frameless) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
-                    HostForm.WindowState = FormWindowState.Normal;
-                    HostForm.DispatchWindowResizeEvent("windowLeftFullScreen");
-                    IgnoreResizingEvents = false;
-                }
-            }
-            InFullScreen = state;
-        }
-        
-        public void setFrameless(bool state)
-        {
-            IgnoreResizingEvents = true;
-            if (state)
-            {
-                HostForm.FormBorderStyle = FormBorderStyle.None;
-            }
-            else
-            {
-                if (!InFullScreen) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
-            }
-            IgnoreResizingEvents = false;
+        #endregion
 
-            Frameless = state;
-        }
 
         public string fileInfo(string path)
         {

@@ -1,13 +1,15 @@
 {
     "HotReload": true,
     "SaveOnExit": true,
-    "UseDevTools": false,
-    "Title": "WebPlus Tests",
+    "OpenDevTools": true,
+    "DevToolsOnTop": true,
+    "Title": "",
     "X": 100,
     "Y": 100,
     "Width": 798,
     "Height": 432,
-    "FullScreen": false,
-    "Frameless": false,
-    "MinimizetoTray": false
+    "StartInFullScreen": false,
+    "StartFrameless": false,
+    "MinimizetoTray": false,
+    "Minimized": false
 }

@@ -15,6 +15,10 @@ window.onload = () => {
     debugOutput = document.getElementById('debug_output');
 
     document.getElementById('wp_path_label').value = WP_PATH;
+    document.getElementById('toggle_fullscreen_button').innerHTML = (WP_FULLSCREEN) ? 'leave fullscreen' : 'enter fullscreen';
+    document.getElementById('toggle_hot_reload_button').innerHTML = (WP_HOTRELOAD_ENABLED) ? 'disable hot reload' : 'enable hot reload';
+    document.getElementById('toggle_frameless_button').innerHTML = (WP_FRAMELESS) ? 'Go framed' : 'go frameless';
+    document.getElementById('toggle_minimize_to_tray_button').innerHTML = (WP_MINIMIZE_TO_TRAY) ? 'minimize to bar' : 'minimize to tray';
 
     window.addEventListener('windowresize', (e) => {
         console.log(`windowresize: ${e.detail}`);

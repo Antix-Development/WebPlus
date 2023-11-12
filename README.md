@@ -11,9 +11,11 @@ An easy to use framework that adds super powers to your web apps, transforming t
 
 &emsp;:zap: Window resizing and repositioning.
 
-&emsp;:zap: Window minification to system tray.
+&emsp;:zap: Window minimizing to system tray.
 
 &emsp;:zap: Fullscreen and frameless window toggling.
+
+&emsp;:zap: Open app in Fullscreen or frameless modes.
 
 &emsp;:zap: True window resize event pumping.
 
@@ -27,15 +29,43 @@ An easy to use framework that adds super powers to your web apps, transforming t
 
 &emsp;:zap: Creating, renaming, moving, and deleting directories.
 
+&emsp;:zap: Open DevTools window on app launch for quick debugging.
+
+&emsp;:zap: DevTools window can always be on top.
+
 &emsp;:zap: Persistent state.
 
-&emsp;:zap: Base distribution size of 790KB.
+&emsp;:zap: Base distribution size of 793KB.
 
 ## What's New?
 
-v1.0.0 (8 Nov 2023)
+v1.0.1 (12 Nov 2023)
+
+&emsp;:bulb: Fixed window unrecoverable when restoring from persistent state.
+
+&emsp;:bulb: Launch app in frameless mode using `options.StartFrameless`.
+
+&emsp;:bulb: Launch app in full-screen mode using `options.StartFullScreen`.
+
+&emsp;:bulb: App minimizes to tray using `options.MinimizeToTray`.
+
+&emsp;:bulb: Open `devtools` on app launch using `options.OpenDevTools`.
+
+&emsp;:bulb: Force `devtools` to always be on top using `options.DevToolsOnTop`.
+
+&emsp;:bulb: Added methods to host to enable WebPlus engine to determine states on initialization.
+
+&emsp; &emsp; `getFullScreenState`
+
+&emsp; &emsp; `getFrameLessState`
+
+&emsp; &emsp; `getMinimizeToTrayState`
+
+<details><summary>v1.0.0 (8 Nov 2023)</summary><p>
 
 &emsp;:bulb: Initial release.
+
+</p></details>
 
 ## Why WebPlus?
 
@@ -75,7 +105,7 @@ Lets make an app called *MyCoolApp*.
 
 &emsp;:five: Rinse and repeat :four: until your app is done.
 
-&emsp;:six: Set `HotReload` to `false` in ***"app/app.json"*** to disable hot reloading.
+&emsp;:six: Set `HotReload` and `OpenDevTools` to `false` in ***"app/app.json"***.
 
 &emsp;:seven: Delete the ***"app/MyCoolApp.exe.WebView2"*** folder (a temprorary folder not required for distribution).
 
@@ -114,18 +144,18 @@ WebPlus stores its persistent state in ***"app/app.json"*** which has the follow
 
 ```
 {
-  HotReload: {Boolean},
-  SaveOnExit: {Boolean},      // Set to disable persistent state.
-  UseDevTools: {Boolean},     // Not yet implemented.
+  HotReload: {Boolean},       // Hot reloading enabled if true.
+  SaveOnExit: {Boolean},      // Don't save state on exit if true.
+  OpenDevTools: {Boolean},    // Open devtools on app start if true.
+  DevToolsOnTop: {Boolean},   // Devtools always on top if true.
   Title: {String}             // Window title.
   X: {Number},                // Window position
   Y: {Number},
   Width: {Number},            // Window dimensions.
   Height: {Number},
-  FullScreen: {Boolean},      // The remaining properties are not yet implemented.
-  Frameless: {Boolean},
-  Minimized: {Boolean},
-  MinimizeToTray: {Boolean},
+  StartFullScreen: {Boolean}, // Start the app in fullscreen if true.
+  StartFrameless: {Boolean},  // Start the app frameless if true.
+  MinimizeToTray: {Boolean},  // App minimizes to the system tray if true.
 }
 ```
 
@@ -354,9 +384,25 @@ Set the host window to minify to the system tray instead of the task bar accordi
 
 
 
+## `startInFullScreen(state)`
+
+Set the app to open in fullscreen mode according to the given state.
+
+:small_blue_diamond: parameter {Boolean} state
+
+
+
 ## `setFullScreen(state)`
 
 Enter or leave fullscreen mode according to the given state.
+
+:small_blue_diamond: parameter {Boolean} state
+
+
+
+## `startFrameless(state)`
+
+Set the app to open framed or frameless according to the given state.
 
 :small_blue_diamond: parameter {Boolean} state
 

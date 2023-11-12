@@ -15,10 +15,9 @@ const WP_HOST = window.chrome.webview.hostObjects.sync.hostedObject; // Hosted o
 let WP_PATH = WP_HOST.getPath(); // App home folder.
 
 let WP_HOTRELOAD_ENABLED = WP_HOST.restoreHotReloadState(); // True when hot reloading is enabled.
-
-let WP_FULLSCREEN = false; // True when app is in full-screen mode.
-let WP_FRAMELESS = false; // True when the app window has no frame.
-let WP_MINIMIZE_TO_TRAY = false; // True when app window will minimize to the system tray.
+let WP_FULLSCREEN = WP_HOST.getFullScreenState(); // True when app is in full-screen mode.
+let WP_FRAMELESS = WP_HOST.getFrameLessState(); // True when the app window has no frame.
+let WP_MINIMIZE_TO_TRAY = WP_HOST.getMinimizeToTrayState(); // True when app window will minimize to the system tray.
 
 //let WP_MESSAGE_HANDLER; // Callback function that will receive messages sent from the host.
 
@@ -124,6 +123,15 @@ const wp = {
     },
 
     /**
+     * Set the app to open in fullscreen mode according to the given state.
+     * @param {Boolean} state
+     * @memberof WebPlus
+     */
+    startInFullScreen: (state) => {
+        WP_HOST.startInFullScreen(state);
+    },
+
+    /**
      * Enter or leave fullscreen mode according to the given state.
      * @param {Boolean} state
      * @memberof WebPlus
@@ -133,6 +141,15 @@ const wp = {
         WP_FULLSCREEN = state;
     },
     
+    /**
+     * Set the app to open framed or frameless according to the given state.
+     * @param {Boolean} state
+     * @memberof WebPlus
+     */
+    startFrameless: (state) => {
+        WP_HOST.startFrameless(state);
+    },
+
     /**
      * Remove or add window frame according to the given state.
      * @param {Boolean} state
