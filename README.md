@@ -35,11 +35,33 @@ An easy to use framework that adds super powers to your web apps, transforming t
 
 &emsp;:zap: Persistent state.
 
-&emsp;:zap: Base distribution size of 793KB.
+&emsp;:zap: Base distribution size of 794KB.
+
+
 
 ## What's New?
 
-v1.0.1 (12 Nov 2023)
+v1.0.2 (14 Nov 2023)
+
+&emsp;:bulb: Persistent state is now pretty printed.
+
+&emsp;:zap: Base distribution size grew to 794KB.
+
+&emsp;:bulb: App window resizing can now be disabled through `options.CanResize`.
+
+&emsp;:bulb: App window dimensions can be constrained through the following options:
+
+&emsp; &emsp; `MinimumWidth`
+
+&emsp; &emsp; `MinimumHeight`
+
+&emsp; &emsp; `MaximumWidth`
+
+&emsp; &emsp; `MaximumHeight`
+
+
+
+<details><summary>v1.0.1 (12 Nov 2023)</summary><p>
 
 &emsp;:bulb: Fixed window unrecoverable when restoring from persistent state.
 
@@ -61,9 +83,15 @@ v1.0.1 (12 Nov 2023)
 
 &emsp; &emsp; `getMinimizeToTrayState`
 
+&emsp;:zap: Base distribution size grew to 793KB.
+
+</p></details>
+
 <details><summary>v1.0.0 (8 Nov 2023)</summary><p>
 
 &emsp;:bulb: Initial release.
+
+&emsp;:zap: Base distribution size 790KB.
 
 </p></details>
 
@@ -156,6 +184,11 @@ WebPlus stores its persistent state in ***"app/app.json"*** which has the follow
   StartFullScreen: {Boolean}, // Start the app in fullscreen if true.
   StartFrameless: {Boolean},  // Start the app frameless if true.
   MinimizeToTray: {Boolean},  // App minimizes to the system tray if true.
+  CanResize: {Boolean},       // App will not be resizable if false.true.
+  MaximumWidth: {Number},     // Window dimension constraints.
+  MaximumHeight: {Number},
+  MinimumWidth: {Number},
+  MinimumHeight: {Number},
 }
 ```
 

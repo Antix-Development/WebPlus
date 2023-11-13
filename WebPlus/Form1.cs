@@ -12,7 +12,7 @@ namespace WebPlus
 {
     public partial class Form1 : Form
     {
-        public JsonSerializerOptions JsonOptions = new JsonSerializerOptions { IncludeFields = true }; // Options for when using objects with properties. By default properties are not serlialized.
+        public JsonSerializerOptions JsonOptions = new JsonSerializerOptions { IncludeFields = true, WriteIndented = true }; // Options for when using objects with properties. By default properties are not serlialized.
 
         private HostedObject hostedObject; // The object containing the methods that are directly callable from JavaScript.
 
@@ -87,12 +87,22 @@ namespace WebPlus
 
             Location = new Point(appOptions.X, appOptions.Y);
             Size = new Size(appOptions.Width, appOptions.Height);
+            MaximumSize = new Size(appOptions.MinimumWidth, appOptions.MinimumHeight);
+            MinimumSize = new Size(appOptions.MaximumWidth, appOptions.MaximumHeight);
 
             SetWindowTitle(appOptions.Title);
 
             hostedObject.minimizeToTray(appOptions.MinimizeToTray);
 
             hostedObject.startInFullScreen(appOptions.StartInFullScreen);
+
+            hostedObject.CanResize = appOptions.CanResize;
+
+            if (!appOptions.CanResize)
+            {
+                FormBorderStyle = FormBorderStyle.FixedSingle;
+                MaximizeBox = false;
+            }
 
             if (appOptions.StartInFullScreen)
             {
@@ -103,6 +113,8 @@ namespace WebPlus
             {
                 FormBorderStyle = FormBorderStyle.None;
             }
+
+
 
             if (appOptions.OpenDevTools)
             {
@@ -271,8 +283,12 @@ namespace WebPlus
         {
             switch (e.KeyCode)
             {
-                case Keys.F5:
+
                 case Keys.F11:
+                    if (appOptions.CanResize) e.Handled = true;
+                    break;
+
+                case Keys.F5:
                     e.Handled = true;
                     break;
 
@@ -295,15 +311,18 @@ namespace WebPlus
                     break;
 
                 case Keys.F11:
-                    if (hostedObject.InFullScreen)
+                    if (appOptions.CanResize)
                     {
-                        hostedObject.setFullScreen(false);
+                        if (hostedObject.InFullScreen)
+                        {
+                            hostedObject.setFullScreen(false);
+                        }
+                        else
+                        {
+                            hostedObject.setFullScreen(true);
+                        }
+                        e.Handled = true;
                     }
-                    else
-                    {
-                        hostedObject.setFullScreen(true);
-                    }
-                    e.Handled = true;
                     break;
 
                 case Keys.F12:
@@ -380,5 +399,6 @@ namespace WebPlus
                 saveOptions();
             }
         }
+
     }
 }

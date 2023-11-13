@@ -1,1 +1,20 @@
-{"HotReload":true,"SaveOnExit":true,"DevToolsOnTop":true,"OpenDevTools":true,"Title":"","X":100,"Y":100,"Width":798,"Height":432,"StartInFullScreen":false,"StartFrameless":false,"MinimizeToTray":false,"Minimized":false}
+{
+  "HotReload": true,
+  "SaveOnExit": true,
+  "OpenDevTools": true,
+  "DevToolsOnTop": true,
+  "Title": "",
+  "X": 100,
+  "Y": 100,
+  "Width": 798,
+  "Height": 432,
+  "StartInFullScreen": false,
+  "StartFrameless": false,
+  "MinimizetoTray": false,
+  "Minimized": false,
+  "CanResize": true,
+  "MaximumWidth": 0,
+  "MaximumHeight": 0,
+  "MinimumWidth": 0,
+  "MinimumHeight": 0
+}

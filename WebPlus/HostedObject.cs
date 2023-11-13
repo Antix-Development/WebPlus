@@ -21,6 +21,10 @@ namespace WebPlus
         public bool Minimized = false;
         public bool UseDevTools = false;
 
+
+
+        public bool CanResize = true;
+
         public bool Frameless = false;
         public bool StartFrameless = false;
 
@@ -154,7 +158,7 @@ namespace WebPlus
                 if (InFullScreen)
                 {
                     IgnoreResizingEvents = true;
-                    if (!Frameless) HostForm.FormBorderStyle = FormBorderStyle.Sizable;
+                    if (!Frameless) HostForm.FormBorderStyle = (CanResize) ? FormBorderStyle.Sizable : FormBorderStyle.FixedSingle;
                     HostForm.WindowState = FormWindowState.Normal;
                     HostForm.DispatchWindowResizeEvent("windowLeftFullScreen");
                     IgnoreResizingEvents = false;

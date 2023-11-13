@@ -11,5 +11,10 @@
     "StartInFullScreen": false,
     "StartFrameless": false,
     "MinimizetoTray": false,
-    "Minimized": false
+    "Minimized": false,
+    "CanResize": true,
+    "MaximumWidth": 0,
+    "MaximumHeight": 0,
+    "MinimumWidth": 0,
+    "MinimumHeight": 0
 }
