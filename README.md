@@ -310,11 +310,13 @@ The host window bounds as returned by calling `getWindowBounds`.
 
 ## Events
 
+### windowresize
+
 You can subscribe to the ***"windowresize"*** event in your app to receive notifications when your apps window resizes.
 
 ```
 window.addEventListener('windowresize', (e) => {
-    console.log(`windowresize: ${e.detail}`);
+  console.log(`windowresize: ${e.detail}`);
 });
 ```
 
@@ -329,6 +331,22 @@ The events `detail` property will contain a string describing what type of resiz
 &emsp;:small_orange_diamond: "windowMinimized"
 
 &emsp;:small_orange_diamond: "windowMaximized"
+
+
+### windowclose
+
+You can subscribe to the ***"windowclose"*** event in your app to receive notifications when the host window close button was pressed.
+
+```
+window.addEventListener('windowclose', (e) => {
+
+  // TODO: Perform actions before the window closes.
+
+  wp.exit();
+});
+```
+
+:warning: Your app will only receive `windowclose` events if you set `DelegateWindowClose` in ***options.json*** to `true`.
 
 ## Messages
 
