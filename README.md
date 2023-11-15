@@ -39,7 +39,7 @@ An easy to use framework that adds super powers to your web apps, transforming t
 
 
 
-## What's New? :rocket:
+## What's New :rocket:
 
 v1.0.3 (16 Nov 2023)
 
@@ -117,7 +117,7 @@ v1.0.3 (16 Nov 2023)
 
 
 
-## Why WebPlus?
+## Why WebPlus :grey_question:
 
 I really enjoy creating web applications using HTML, CSS, and JavaScript.
 
@@ -133,9 +133,9 @@ If you create something using WebPlus, please let me know, I'd love to see what 
 
 Oh, and feel free to open an issue if you need any assistance or just have a question.
 
-# Getting Started
+# Getting Started :sparkles:
 
-## Requirements
+## Requirements :clipboard:
 
 All you really need is a text/code editor such as Notepad, [Visual Studio Code](https://code.visualstudio.com/), [NotePad++](https://notepad-plus-plus.org/), or [Sublime Text](https://www.sublimetext.com/). If you want to build your own binary though, you will need [Visual Studio](https://visualstudio.microsoft.com/vs/).
 
@@ -169,7 +169,7 @@ That's it, you're done! Time for a beverage :coffee: :tea: :sake: :baby_bottle: 
 
 :warning: ***"app/webplus.js"*** contains the WebPlus engine code and you don't need to modify it.
 
-# Under the Hood
+# Under the Hood :crystal_ball:
 
 When a WebPlus application launches, it..
 
