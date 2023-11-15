@@ -55,6 +55,8 @@ v1.0.3 (16 Nov 2023)
 
 
 
+## History :books:
+
 <details><summary>v1.0.2 (14 Nov 2023)</summary><p>
 
 &emsp;:bulb: Persistent state is now pretty printed.
