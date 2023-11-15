@@ -39,7 +39,7 @@ An easy to use framework that adds super powers to your web apps, transforming t
 
 
 
-## :rocket: What's New?
+## What's New? :rocket:
 
 v1.0.3 (16 Nov 2023)
 
@@ -49,9 +49,9 @@ v1.0.3 (16 Nov 2023)
 
 &emsp;:bulb: Added `launchProcess` to enable launching new processes.
 
-&emsp;:zap: Updated packages.
+&emsp;:bulb: Updated packages.
 
-&emsp;:zap: Base distribution size grew to 888KB / 773KB ***"ouchawawa"***.
+&emsp;:bulb: Base distribution size grew to 888KB / 773KB ***"ouchawawa"***.
 
 
 
