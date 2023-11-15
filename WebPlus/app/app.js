@@ -24,6 +24,11 @@ window.onload = () => {
         console.log(`windowresize: ${e.detail}`);
     });
 
+    window.addEventListener('windowclose', (e) => {
+        console.log(`windowclose event received`);
+         wp.exit();
+    });
+
     generateImage();
 
     console.log(wp.getWindowBounds());

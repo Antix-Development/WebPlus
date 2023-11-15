@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -16,12 +17,9 @@ namespace WebPlus
     {
         private bool HotReloadEnabled = false;
 
-
         public bool MinimizeToTray = false;
         public bool Minimized = false;
         public bool UseDevTools = false;
-
-
 
         public bool CanResize = true;
 
@@ -46,6 +44,8 @@ namespace WebPlus
 
         public void exit()
         {
+            HostForm.WebViewInitiaitedClose = true;
+
             Application.Exit();
         }
 
@@ -287,6 +287,17 @@ namespace WebPlus
 
         #endregion
 
+        public void launchProcess(string uri)
+        {
+            try
+            {
+                Process.Start(uri);
+
+            }
+            catch (Exception)
+            {
+            }
+        }
 
         public string fileInfo(string path)
         {
@@ -337,6 +348,20 @@ namespace WebPlus
             {
                 LastError = e.Message;
                 return null;
+            }
+        }
+        
+        public bool saveTextFile(string text, string path)
+        {
+            try
+            {
+               File.WriteAllText(path, text);
+                return true;
+            }
+            catch (Exception e)
+            {
+                LastError = e.Message;
+                return false;
             }
         }
 

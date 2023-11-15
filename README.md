@@ -35,17 +35,31 @@ An easy to use framework that adds super powers to your web apps, transforming t
 
 &emsp;:zap: Persistent state.
 
-&emsp;:zap: Base distribution size of 794KB.
+&emsp;:zap: Base distribution size of 888KB / 773KB (unzipped/zipped).
 
 
 
-## What's New?
+## :rocket: What's New?
 
-v1.0.2 (14 Nov 2023)
+v1.0.3 (16 Nov 2023)
+
+&emsp;:bulb: Host closing can be delegated to web app through `options.DelegateCloseEvent`.
+
+&emsp;:bulb: Persistent state is now pretty printed for editability.
+
+&emsp;:bulb: Added `launchProcess` to enable launching new processes.
+
+&emsp;:zap: Updated packages.
+
+&emsp;:zap: Base distribution size grew to 888KB / 773KB ***"ouchawawa"***.
+
+
+
+<details><summary>v1.0.2 (14 Nov 2023)</summary><p>
 
 &emsp;:bulb: Persistent state is now pretty printed.
 
-&emsp;:zap: Base distribution size grew to 794KB.
+&emsp;:zap: Base distribution size grew to 888KB.
 
 &emsp;:bulb: App window resizing can now be disabled through `options.CanResize`.
 
@@ -58,6 +72,8 @@ v1.0.2 (14 Nov 2023)
 &emsp; &emsp; `MaximumWidth`
 
 &emsp; &emsp; `MaximumHeight`
+
+</p></details>
 
 
 
@@ -87,6 +103,8 @@ v1.0.2 (14 Nov 2023)
 
 </p></details>
 
+
+
 <details><summary>v1.0.0 (8 Nov 2023)</summary><p>
 
 &emsp;:bulb: Initial release.
@@ -94,6 +112,8 @@ v1.0.2 (14 Nov 2023)
 &emsp;:zap: Base distribution size 790KB.
 
 </p></details>
+
+
 
 ## Why WebPlus?
 
@@ -172,27 +192,29 @@ WebPlus stores its persistent state in ***"app/app.json"*** which has the follow
 
 ```
 {
-  HotReload: {Boolean},       // Hot reloading enabled if true.
-  SaveOnExit: {Boolean},      // Don't save state on exit if true.
-  OpenDevTools: {Boolean},    // Open devtools on app start if true.
-  DevToolsOnTop: {Boolean},   // Devtools always on top if true.
-  Title: {String}             // Window title.
-  X: {Number},                // Window position
+  HotReload: {Boolean},          // Hot reloading enabled if true.
+  SaveOnExit: {Boolean},         // Don't save state on exit if true.
+  OpenDevTools: {Boolean},       // Open devtools on app start if true.
+  DevToolsOnTop: {Boolean},      // Devtools always on top if true.
+  Title: {String}                // Window title.
+  X: {Number},                   // Window position
   Y: {Number},
-  Width: {Number},            // Window dimensions.
+  Width: {Number},               // Window dimensions.
   Height: {Number},
-  StartFullScreen: {Boolean}, // Start the app in fullscreen if true.
-  StartFrameless: {Boolean},  // Start the app frameless if true.
-  MinimizeToTray: {Boolean},  // App minimizes to the system tray if true.
-  CanResize: {Boolean},       // App will not be resizable if false.true.
-  MaximumWidth: {Number},     // Window dimension constraints.
+  StartFullScreen: {Boolean},    // Start the app in fullscreen if true.
+  StartFrameless: {Boolean},     // Start the app frameless if true.
+  MinimizeToTray: {Boolean},     // App minimizes to the system tray if true.
+  CanResize: {Boolean},          // App will not be resizable if false.
+  MaximumWidth: {Number},        // Window dimension constraints.
   MaximumHeight: {Number},
   MinimumWidth: {Number},
   MinimumHeight: {Number},
+  DelegateCloseEvent: {Boolean}, // Web app will control window closing when true.
 }
 ```
+:point_right: Remember to set `HotReload` and `OpenDevTools` to `false` before distributing your app.
 
-:point_right: Remember to set `HotReload` to `false` before distributing your app.
+:point_right: Use `DelegateCloseEvent` when you want to prompt a user to save unsaved data before exiting the app. Your app **must** subscribe to the `windowclose` event to be notified that the winform close button was activated, and then you **must** call `exit` to force the app to actually exit.
 
 ## Variables
 
@@ -322,6 +344,14 @@ wp.setWindowTitle("WebPlus Rocks");
 
 Exit the application.
 
+
+## `launchProcess(name)`
+
+Launch the process with the given name.
+
+:small_blue_diamond: parameter {String} name
+
+:bulb:Particularly useful for opening web pages in the system default browser.
 
 <!-- 
 ## `messageHost(message)`

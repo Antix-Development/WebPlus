@@ -35,6 +35,13 @@ const wp = {
     exit: () => WP_HOST.exit(),
 
     /**
+     * Launch the process with the given name.
+     * @param {String} name
+     * @memberof WebPlus
+     */
+    launchProcess: (name) => WP_HOST.launchProcess(name),
+
+    /**
      * Enable or disable hot reloading according to the given state.
      * @param {Boolean} state
      * @memberof WebPlus

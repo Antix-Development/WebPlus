@@ -18,6 +18,8 @@ namespace WebPlus
 
         public AppOptions appOptions;
 
+        public bool WebViewInitiaitedClose = false;
+
         private string BaseAppFile = "app\\app";
 
         public Form1()
@@ -183,7 +185,17 @@ namespace WebPlus
         }
 
         /// <summary>
-        /// Raise a new "windowresize" event on the JavaScript side.
+        /// Raise a new "windowclose" event on the web app side.
+        /// </summary>
+        /// <param name="type"></param>
+        //public void DispatchWindowCloseEvent(string type)
+        //{
+        //    var script = $"var event = new CustomEvent('windowclose'); window.dispatchEvent(event);";
+        //    WebView.CoreWebView2.ExecuteScriptAsync(script);
+        //}
+        
+        /// <summary>
+        /// Raise a new "windowresize" event on the web app side.
         /// </summary>
         /// <param name="type"></param>
         public void DispatchWindowResizeEvent(string type)
@@ -380,6 +392,14 @@ namespace WebPlus
         /// <param name="e"></param>
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (!WebViewInitiaitedClose & appOptions.DelegateCloseEvent)
+            {
+                var script = $"var event = new CustomEvent('windowclose'); window.dispatchEvent(event);";
+                WebView.CoreWebView2.ExecuteScriptAsync(script);
+                e.Cancel = true;
+                return;
+            }
+
             if (appOptions.SaveOnExit)
             {
                 if (WindowState != FormWindowState.Minimized) // Only persist the forms `Location` and `Size` if the form is NOT mimimized.

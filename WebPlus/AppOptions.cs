@@ -20,6 +20,7 @@
         public bool MinimizeToTray { get; set; }
         public bool Minimized { get; set; }
         public bool CanResize { get; set; }
+        public bool DelegateCloseEvent { get; set; }
 
         public void Reset()
         {
@@ -41,11 +42,12 @@
             MinimumHeight = 0;
             MaximumWidth = 0;
             MaximumHeight = 0;
+            DelegateCloseEvent = false;
         }
 
         public override string ToString()
         {
-            return $"HotReload:{HotReload}, SaveOnExit:{SaveOnExit}, OpenDevTools:{OpenDevTools}, DevToolsOnTop:{DevToolsOnTop}, Title:\"{Title}\", X:{X}, Y:{Y}, Width:{Width}, Height:{Height}, StartInFullScreen:{StartInFullScreen}, StartFrameless:{StartFrameless}, MinimizeToTray:{MinimizeToTray}, Minimized:{Minimized}, CanResize:{CanResize}, MinimumWidth:{MinimumWidth}, MinimumHeight:{MinimumHeight}, MaximumWidth:{MaximumWidth}, MaximumHeight:{MaximumHeight}";
+            return $"HotReload:{HotReload}, SaveOnExit:{SaveOnExit}, OpenDevTools:{OpenDevTools}, DevToolsOnTop:{DevToolsOnTop}, Title:\"{Title}\", X:{X}, Y:{Y}, Width:{Width}, Height:{Height}, StartInFullScreen:{StartInFullScreen}, StartFrameless:{StartFrameless}, MinimizeToTray:{MinimizeToTray}, Minimized:{Minimized}, CanResize:{CanResize}, MinimumWidth:{MinimumWidth}, MinimumHeight:{MinimumHeight}, MaximumWidth:{MaximumWidth}, MaximumHeight:{MaximumHeight}, DelegateCloseEvent:{DelegateCloseEvent}";
         }
     }
 

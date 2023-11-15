@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebPlue")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("WebPlus")]
+[assembly: AssemblyDescription("Transforms web apps into desktop apps")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Antix Development")]
 [assembly: AssemblyProduct("WebPlus")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
