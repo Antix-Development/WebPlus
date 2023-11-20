@@ -133,6 +133,13 @@ If you create something using WebPlus, please let me know, I'd love to see what 
 
 Oh, and feel free to open an issue if you need any assistance or just have a question.
 
+# Powered by WebPlus  :high_brightness:
+
+The following applications have been made using WebPlus:
+
+[PassHerd](https://github.com/Antix-Development/PassHerd) - A basic portable password manager for Windows.
+
+
 # Getting Started :sparkles:
 
 ## Requirements :clipboard:
@@ -186,7 +193,7 @@ The default icon provided inside the ***"app"*** folder contains images with siz
 
 :love_letter: I was delighted at how easy it was to actually get a WebView2 set up and working inside Visual Studio.. finally Microsoft made something that didn't have me cursing loudly and tearing at what little hair I have left :thumbsup:
 
-# API Reference
+# API Reference :notebook_with_decorative_cover:
 
 ## Options
 
