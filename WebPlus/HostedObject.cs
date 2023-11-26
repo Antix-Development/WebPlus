@@ -360,7 +360,7 @@ namespace WebPlus
             }
             catch (Exception e)
             {
-                LastError = e.Message;
+                LastError = e.Message + " for fucks sake!";
                 return false;
             }
         }
@@ -606,8 +606,8 @@ namespace WebPlus
 
         public bool savePNG(string dataURL, string path)
         {
-            Console.WriteLine(dataURL);
-            Console.WriteLine(path);
+            //Console.WriteLine(dataURL);
+            //Console.WriteLine(path);
 
             string base64String = dataURL.Replace("data:image/png;base64,", "");
 

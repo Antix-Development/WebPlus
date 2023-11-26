@@ -1,7 +1,7 @@
 ﻿
 ![alt text](images/logo.svg)
 
-An easy to use framework that adds super powers to your web apps, transforming them into lithe desktop applications, with no compilation required.
+An easy to use framework that adds super powers to your web apps, transforming them into lithe desktop applications, ~~with no compilation required~~.
 
 ### Features
 
@@ -175,6 +175,12 @@ That's it, you're done! Time for a beverage :coffee: :tea: :sake: :baby_bottle: 
 :bulb: If you get a Windows SmartScreen warning (false positive) at :three: cancel it, right click ***"MyCoolApp.exe"***, select *"Properties"*, tick *"Unblock"* in the *"General"* tab, click *"OK"*, then you should be able to resume from :three:
 
 :warning: ***"app/webplus.js"*** contains the WebPlus engine code and you don't need to modify it.
+
+Unfortunately if you want your WebPlus applications executable file to have an icon, you will have to compile it from source because an executables icon can only be embedded via compilation.
+
+Furthermore if you want your applications name to be present in Windows Task Manager you will also need to change its assembly information and compile it from source, otherwise it will be listed inside the Windows Tasks Manager as ***"WebPlus"***.
+
+These are some of the cold hard realities when working with executable files, sorry.
 
 # Under the Hood :crystal_ball:
 

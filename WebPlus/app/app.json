@@ -17,5 +17,5 @@
     "MaximumHeight": 0,
     "MinimumWidth": 0,
     "MinimumHeight": 0,
-    "DelegateCloseEvent": true
+    "DelegateCloseEvent": false
 }

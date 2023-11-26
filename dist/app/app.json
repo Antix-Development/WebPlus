@@ -6,8 +6,8 @@
   "Title": "",
   "X": 100,
   "Y": 100,
-  "Width": 798,
-  "Height": 432,
+  "Width": 800,
+  "Height": 500,
   "StartInFullScreen": false,
   "StartFrameless": false,
   "MinimizetoTray": false,
@@ -16,5 +16,6 @@
   "MaximumWidth": 0,
   "MaximumHeight": 0,
   "MinimumWidth": 0,
-  "MinimumHeight": 0
+  "MinimumHeight": 0,
+  "DelegateCloseEvent": false
 }
